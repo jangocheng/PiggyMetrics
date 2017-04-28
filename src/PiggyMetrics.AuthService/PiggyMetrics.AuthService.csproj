@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="Impl\" />
+  </ItemGroup>
+
+</Project>
