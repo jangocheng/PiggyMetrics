@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-
     <None Update="dotbpe.config.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -19,6 +18,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotBPE" Version="0.1.46-alpha" />
+    <PackageReference Include="Vulcan.DataAccess" Version="0.1.8-alpha" />
+    <PackageReference Include="Consul" Version="0.7.2.3" />
   </ItemGroup>
 
   <ItemGroup>

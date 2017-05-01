@@ -10,6 +10,11 @@
     <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
   </ItemGroup>
 
+ <ItemGroup>
+    <PackageReference Include="DotBPE" Version="0.1.46-alpha" />
+    <PackageReference Include="Vulcan.DataAccess" Version="0.1.8-alpha" />
+  </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Impl\" />
     <Folder Include="Repository\" />

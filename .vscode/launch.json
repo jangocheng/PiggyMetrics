@@ -5,24 +5,18 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Debug AccountService",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build_account",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}/src/PiggyMetrics.AccountService/bin/Debug/netcoreapp1.1/PiggyMetrics.AccountService.dll",
             "args": [],
             "cwd": "${workspaceRoot}/src/PiggyMetrics.AccountService",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
-            "console": "internalConsole",
+            "externalConsole":true,
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
         }
     ]
 }

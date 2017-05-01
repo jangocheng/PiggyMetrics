@@ -26,19 +26,19 @@ namespace PiggyMetrics.Common {
             "Ih4KDkZpbmRBY2NvdW50UmVxEgwKBG5hbWUYASABKAkiKQoEVXNlchIPCgdh",
             "Y2NvdW50GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIkgKCFVzZXJJbmZvEg8K",
             "B2FjY291bnQYASABKAkSEwoLY3JlYXRlX3RpbWUYAiABKAkSFgoObGFzdF9z",
-            "ZWVuX3RpbWUYAyABKAkibQoHQWNjb3VudBIjCgl1c2VyX2luZm8YASABKAsy",
-            "EC5kb3RicGUuVXNlckluZm8SHQoHaW5jb21lcxgCIAMoCzIMLmRvdGJwZS5J",
-            "dGVtEh4KCGV4cGVuc2VzGAMgAygLMgwuZG90YnBlLkl0ZW0igAEKBEl0ZW0S",
-            "DQoFdGl0bGUYASABKAkSDgoGYW1vdW50GAIgASgBEiIKCGN1cnJlbmN5GAMg",
-            "ASgOMhAuZG90YnBlLkN1cnJlbmN5EicKC3RpbWVfcGVyaW9kGAQgASgOMhIu",
-            "ZG90YnBlLlRpbWVQZXJpb2QSDAoEaWNvbhgFIAEoCSJ3CgZTYXZpbmcSDgoG",
-            "YW1vdW50GAEgASgBEiIKCGN1cnJlbmN5GAIgASgOMhAuZG90YnBlLkN1cnJl",
-            "bmN5EhAKCGludGVyZXN0GAMgASgBEg8KB2RlcG9zaXQYBCABKAgSFgoOY2Fw",
-            "aXRhbGl6YXRpb24YBSABKAgqTQoKVGltZVBlcmlvZBIKCgZUUE5PTkUQABII",
-            "CgRZRUFSEAESCwoHUVVBUlRFUhACEgkKBU1PTlRIEAMSBwoDREFZEAQSCAoE",
-            "SE9VUhAFKjEKCEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VTRBABEgcKA1JN",
-            "QhACEgcKA0VVUhADQhhIAaoCE1BpZ2d5TWV0cmljcy5Db21tb25iBnByb3Rv",
-            "Mw=="));
+            "ZWVuX3RpbWUYAyABKAkijQEKB0FjY291bnQSIwoJdXNlcl9pbmZvGAEgASgL",
+            "MhAuZG90YnBlLlVzZXJJbmZvEh0KB2luY29tZXMYAiADKAsyDC5kb3RicGUu",
+            "SXRlbRIeCghleHBlbnNlcxgDIAMoCzIMLmRvdGJwZS5JdGVtEh4KBnNhdmlu",
+            "ZxgEIAEoCzIOLmRvdGJwZS5TYXZpbmcigAEKBEl0ZW0SDQoFdGl0bGUYASAB",
+            "KAkSDgoGYW1vdW50GAIgASgBEiIKCGN1cnJlbmN5GAMgASgOMhAuZG90YnBl",
+            "LkN1cnJlbmN5EicKC3RpbWVfcGVyaW9kGAQgASgOMhIuZG90YnBlLlRpbWVQ",
+            "ZXJpb2QSDAoEaWNvbhgFIAEoCSJ3CgZTYXZpbmcSDgoGYW1vdW50GAEgASgB",
+            "EiIKCGN1cnJlbmN5GAIgASgOMhAuZG90YnBlLkN1cnJlbmN5EhAKCGludGVy",
+            "ZXN0GAMgASgBEg8KB2RlcG9zaXQYBCABKAgSFgoOY2FwaXRhbGl6YXRpb24Y",
+            "BSABKAgqTQoKVGltZVBlcmlvZBIKCgZUUE5PTkUQABIICgRZRUFSEAESCwoH",
+            "UVVBUlRFUhACEgkKBU1PTlRIEAMSBwoDREFZEAQSCAoESE9VUhAFKjEKCEN1",
+            "cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VTRBABEgcKA1JNQhACEgcKA0VVUhAD",
+            "QhhIAaoCE1BpZ2d5TWV0cmljcy5Db21tb25iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.TimePeriod), typeof(global::PiggyMetrics.Common.Currency), }, new pbr::GeneratedClrTypeInfo[] {
@@ -47,7 +47,7 @@ namespace PiggyMetrics.Common {
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.FindAccountReq), global::PiggyMetrics.Common.FindAccountReq.Parser, new[]{ "Name" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.User), global::PiggyMetrics.Common.User.Parser, new[]{ "Account", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.UserInfo), global::PiggyMetrics.Common.UserInfo.Parser, new[]{ "Account", "CreateTime", "LastSeenTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Account), global::PiggyMetrics.Common.Account.Parser, new[]{ "UserInfo", "Incomes", "Expenses" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Account), global::PiggyMetrics.Common.Account.Parser, new[]{ "UserInfo", "Incomes", "Expenses", "Saving" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Item), global::PiggyMetrics.Common.Item.Parser, new[]{ "Title", "Amount", "Currency", "TimePeriod", "Icon" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Saving), global::PiggyMetrics.Common.Saving.Parser, new[]{ "Amount", "Currency", "Interest", "Deposit", "Capitalization" }, null, null, null)
           }));
@@ -715,6 +715,7 @@ namespace PiggyMetrics.Common {
       UserInfo = other.userInfo_ != null ? other.UserInfo.Clone() : null;
       incomes_ = other.incomes_.Clone();
       expenses_ = other.expenses_.Clone();
+      Saving = other.saving_ != null ? other.Saving.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -753,6 +754,17 @@ namespace PiggyMetrics.Common {
       get { return expenses_; }
     }
 
+    /// <summary>Field number for the "saving" field.</summary>
+    public const int SavingFieldNumber = 4;
+    private global::PiggyMetrics.Common.Saving saving_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::PiggyMetrics.Common.Saving Saving {
+      get { return saving_; }
+      set {
+        saving_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Account);
@@ -769,6 +781,7 @@ namespace PiggyMetrics.Common {
       if (!object.Equals(UserInfo, other.UserInfo)) return false;
       if(!incomes_.Equals(other.incomes_)) return false;
       if(!expenses_.Equals(other.expenses_)) return false;
+      if (!object.Equals(Saving, other.Saving)) return false;
       return true;
     }
 
@@ -778,6 +791,7 @@ namespace PiggyMetrics.Common {
       if (userInfo_ != null) hash ^= UserInfo.GetHashCode();
       hash ^= incomes_.GetHashCode();
       hash ^= expenses_.GetHashCode();
+      if (saving_ != null) hash ^= Saving.GetHashCode();
       return hash;
     }
 
@@ -794,6 +808,10 @@ namespace PiggyMetrics.Common {
       }
       incomes_.WriteTo(output, _repeated_incomes_codec);
       expenses_.WriteTo(output, _repeated_expenses_codec);
+      if (saving_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Saving);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -804,6 +822,9 @@ namespace PiggyMetrics.Common {
       }
       size += incomes_.CalculateSize(_repeated_incomes_codec);
       size += expenses_.CalculateSize(_repeated_expenses_codec);
+      if (saving_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Saving);
+      }
       return size;
     }
 
@@ -820,6 +841,12 @@ namespace PiggyMetrics.Common {
       }
       incomes_.Add(other.incomes_);
       expenses_.Add(other.expenses_);
+      if (other.saving_ != null) {
+        if (saving_ == null) {
+          saving_ = new global::PiggyMetrics.Common.Saving();
+        }
+        Saving.MergeFrom(other.Saving);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -843,6 +870,13 @@ namespace PiggyMetrics.Common {
           }
           case 26: {
             expenses_.AddEntriesFrom(input, _repeated_expenses_codec);
+            break;
+          }
+          case 34: {
+            if (saving_ == null) {
+              saving_ = new global::PiggyMetrics.Common.Saving();
+            }
+            input.ReadMessage(saving_);
             break;
           }
         }

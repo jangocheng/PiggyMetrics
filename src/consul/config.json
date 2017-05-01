@@ -1,0 +1,55 @@
+{
+    "DbOption": {
+        "AccountDbConStr": "server=127.0.0.1;port=3306;database=PiggyMetrics;uid=root;pwd=Welcome@123;charset=utf8;Connection Timeout=18000;",
+        "AuthDbConStr": "server=127.0.0.1;port=3306;database=PiggyMetrics;uid=root;pwd=Welcome@123;charset=utf8;Connection Timeout=18000;",
+        "StatDbConStr": "server=127.0.0.1;port=3306;database=PiggyMetrics;uid=root;pwd=Welcome@123;charset=utf8;Connection Timeout=18000;"
+    },
+    "RouterOption": {
+        "Routers": [{
+                "Path": "accounts/{account}",
+                "Method": "get",
+                "ServiceId": 1001,
+                "MessageId": 1
+            },
+            {
+                "Path": "accounts/",
+                "Method": "post",
+                "ServiceId": 1001,
+                "MessageId": 2
+            },
+            {
+                "Path": "accounts/current",
+                "Method": "put",
+                "ServiceId": 1001,
+                "MessageId": 3
+            },
+
+            {
+                "Path": "statistics/{account}",
+                "Method": "get",
+                "ServiceId": 1003,
+                "MessageId": 2
+            },
+            {
+                "Path": "statistics/{account}",
+                "Method": "put",
+                "ServiceId": 1003,
+                "MessageId": 1
+            },
+
+            {
+                "Path": "notifications/settings/{account}",
+                "Method": "get",
+                "ServiceId": 1004,
+                "MessageId": 1
+            },
+            {
+                "Path": "notifications/settings/{account}",
+                "Method": "put",
+                "ServiceId": 1004,
+                "MessageId": 2
+            },
+        ]
+    }
+
+}

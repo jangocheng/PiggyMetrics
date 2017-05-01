@@ -9,9 +9,21 @@
     <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
   </ItemGroup>
 
+ <ItemGroup>
+    <PackageReference Include="DotBPE" Version="0.1.46-alpha" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Vulcan.DataAccess" Version="0.1.8-alpha" />
+  </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Repository\" />
-    <Folder Include="Impl\" />
+    <None Update="dotbpe.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

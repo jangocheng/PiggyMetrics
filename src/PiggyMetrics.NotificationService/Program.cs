@@ -1,3 +1,5 @@
+﻿using System;
+
 namespace PiggyMetrics.NotificationService
 {
     class Program

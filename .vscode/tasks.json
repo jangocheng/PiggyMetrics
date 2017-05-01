@@ -1,15 +1,17 @@
 {
     "version": "0.1.0",
-    "command": "dotnet",
+
     "isShellCommand": true,
     "args": [],
     "tasks": [
         {
-            "taskName": "build",
+            "taskName": "build_account",
+            "command": "dotnet",
             "args": [
+                "build",
                 "${workspaceRoot}/src/PiggyMetrics.AccountService/PiggyMetrics.AccountService.csproj"
             ],
-            "isBuildCommand": true,
+            "isBuildCommand": false,
             "problemMatcher": "$msCompile"
         }
     ]

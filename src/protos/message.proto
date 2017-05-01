@@ -28,6 +28,7 @@ message Account {
     UserInfo user_info = 1;
     repeated Item incomes= 2;
     repeated Item expenses= 3;
+    Saving saving = 4;
 }
 
 
