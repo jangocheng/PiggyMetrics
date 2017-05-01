@@ -9,3 +9,6 @@ DotRPC PORT OF PiggyMetrics https://github.com/sqshq/PiggyMetrics
 
 
 TO COMPLETED....
+1 当配置更新时 已经更新的配置 需要重置一下。
+2 服务网关的设计要改掉了，不能叫服务网关 应该叫HTTP服务
+3 可能AMP协议中要提供返回码这个类型的字段
