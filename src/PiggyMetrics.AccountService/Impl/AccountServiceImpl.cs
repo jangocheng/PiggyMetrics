@@ -79,7 +79,7 @@ namespace PiggyMetrics.AccountService.Impl
             await this._accountRep.AddExpensesAsync(account.Expenses);
 
             //调用远端服务
-            var statClient = ClientProxy.GetClient<StatisticsServiceClient>();
+            var statClient = ClientProxy.GetClient<StatisticServiceClient>();
             await statClient.UpdateStatisticsAsync(account);
 
             return new VoidRsp();

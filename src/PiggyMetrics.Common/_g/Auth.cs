@@ -26,8 +26,8 @@ namespace PiggyMetrics.Common {
             "cHJvdG8aDW1lc3NhZ2UucHJvdG8iKgoHQXV0aFJzcBIOCgZzdGF0dXMYASAB",
             "KAUSDwoHbWVzc2FnZRgCIAEoCTJwCgtBdXRoU2VydmljZRItCgZDcmVhdGUS",
             "DC5kb3RicGUuVXNlchoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgBEisKBEF1dGgS",
-            "DC5kb3RicGUuVXNlchoPLmRvdGJwZS5BdXRoUnNwIgTQ8xgCGgXI8xjqB0IY",
-            "SAGqAhNQaWdneU1ldHJpY3MuQ29tbW9uUABQAWIGcHJvdG8z"));
+            "DC5kb3RicGUuVXNlchoPLmRvdGJwZS5BdXRoUnNwIgTQ8xgCGgXI8xjqB0Ic",
+            "SAGqAhNQaWdneU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

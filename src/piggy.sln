@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.StatisticsService", "PiggyMetrics.StatisticsService\PiggyMetrics.StatisticsService.csproj", "{3872F6E7-0213-4328-B54E-D7CB93AB7E29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.StatisticService", "PiggyMetrics.StatisticService\PiggyMetrics.StatisticService.csproj", "{3872F6E7-0213-4328-B54E-D7CB93AB7E29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.NotificationService", "PiggyMetrics.NotificationService\PiggyMetrics.NotificationService.csproj", "{06342D2B-CE2F-47F9-80B7-69DB84166966}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.AuthService", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.AccountService", "PiggyMetrics.AccountService\PiggyMetrics.AccountService.csproj", "{7EF46EFD-6997-4E2A-A393-D377590494C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.Gateway", "PiggyMetrics.Gateway\PiggyMetrics.Gateway.csproj", "{D5BC60F6-44A3-465C-B120-EEF0AD53F0B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiggyMetrics.HttpApi", "PiggyMetrics.HttpApi\PiggyMetrics.HttpApi.csproj", "{D5BC60F6-44A3-465C-B120-EEF0AD53F0B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

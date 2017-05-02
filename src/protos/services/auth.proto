@@ -8,6 +8,9 @@ option optimize_for = SPEED;
 import public "dotbpe_option.proto";
 import public "message.proto";
 
+
+option (generic_objectfactory) = true;
+
 service AuthService{
     option (service_id)= 1002 ;//设定服务ID
 

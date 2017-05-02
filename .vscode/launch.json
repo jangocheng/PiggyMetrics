@@ -17,6 +17,20 @@
             "externalConsole":true,
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Debug HttpApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_httpapi",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}/src/PiggyMetrics.HttpApi/bin/Debug/netcoreapp1.1/PiggyMetrics.HttpApi.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/src/PiggyMetrics.HttpApi",
+            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
+            "externalConsole":true,
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ]
 }

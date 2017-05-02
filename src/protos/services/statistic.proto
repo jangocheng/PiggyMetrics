@@ -8,6 +8,8 @@ option optimize_for = SPEED;
 import public "dotbpe_option.proto";
 import public "message.proto";
 
+option (generic_objectfactory) = true;
+
 service StatisticService{
     option (service_id)= 1003 ;//设定服务ID
 

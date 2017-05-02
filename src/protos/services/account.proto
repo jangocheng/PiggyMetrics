@@ -5,8 +5,12 @@ option csharp_namespace = "PiggyMetrics.Common";
 option optimize_for = SPEED;
 
 
+
 import public "dotbpe_option.proto";
 import public "message.proto";
+
+option (generic_objectfactory) = true;
+
 
 service AccountService{
     option (service_id)= 1001 ;//设定服务ID

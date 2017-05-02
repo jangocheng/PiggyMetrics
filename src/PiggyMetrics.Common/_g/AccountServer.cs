@@ -60,7 +60,7 @@ if(req.MessageId == 1){return this.ReceiveFindByNameAsync(context, req);}
 //方法AccountService.Create
 if(req.MessageId == 2){return this.ReceiveCreateAsync(context, req);}
 //方法AccountService.Save
-if(req.MessageId == 2){return this.ReceiveSaveAsync(context, req);}
+if(req.MessageId == 3){return this.ReceiveSaveAsync(context, req);}
 return Task.CompletedTask;
 }
 }

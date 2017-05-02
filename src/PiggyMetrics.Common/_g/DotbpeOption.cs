@@ -33,8 +33,9 @@ namespace DotBPE.ProtoBuf {
             "Z29vZ2xlLnByb3RvYnVmLkZpbGVPcHRpb25zGLuOAyABKAg6RwofZGlzYWJs",
             "ZV9nZW5lcmljX3NlcnZpY2VzX3NlcnZlchIcLmdvb2dsZS5wcm90b2J1Zi5G",
             "aWxlT3B0aW9ucxi8jgMgASgIOjwKFGdlbmVyaWNfbWFya2Rvd25fZG9jEhwu",
-            "Z29vZ2xlLnByb3RvYnVmLkZpbGVPcHRpb25zGL2OAyABKAhCEqoCD0RvdEJQ",
-            "RS5Qcm90b0J1ZmIGcHJvdG8z"));
+            "Z29vZ2xlLnByb3RvYnVmLkZpbGVPcHRpb25zGL2OAyABKAg6PQoVZ2VuZXJp",
+            "Y19vYmplY3RmYWN0b3J5EhwuZ29vZ2xlLnByb3RvYnVmLkZpbGVPcHRpb25z",
+            "GL6OAyABKAhCEqoCD0RvdEJQRS5Qcm90b0J1ZmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { pbr::FileDescriptor.DescriptorProtoFileDescriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));

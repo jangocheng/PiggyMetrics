@@ -8,8 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PiggyMetrics.Common;
+using PiggyMetrics.Common.Consul.Service;
+using PiggyMetrics.Common.Extension;
 
-namespace PiggyMetrics.Gateway
+namespace PiggyMetrics.HttpApi
 {
     public class Startup
     {
@@ -38,32 +40,40 @@ namespace PiggyMetrics.Gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
             services.Configure<RouterOption>(Configuration.GetSection("RouterOption"));
+           services.AddSingleton<IForwardService,ForwardService>();
+            // 添加服务发现
+            services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery("dotbpe",_localConfiguration.RequireService, (config) =>
+            {
+                config.Address = new Uri(_localConfiguration.ConsulServer);
+            }));
+
+            //添加客户端的协议
+            services.AddAmpConsulClient();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            IForwardService forwardService  = app.ApplicationServices.GetRequiredService<IForwardService>();
             //app.UseMvc();
             app.Run(async (context)=>{
-               string path = context.Request.Path;
-               string method = context.Request.Method;
-               //假设匹配到了
-               int serviceId = 200;
-               int msgId = 1;
+                Console.WriteLine("receive request:Method={0},Path={1}",context.Request.Method,context.Request.Path);
+                var result = await forwardService.ForwardAysnc(context.Request);
+                if(result.Status ==0){
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(result.Content);
+                }
+                else{
+                    context.Response.StatusCode = 500;
+                    await context.Response.WriteAsync(result.Message??"服务端异常");
+                }
 
-               IMessage msg = ParseFromRequest(serviceId,msgId, context.Request);
-               byte[] data = msg.ToByteArray();
-
-
-               var req = FindAccountReq.Parser.ParseJson("");
-               await context.Response.WriteAsync("Hello World:"+context.Request.Path);
             });
         }
 
-        private IMessage ParseFromRequest(int serviceId, int msgId, HttpRequest request)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

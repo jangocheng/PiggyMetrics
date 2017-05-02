@@ -36,31 +36,26 @@ namespace PiggyMetrics.Common.Consul.Service
         public async Task<List<ServiceMeta>> FindAll()
         {
             List<ServiceMeta> list = new List<ServiceMeta>();
-            var reslut = await this._client.Agent.Services();
+            var reslut = await this._client.Health.Service(_serviceCategory);
 
             if (reslut.StatusCode == System.Net.HttpStatusCode.OK )
             {
-                if (reslut.Response != null && reslut.Response.Count > 0)
+                if (reslut.Response != null && reslut.Response.Length > 0)
                 {
                     if (reslut.LastIndex > this._lastIndex)
                     {
                         _lastIndex = reslut.LastIndex;
-                        foreach (var kv in reslut.Response)
+                        foreach (ServiceEntry entry in reslut.Response)
                         {
-                            if (!kv.Key.StartsWith(_serviceCategory))
-                            {
-                                continue;
-                            }
-
-                            if(!this._requireServices.Contains(kv.Value.ID)){
+                            if(!this._requireServices.Contains(entry.Service.ID)){
                                 continue;
                             }
                             ServiceMeta meta = new ServiceMeta
                             {
-                                Id = kv.Value.ID,
-                                ServiceName = kv.Value.Service,
-                                Address= kv.Value.Address,
-                                Port = kv.Value.Port
+                                Id =  entry.Service.ID,
+                                ServiceName =  entry.Service.Service,
+                                Address= entry.Service.Address,
+                                Port = entry.Service.Port
                             };
                             list.Add(meta);
                         }

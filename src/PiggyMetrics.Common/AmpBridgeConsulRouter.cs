@@ -19,18 +19,17 @@ namespace PiggyMetrics.Common
         private static readonly ILogger Logger = Environment.Logger.ForType<AmpBridgeConsulRouter>();
         private readonly IServiceDiscovery _discovery;
         private readonly ServiceDiscoveryOption _options;
-        private readonly RpcHostOption _hostOption;
         private bool _stop= false;
         private Dictionary<string, List<EndPoint>> _routerDict =null;
         private List<EndPoint> _remoteList = new List<EndPoint>();
         private static readonly Dictionary<string, int> ChooseRandom = new Dictionary<string, int>();
         private static readonly object LockObject = new object();
         private ITransportFactory<AmpMessage> _transportFactory;
-        public AmpBridgeConsulRouter(IServiceDiscovery discovery,ITransportFactory<AmpMessage> transportFactory,IOptions<ServiceDiscoveryOption> options, RpcHostOption hostOption)
+        public AmpBridgeConsulRouter(IServiceDiscovery discovery,ITransportFactory<AmpMessage> transportFactory,IOptions<ServiceDiscoveryOption> options)
         {
             _discovery = discovery;
             _options = options.Value ?? ServiceDiscoveryOption.Default;
-            _hostOption = hostOption;
+
             _transportFactory = transportFactory;
             Initialize();
         }
@@ -42,7 +41,7 @@ namespace PiggyMetrics.Common
 
         private void CheckChanged(object state)
         {
-            while (_stop)
+            while (!_stop)
             {
                 LoadServiceMeta().Wait();
                 Thread.Sleep(this._options.Interval);
