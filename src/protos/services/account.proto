@@ -15,11 +15,11 @@ option (generic_objectfactory) = true;
 service AccountService{
     option (service_id)= 1001 ;//设定服务ID
 
-    rpc FindByName (FindAccountReq) returns (Account){
+    rpc FindByName (FindAccountReq) returns (AccountRsp){
         option (message_id)= 1 ;//设定消息ID
     };
 
-    rpc Create (User) returns (Account){
+    rpc Create (User) returns (AccountRsp){
         option (message_id)= 2 ;
     };
 

@@ -38,7 +38,9 @@ service ExchangeService{
 
 
 message StatRsp{
-    repeated DataPoint data_point = 1;
+    int32 status =1;
+    string message = 2;
+    repeated DataPoint data_point = 3;
 }
 
 message ConvertReq{
@@ -47,14 +49,18 @@ message ConvertReq{
     double amount =3 ;
 }
 message ConvertRsp{
-   double amount =1 ;
+    int32 status =1;
+    string message = 2;
+    double amount =3 ;
 }
 message ItemMetric{
     string title = 1;
     double amount = 2;
 }
 message RateRsp{
-    repeated Rate rates = 1;
+    int32 status =1;
+    string message = 2;
+    repeated Rate rates = 3;
 }
 message Rate{
     Currency currency =1;

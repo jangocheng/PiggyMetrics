@@ -14,12 +14,18 @@ namespace PiggyMetrics.Common
         private ConsulConfigurationOptions _Options;
         private readonly ConsulClient _Client;
 
-        private ulong _LastIndex ;
+        private ulong _LastIndex =0 ;
 
         private bool _StopCheck = false;
+
+        private QueryOptions _queryOptions ;
         public ConsulConfigurationProvider(ConsulConfigurationOptions options,ConsulClient client){
             this._Options = options;
             this._Client = client;
+            _queryOptions = new QueryOptions(){
+                WaitIndex = 0,
+                WaitTime = TimeSpan.FromMinutes(5)
+            };
             Initialize();
         }
 
@@ -32,7 +38,7 @@ namespace PiggyMetrics.Common
         }
 
         private void CheckChanged(object state){
-            while(_StopCheck){
+            while(!_StopCheck){ //
                 //Thread.Sleep(this._Options.CheckInterval);
                 LoadData(true,false).Wait();
                 Console.WriteLine("check data completed");
@@ -46,7 +52,11 @@ namespace PiggyMetrics.Common
         private async Task LoadData(bool reloading =false,bool check =false){
 
             try{
-                var result = await this._Client.KV.Get(this._Options.Key) ;
+
+                if(reloading){
+                    _queryOptions.WaitIndex = _LastIndex+1;
+                }
+                var result = await this._Client.KV.Get(this._Options.Key,_queryOptions) ;
 
                 if( result.StatusCode == HttpStatusCode.OK){
                     if(this._LastIndex != result.LastIndex){

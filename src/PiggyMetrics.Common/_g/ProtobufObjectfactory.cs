@@ -46,9 +46,9 @@ if(serviceId == 1002 && messageId == 1){ return new VoidRsp() ;
 if(serviceId == 1002 && messageId == 2){ return new AuthRsp() ;
 }
 
-if(serviceId == 1001 && messageId == 1){ return new Account() ;
+if(serviceId == 1001 && messageId == 1){ return new AccountRsp() ;
 }
-if(serviceId == 1001 && messageId == 2){ return new Account() ;
+if(serviceId == 1001 && messageId == 2){ return new AccountRsp() ;
 }
 if(serviceId == 1001 && messageId == 3){ return new VoidRsp() ;
 }

@@ -19,8 +19,8 @@ namespace PiggyMetrics.Common.Extension
             {
                 ServiceMeta meta = new ServiceMeta
                 {
-                    Id = serviceCategory + "$" + actors.Id.Split('$')[0],
-                    ServiceName = actors.GetType().FullName,
+                    Id = actors.GetType().Name + "$" + actors.Id.Split('$')[0],
+                    ServiceName =serviceCategory,
                     Address = localAddress,
                     Port = port
                 };

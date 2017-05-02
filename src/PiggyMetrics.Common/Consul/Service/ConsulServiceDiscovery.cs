@@ -13,12 +13,17 @@ namespace PiggyMetrics.Common.Consul.Service
         private readonly string _serviceCategory ;
         private ulong _lastIndex;
         private readonly HashSet<string> _requireServices;
+        private QueryOptions _queryOptions;
         public ConsulServiceDiscovery(string serviceCategory,string requireServices,Action<ConsulClientConfiguration> configOverride)
         {
             this._serviceCategory = serviceCategory;
             this._client = new ConsulClient(configOverride);
 
              _requireServices = new HashSet<string>();
+            _queryOptions = new QueryOptions(){
+                WaitIndex = 0,
+                WaitTime = TimeSpan.FromMinutes(5)
+            };
             InitRequireServices(requireServices);
         }
 
@@ -36,7 +41,10 @@ namespace PiggyMetrics.Common.Consul.Service
         public async Task<List<ServiceMeta>> FindAll()
         {
             List<ServiceMeta> list = new List<ServiceMeta>();
-            var reslut = await this._client.Health.Service(_serviceCategory);
+            if(_lastIndex>0){
+                _queryOptions.WaitIndex = _lastIndex +1;
+            }
+            var reslut = await this._client.Health.Service(_serviceCategory,"",true,_queryOptions);
 
             if (reslut.StatusCode == System.Net.HttpStatusCode.OK )
             {
@@ -47,13 +55,18 @@ namespace PiggyMetrics.Common.Consul.Service
                         _lastIndex = reslut.LastIndex;
                         foreach (ServiceEntry entry in reslut.Response)
                         {
-                            if(!this._requireServices.Contains(entry.Service.ID)){
+                            string[] splitId =  entry.Service.ID.Split('$');
+                            if(splitId.Length !=2){
+                                continue;
+                            }
+                            string serviceId = splitId[1];
+                            if(!this._requireServices.Contains(serviceId)){
                                 continue;
                             }
                             ServiceMeta meta = new ServiceMeta
                             {
-                                Id =  entry.Service.ID,
-                                ServiceName =  entry.Service.Service,
+                                Id = entry.Service.ID,
+                                ServiceName =  splitId[0],
                                 Address= entry.Service.Address,
                                 Port = entry.Service.Port
                             };

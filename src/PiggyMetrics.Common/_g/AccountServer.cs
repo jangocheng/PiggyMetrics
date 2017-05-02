@@ -26,7 +26,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<Account> FindByNameAsync(FindAccountReq request);
+public abstract Task<AccountRsp> FindByNameAsync(FindAccountReq request);
 //调用委托
 private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
@@ -39,7 +39,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<Account> CreateAsync(User request);
+public abstract Task<AccountRsp> CreateAsync(User request);
 //调用委托
 private async Task ReceiveSaveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {

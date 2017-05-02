@@ -49,7 +49,7 @@ namespace PiggyMetrics.Common
             // 不依赖其他服务
             if(!string.IsNullOrEmpty(_localConfiguration.RequireService)){
                 services.AddAmpServerConsulClient(); //即是服务端又是客服端
-                services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery("dotbpe",_localConfiguration.RequireService, (config) =>
+                services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
                 {
                     config.Address = new Uri(_localConfiguration.ConsulServer);
                 }));
@@ -58,7 +58,7 @@ namespace PiggyMetrics.Common
 
             services.AddServiceActors<AmpMessage>(AddServiceActors);
 
-            services.AddSingleton<IServiceRegistration>(new ConsulServiceRegistration("dotbpe", (config) =>
+            services.AddSingleton<IServiceRegistration>(new ConsulServiceRegistration(_localConfiguration.AppName, (config) =>
             {
                 config.Address = new Uri(_localConfiguration.ConsulServer);
             }));

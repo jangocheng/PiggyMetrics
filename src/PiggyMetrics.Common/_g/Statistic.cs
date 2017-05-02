@@ -23,36 +23,39 @@ namespace PiggyMetrics.Common {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhzZXJ2aWNlcy9zdGF0aXN0aWMucHJvdG8SBmRvdGJwZRoTZG90YnBlX29w",
-            "dGlvbi5wcm90bxoNbWVzc2FnZS5wcm90byIwCgdTdGF0UnNwEiUKCmRhdGFf",
-            "cG9pbnQYASADKAsyES5kb3RicGUuRGF0YVBvaW50ImwKCkNvbnZlcnRSZXES",
-            "JwoNY3VycmVuY3lfZnJvbRgBIAEoDjIQLmRvdGJwZS5DdXJyZW5jeRIlCgtj",
-            "dXJyZW5jeV90bxgCIAEoDjIQLmRvdGJwZS5DdXJyZW5jeRIOCgZhbW91bnQY",
-            "AyABKAEiHAoKQ29udmVydFJzcBIOCgZhbW91bnQYASABKAEiKwoKSXRlbU1l",
-            "dHJpYxINCgV0aXRsZRgBIAEoCRIOCgZhbW91bnQYAiABKAEiJgoHUmF0ZVJz",
-            "cBIbCgVyYXRlcxgBIAMoCzIMLmRvdGJwZS5SYXRlIjgKBFJhdGUSIgoIY3Vy",
-            "cmVuY3kYASABKA4yEC5kb3RicGUuQ3VycmVuY3kSDAoEcmF0ZRgCIAEoASKa",
-            "AQoJRGF0YVBvaW50Eg8KB2FjY291bnQYASABKAkSDAoEZGF0ZRgCIAEoCRIj",
-            "CgdpbmNvbWVzGAMgAygLMhIuZG90YnBlLkl0ZW1NZXRyaWMSJAoIZXhwZW5z",
-            "ZXMYBCADKAsyEi5kb3RicGUuSXRlbU1ldHJpYxIjCgRzdGF0GAUgAygLMhUu",
-            "ZG90YnBlLkRhdGFQb2ludFN0YXQiSAoNRGF0YVBvaW50U3RhdBInCgtzdGF0",
-            "X21ldHJpYxgBIAEoDjISLmRvdGJwZS5TdGF0TWV0cmljEg4KBmFtb3VudBgC",
-            "IAEoASo9CgpTdGF0TWV0cmljEgoKBlNNTk9ORRAAEgoKBklOQ09NRRABEgsK",
-            "B0VYUEVOU0UQAhIKCgZTQVZJTkcQAzKVAQoQU3RhdGlzdGljU2VydmljZRI6",
-            "ChBVcGRhdGVTdGF0aXN0aWNzEg8uZG90YnBlLkFjY291bnQaDy5kb3RicGUu",
-            "Vm9pZFJzcCIE0PMYARI+Cg1GaW5kQnlBY2NvdW50EhYuZG90YnBlLkZpbmRB",
-            "Y2NvdW50UmVxGg8uZG90YnBlLlN0YXRSc3AiBNDzGAIaBcjzGOsHMoUBCg9F",
-            "eGNoYW5nZVNlcnZpY2USMgoIR2V0UmF0ZXMSDy5kb3RicGUuVm9pZFJlcRoP",
-            "LmRvdGJwZS5SYXRlUnNwIgTQ8xgBEjcKB0NvbnZlcnQSEi5kb3RicGUuQ29u",
-            "dmVydFJlcRoSLmRvdGJwZS5Db252ZXJ0UnNwIgTQ8xgCGgXI8xjsB0IcSAGq",
-            "AhNQaWdneU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3RvMw=="));
+            "dGlvbi5wcm90bxoNbWVzc2FnZS5wcm90byJRCgdTdGF0UnNwEg4KBnN0YXR1",
+            "cxgBIAEoBRIPCgdtZXNzYWdlGAIgASgJEiUKCmRhdGFfcG9pbnQYAyADKAsy",
+            "ES5kb3RicGUuRGF0YVBvaW50ImwKCkNvbnZlcnRSZXESJwoNY3VycmVuY3lf",
+            "ZnJvbRgBIAEoDjIQLmRvdGJwZS5DdXJyZW5jeRIlCgtjdXJyZW5jeV90bxgC",
+            "IAEoDjIQLmRvdGJwZS5DdXJyZW5jeRIOCgZhbW91bnQYAyABKAEiPQoKQ29u",
+            "dmVydFJzcBIOCgZzdGF0dXMYASABKAUSDwoHbWVzc2FnZRgCIAEoCRIOCgZh",
+            "bW91bnQYAyABKAEiKwoKSXRlbU1ldHJpYxINCgV0aXRsZRgBIAEoCRIOCgZh",
+            "bW91bnQYAiABKAEiRwoHUmF0ZVJzcBIOCgZzdGF0dXMYASABKAUSDwoHbWVz",
+            "c2FnZRgCIAEoCRIbCgVyYXRlcxgDIAMoCzIMLmRvdGJwZS5SYXRlIjgKBFJh",
+            "dGUSIgoIY3VycmVuY3kYASABKA4yEC5kb3RicGUuQ3VycmVuY3kSDAoEcmF0",
+            "ZRgCIAEoASKaAQoJRGF0YVBvaW50Eg8KB2FjY291bnQYASABKAkSDAoEZGF0",
+            "ZRgCIAEoCRIjCgdpbmNvbWVzGAMgAygLMhIuZG90YnBlLkl0ZW1NZXRyaWMS",
+            "JAoIZXhwZW5zZXMYBCADKAsyEi5kb3RicGUuSXRlbU1ldHJpYxIjCgRzdGF0",
+            "GAUgAygLMhUuZG90YnBlLkRhdGFQb2ludFN0YXQiSAoNRGF0YVBvaW50U3Rh",
+            "dBInCgtzdGF0X21ldHJpYxgBIAEoDjISLmRvdGJwZS5TdGF0TWV0cmljEg4K",
+            "BmFtb3VudBgCIAEoASo9CgpTdGF0TWV0cmljEgoKBlNNTk9ORRAAEgoKBklO",
+            "Q09NRRABEgsKB0VYUEVOU0UQAhIKCgZTQVZJTkcQAzKVAQoQU3RhdGlzdGlj",
+            "U2VydmljZRI6ChBVcGRhdGVTdGF0aXN0aWNzEg8uZG90YnBlLkFjY291bnQa",
+            "Dy5kb3RicGUuVm9pZFJzcCIE0PMYARI+Cg1GaW5kQnlBY2NvdW50EhYuZG90",
+            "YnBlLkZpbmRBY2NvdW50UmVxGg8uZG90YnBlLlN0YXRSc3AiBNDzGAIaBcjz",
+            "GOsHMoUBCg9FeGNoYW5nZVNlcnZpY2USMgoIR2V0UmF0ZXMSDy5kb3RicGUu",
+            "Vm9pZFJlcRoPLmRvdGJwZS5SYXRlUnNwIgTQ8xgBEjcKB0NvbnZlcnQSEi5k",
+            "b3RicGUuQ29udmVydFJlcRoSLmRvdGJwZS5Db252ZXJ0UnNwIgTQ8xgCGgXI",
+            "8xjsB0IcSAGqAhNQaWdneU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.StatMetric), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.StatRsp), global::PiggyMetrics.Common.StatRsp.Parser, new[]{ "DataPoint" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.StatRsp), global::PiggyMetrics.Common.StatRsp.Parser, new[]{ "Status", "Message", "DataPoint" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.ConvertReq), global::PiggyMetrics.Common.ConvertReq.Parser, new[]{ "CurrencyFrom", "CurrencyTo", "Amount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.ConvertRsp), global::PiggyMetrics.Common.ConvertRsp.Parser, new[]{ "Amount" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.ConvertRsp), global::PiggyMetrics.Common.ConvertRsp.Parser, new[]{ "Status", "Message", "Amount" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.ItemMetric), global::PiggyMetrics.Common.ItemMetric.Parser, new[]{ "Title", "Amount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.RateRsp), global::PiggyMetrics.Common.RateRsp.Parser, new[]{ "Rates" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.RateRsp), global::PiggyMetrics.Common.RateRsp.Parser, new[]{ "Status", "Message", "Rates" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Rate), global::PiggyMetrics.Common.Rate.Parser, new[]{ "Currency", "Rate_" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.DataPoint), global::PiggyMetrics.Common.DataPoint.Parser, new[]{ "Account", "Date", "Incomes", "Expenses", "Stat" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.DataPointStat), global::PiggyMetrics.Common.DataPointStat.Parser, new[]{ "StatMetric", "Amount" }, null, null, null)
@@ -96,6 +99,8 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public StatRsp(StatRsp other) : this() {
+      status_ = other.status_;
+      message_ = other.message_;
       dataPoint_ = other.dataPoint_.Clone();
     }
 
@@ -104,10 +109,32 @@ namespace PiggyMetrics.Common {
       return new StatRsp(this);
     }
 
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "data_point" field.</summary>
-    public const int DataPointFieldNumber = 1;
+    public const int DataPointFieldNumber = 3;
     private static readonly pb::FieldCodec<global::PiggyMetrics.Common.DataPoint> _repeated_dataPoint_codec
-        = pb::FieldCodec.ForMessage(10, global::PiggyMetrics.Common.DataPoint.Parser);
+        = pb::FieldCodec.ForMessage(26, global::PiggyMetrics.Common.DataPoint.Parser);
     private readonly pbc::RepeatedField<global::PiggyMetrics.Common.DataPoint> dataPoint_ = new pbc::RepeatedField<global::PiggyMetrics.Common.DataPoint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::PiggyMetrics.Common.DataPoint> DataPoint {
@@ -127,6 +154,8 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Status != other.Status) return false;
+      if (Message != other.Message) return false;
       if(!dataPoint_.Equals(other.dataPoint_)) return false;
       return true;
     }
@@ -134,6 +163,8 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
       hash ^= dataPoint_.GetHashCode();
       return hash;
     }
@@ -145,12 +176,26 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Status != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Status);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Message);
+      }
       dataPoint_.WriteTo(output, _repeated_dataPoint_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
       size += dataPoint_.CalculateSize(_repeated_dataPoint_codec);
       return size;
     }
@@ -159,6 +204,12 @@ namespace PiggyMetrics.Common {
     public void MergeFrom(StatRsp other) {
       if (other == null) {
         return;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
       }
       dataPoint_.Add(other.dataPoint_);
     }
@@ -171,7 +222,15 @@ namespace PiggyMetrics.Common {
           default:
             input.SkipLastField();
             break;
-          case 10: {
+          case 8: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Message = input.ReadString();
+            break;
+          }
+          case 26: {
             dataPoint_.AddEntriesFrom(input, _repeated_dataPoint_codec);
             break;
           }
@@ -378,6 +437,8 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ConvertRsp(ConvertRsp other) : this() {
+      status_ = other.status_;
+      message_ = other.message_;
       amount_ = other.amount_;
     }
 
@@ -386,8 +447,30 @@ namespace PiggyMetrics.Common {
       return new ConvertRsp(this);
     }
 
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "amount" field.</summary>
-    public const int AmountFieldNumber = 1;
+    public const int AmountFieldNumber = 3;
     private double amount_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public double Amount {
@@ -410,6 +493,8 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Status != other.Status) return false;
+      if (Message != other.Message) return false;
       if (Amount != other.Amount) return false;
       return true;
     }
@@ -417,6 +502,8 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Amount != 0D) hash ^= Amount.GetHashCode();
       return hash;
     }
@@ -428,8 +515,16 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Status != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Status);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Message);
+      }
       if (Amount != 0D) {
-        output.WriteRawTag(9);
+        output.WriteRawTag(25);
         output.WriteDouble(Amount);
       }
     }
@@ -437,6 +532,12 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
       if (Amount != 0D) {
         size += 1 + 8;
       }
@@ -447,6 +548,12 @@ namespace PiggyMetrics.Common {
     public void MergeFrom(ConvertRsp other) {
       if (other == null) {
         return;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
       }
       if (other.Amount != 0D) {
         Amount = other.Amount;
@@ -461,7 +568,15 @@ namespace PiggyMetrics.Common {
           default:
             input.SkipLastField();
             break;
-          case 9: {
+          case 8: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Message = input.ReadString();
+            break;
+          }
+          case 25: {
             Amount = input.ReadDouble();
             break;
           }
@@ -640,6 +755,8 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RateRsp(RateRsp other) : this() {
+      status_ = other.status_;
+      message_ = other.message_;
       rates_ = other.rates_.Clone();
     }
 
@@ -648,10 +765,32 @@ namespace PiggyMetrics.Common {
       return new RateRsp(this);
     }
 
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "rates" field.</summary>
-    public const int RatesFieldNumber = 1;
+    public const int RatesFieldNumber = 3;
     private static readonly pb::FieldCodec<global::PiggyMetrics.Common.Rate> _repeated_rates_codec
-        = pb::FieldCodec.ForMessage(10, global::PiggyMetrics.Common.Rate.Parser);
+        = pb::FieldCodec.ForMessage(26, global::PiggyMetrics.Common.Rate.Parser);
     private readonly pbc::RepeatedField<global::PiggyMetrics.Common.Rate> rates_ = new pbc::RepeatedField<global::PiggyMetrics.Common.Rate>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::PiggyMetrics.Common.Rate> Rates {
@@ -671,6 +810,8 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Status != other.Status) return false;
+      if (Message != other.Message) return false;
       if(!rates_.Equals(other.rates_)) return false;
       return true;
     }
@@ -678,6 +819,8 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
       hash ^= rates_.GetHashCode();
       return hash;
     }
@@ -689,12 +832,26 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Status != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Status);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Message);
+      }
       rates_.WriteTo(output, _repeated_rates_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
       size += rates_.CalculateSize(_repeated_rates_codec);
       return size;
     }
@@ -703,6 +860,12 @@ namespace PiggyMetrics.Common {
     public void MergeFrom(RateRsp other) {
       if (other == null) {
         return;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
       }
       rates_.Add(other.rates_);
     }
@@ -715,7 +878,15 @@ namespace PiggyMetrics.Common {
           default:
             input.SkipLastField();
             break;
-          case 10: {
+          case 8: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Message = input.ReadString();
+            break;
+          }
+          case 26: {
             rates_.AddEntriesFrom(input, _repeated_rates_codec);
             break;
           }

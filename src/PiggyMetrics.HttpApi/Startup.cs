@@ -26,6 +26,7 @@ namespace PiggyMetrics.HttpApi
             var consulOptions = new ConsulConfigurationOptions
             {
                 Key = _localConfiguration.AppName,
+
                 ConsulAddress = new Uri(_localConfiguration.ConsulServer)
             };
 
@@ -44,7 +45,7 @@ namespace PiggyMetrics.HttpApi
             services.Configure<RouterOption>(Configuration.GetSection("RouterOption"));
            services.AddSingleton<IForwardService,ForwardService>();
             // 添加服务发现
-            services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery("dotbpe",_localConfiguration.RequireService, (config) =>
+            services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
             {
                 config.Address = new Uri(_localConfiguration.ConsulServer);
             }));

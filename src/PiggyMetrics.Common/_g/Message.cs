@@ -22,29 +22,33 @@ namespace PiggyMetrics.Common {
     static MessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1tZXNzYWdlLnByb3RvEgZkb3RicGUiCQoHVm9pZFJlcSIJCgdWb2lkUnNw",
-            "Ih4KDkZpbmRBY2NvdW50UmVxEgwKBG5hbWUYASABKAkiKQoEVXNlchIPCgdh",
-            "Y2NvdW50GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIkgKCFVzZXJJbmZvEg8K",
-            "B2FjY291bnQYASABKAkSEwoLY3JlYXRlX3RpbWUYAiABKAkSFgoObGFzdF9z",
-            "ZWVuX3RpbWUYAyABKAkijQEKB0FjY291bnQSIwoJdXNlcl9pbmZvGAEgASgL",
-            "MhAuZG90YnBlLlVzZXJJbmZvEh0KB2luY29tZXMYAiADKAsyDC5kb3RicGUu",
-            "SXRlbRIeCghleHBlbnNlcxgDIAMoCzIMLmRvdGJwZS5JdGVtEh4KBnNhdmlu",
-            "ZxgEIAEoCzIOLmRvdGJwZS5TYXZpbmcigAEKBEl0ZW0SDQoFdGl0bGUYASAB",
-            "KAkSDgoGYW1vdW50GAIgASgBEiIKCGN1cnJlbmN5GAMgASgOMhAuZG90YnBl",
-            "LkN1cnJlbmN5EicKC3RpbWVfcGVyaW9kGAQgASgOMhIuZG90YnBlLlRpbWVQ",
-            "ZXJpb2QSDAoEaWNvbhgFIAEoCSJ3CgZTYXZpbmcSDgoGYW1vdW50GAEgASgB",
-            "EiIKCGN1cnJlbmN5GAIgASgOMhAuZG90YnBlLkN1cnJlbmN5EhAKCGludGVy",
-            "ZXN0GAMgASgBEg8KB2RlcG9zaXQYBCABKAgSFgoOY2FwaXRhbGl6YXRpb24Y",
-            "BSABKAgqTQoKVGltZVBlcmlvZBIKCgZUUE5PTkUQABIICgRZRUFSEAESCwoH",
-            "UVVBUlRFUhACEgkKBU1PTlRIEAMSBwoDREFZEAQSCAoESE9VUhAFKjEKCEN1",
-            "cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VTRBABEgcKA1JNQhACEgcKA0VVUhAD",
-            "QhhIAaoCE1BpZ2d5TWV0cmljcy5Db21tb25iBnByb3RvMw=="));
+            "Cg1tZXNzYWdlLnByb3RvEgZkb3RicGUiCQoHVm9pZFJlcSIqCgdWb2lkUnNw",
+            "Eg4KBnN0YXR1cxgBIAEoBRIPCgdtZXNzYWdlGAIgASgJIh4KDkZpbmRBY2Nv",
+            "dW50UmVxEgwKBG5hbWUYASABKAkiTAoKQWNjb3VudFJzcBIOCgZzdGF0dXMY",
+            "ASABKAUSDwoHbWVzc2FnZRgCIAEoCRIdCgRkYXRhGAMgASgLMg8uZG90YnBl",
+            "LkFjY291bnQiKQoEVXNlchIPCgdhY2NvdW50GAEgASgJEhAKCHBhc3N3b3Jk",
+            "GAIgASgJIkgKCFVzZXJJbmZvEg8KB2FjY291bnQYASABKAkSEwoLY3JlYXRl",
+            "X3RpbWUYAiABKAkSFgoObGFzdF9zZWVuX3RpbWUYAyABKAkijQEKB0FjY291",
+            "bnQSIwoJdXNlcl9pbmZvGAEgASgLMhAuZG90YnBlLlVzZXJJbmZvEh0KB2lu",
+            "Y29tZXMYAiADKAsyDC5kb3RicGUuSXRlbRIeCghleHBlbnNlcxgDIAMoCzIM",
+            "LmRvdGJwZS5JdGVtEh4KBnNhdmluZxgEIAEoCzIOLmRvdGJwZS5TYXZpbmci",
+            "gAEKBEl0ZW0SDQoFdGl0bGUYASABKAkSDgoGYW1vdW50GAIgASgBEiIKCGN1",
+            "cnJlbmN5GAMgASgOMhAuZG90YnBlLkN1cnJlbmN5EicKC3RpbWVfcGVyaW9k",
+            "GAQgASgOMhIuZG90YnBlLlRpbWVQZXJpb2QSDAoEaWNvbhgFIAEoCSJ3CgZT",
+            "YXZpbmcSDgoGYW1vdW50GAEgASgBEiIKCGN1cnJlbmN5GAIgASgOMhAuZG90",
+            "YnBlLkN1cnJlbmN5EhAKCGludGVyZXN0GAMgASgBEg8KB2RlcG9zaXQYBCAB",
+            "KAgSFgoOY2FwaXRhbGl6YXRpb24YBSABKAgqTQoKVGltZVBlcmlvZBIKCgZU",
+            "UE5PTkUQABIICgRZRUFSEAESCwoHUVVBUlRFUhACEgkKBU1PTlRIEAMSBwoD",
+            "REFZEAQSCAoESE9VUhAFKjEKCEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VT",
+            "RBABEgcKA1JNQhACEgcKA0VVUhADQhhIAaoCE1BpZ2d5TWV0cmljcy5Db21t",
+            "b25iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.TimePeriod), typeof(global::PiggyMetrics.Common.Currency), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidReq), global::PiggyMetrics.Common.VoidReq.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidRsp), global::PiggyMetrics.Common.VoidRsp.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidRsp), global::PiggyMetrics.Common.VoidRsp.Parser, new[]{ "Status", "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.FindAccountReq), global::PiggyMetrics.Common.FindAccountReq.Parser, new[]{ "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.AccountRsp), global::PiggyMetrics.Common.AccountRsp.Parser, new[]{ "Status", "Message", "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.User), global::PiggyMetrics.Common.User.Parser, new[]{ "Account", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.UserInfo), global::PiggyMetrics.Common.UserInfo.Parser, new[]{ "Account", "CreateTime", "LastSeenTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Account), global::PiggyMetrics.Common.Account.Parser, new[]{ "UserInfo", "Incomes", "Expenses", "Saving" }, null, null, null),
@@ -188,11 +192,35 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public VoidRsp(VoidRsp other) : this() {
+      status_ = other.status_;
+      message_ = other.message_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public VoidRsp Clone() {
       return new VoidRsp(this);
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -208,12 +236,16 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Status != other.Status) return false;
+      if (Message != other.Message) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
       return hash;
     }
 
@@ -224,11 +256,25 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Status != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Status);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Message);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
       return size;
     }
 
@@ -236,6 +282,12 @@ namespace PiggyMetrics.Common {
     public void MergeFrom(VoidRsp other) {
       if (other == null) {
         return;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
       }
     }
 
@@ -247,6 +299,14 @@ namespace PiggyMetrics.Common {
           default:
             input.SkipLastField();
             break;
+          case 8: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Message = input.ReadString();
+            break;
+          }
         }
       }
     }
@@ -370,6 +430,185 @@ namespace PiggyMetrics.Common {
 
   }
 
+  public sealed partial class AccountRsp : pb::IMessage<AccountRsp> {
+    private static readonly pb::MessageParser<AccountRsp> _parser = new pb::MessageParser<AccountRsp>(() => new AccountRsp());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AccountRsp> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountRsp() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountRsp(AccountRsp other) : this() {
+      status_ = other.status_;
+      message_ = other.message_;
+      Data = other.data_ != null ? other.Data.Clone() : null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountRsp Clone() {
+      return new AccountRsp(this);
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 1;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 2;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 3;
+    private global::PiggyMetrics.Common.Account data_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::PiggyMetrics.Common.Account Data {
+      get { return data_; }
+      set {
+        data_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AccountRsp);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AccountRsp other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Status != other.Status) return false;
+      if (Message != other.Message) return false;
+      if (!object.Equals(Data, other.Data)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (data_ != null) hash ^= Data.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Status != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Status);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Message);
+      }
+      if (data_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Data);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (data_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AccountRsp other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
+      }
+      if (other.data_ != null) {
+        if (data_ == null) {
+          data_ = new global::PiggyMetrics.Common.Account();
+        }
+        Data.MergeFrom(other.Data);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Message = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (data_ == null) {
+              data_ = new global::PiggyMetrics.Common.Account();
+            }
+            input.ReadMessage(data_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class User : pb::IMessage<User> {
     private static readonly pb::MessageParser<User> _parser = new pb::MessageParser<User>(() => new User());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -377,7 +616,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[3]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -522,7 +761,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[4]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -695,7 +934,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[5]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -892,7 +1131,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[6]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1121,7 +1360,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[7]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

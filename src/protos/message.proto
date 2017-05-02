@@ -8,10 +8,16 @@ message VoidReq{
 
 }
 message VoidRsp{
-
+    int32 status =1;
+    string message = 2;
 }
 message FindAccountReq {
     string name=1;
+}
+message AccountRsp{
+    int32 status =1;
+    string message = 2;
+    Account data =3;
 }
 
 

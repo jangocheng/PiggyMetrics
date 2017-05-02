@@ -17,35 +17,57 @@ namespace PiggyMetrics.AuthService.Impl
         }
         public override async Task<VoidRsp> CreateAsync(User user)
         {
-            User existing = await this._repo.FindByNameAsync(user.Account);
-            if (existing !=null)
-            {
-                Logger.Debug("user alread exists:{0}", user.Account);
+            VoidRsp rsp = new VoidRsp();
+            try{
+                Logger.Debug("receive CreateAsync,data="+Google.Protobuf.JsonFormatter.Default.Format(user));
+
+                User existing = await this._repo.FindByNameAsync(user.Account);
+                if (existing !=null)
+                {
+                    Logger.Debug("user already exists:{0}", user.Account);
+                }
+                Assert.IsNotNull(existing, "user already exists:"+ user.Account);
+
+                user.Password = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
+                Logger.Debug("saving db");
+                await this._repo.SaveUserAsync(user);
             }
-            Assert.NotNull(existing, "user alread exists:"+ user.Account);
+            catch(Exception ex){
+                rsp.Status = -1;
+                rsp.Message = ex.Message;
+            }
 
-            user.Password = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
-
-            await this._repo.SaveUserAsync(user);
-            return new VoidRsp();
+            return rsp;
         }
 
         public override async Task<AuthRsp> AuthAsync(User user)
         {
-            User existing = await this._repo.FindByNameAsync(user.Account);
-            Assert.IsNull(existing, "user not found：" + user.Account);
+             var rsp = new AuthRsp();
 
-            string  enpass = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
-            var rsp = new AuthRsp();
-            if (enpass == existing.Password)
+            try
             {
-                await this._repo.UpdateLastSenTimeAsync(user.Account,DateTime.Now);
-                rsp.Status = 0;
+                User existing = await this._repo.FindByNameAsync(user.Account);
+                Assert.IsNull(existing, "user not found：" + user.Account);
+
+                string  enpass = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
+
+                if (enpass == existing.Password)
+                {
+                    await this._repo.UpdateLastSenTimeAsync(user.Account,DateTime.Now);
+                    rsp.Status = 0;
+                }
+                else
+                {
+                    rsp.Status = 1;
+                    rsp.Message = "wrong account/password";
+                }
             }
-            else
+            catch(Exception ex)
             {
                 rsp.Status = -1;
+                rsp.Message = ex.Message;
             }
+
             return rsp;
         }
     }

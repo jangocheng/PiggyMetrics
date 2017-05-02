@@ -22,26 +22,6 @@ namespace PiggyMetrics.Common
         }
 
 
-        public static T NotNull<T>(T reference)
-        {
-            if (reference == null)
-            {
-                throw new ArgumentNullException();
-            }
-            return reference;
-        }
-
-
-        public static T NotNull<T>(T reference, string paramName)
-        {
-            if (reference == null)
-            {
-                throw new ArgumentNullException(paramName);
-            }
-            return reference;
-        }
-
-
         public static void IsNull<T>(T reference)
         {
             if (reference ==null)

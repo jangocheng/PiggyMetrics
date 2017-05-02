@@ -8,7 +8,7 @@ namespace PiggyMetrics.StatisticService.Impl
     {
         public override Task<StatRsp> FindByAccountAsync(FindAccountReq request)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new StatRsp());
         }
 
         public override Task<VoidRsp> UpdateStatisticsAsync(Account request)
