@@ -5,13 +5,13 @@ using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
 using DotBPE.Rpc.Exceptions;
 using Google.Protobuf;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace PiggyMetrics.Common
 {
     public class AmpCommonClient : AmpInvokeClient
     {
+        static readonly JsonFormatter AmpJsonFormatter = new JsonFormatter( new JsonFormatter.Settings(true));
+
         public AmpCommonClient(IRpcClient<AmpMessage> client) : base(client)
         {
 
@@ -63,7 +63,7 @@ namespace PiggyMetrics.Common
                         return result;
                     }
                    rspTemp.MergeFrom(rsp.Data);
-                   result.Content = JsonFormatter.Default.Format(rspTemp);
+                   result.Content = AmpJsonFormatter.Format(rspTemp);
                 }
             }
             catch(RpcCommunicationException rpcEx){
