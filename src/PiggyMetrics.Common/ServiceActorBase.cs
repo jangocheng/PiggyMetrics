@@ -1,8 +1,6 @@
-using System;
 using System.Threading.Tasks;
 using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
-using DotBPE.Rpc.Codes;
 using DotBPE.Rpc.Logging;
 
 namespace PiggyMetrics.Common

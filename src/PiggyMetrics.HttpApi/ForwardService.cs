@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
 using DotBPE.Rpc.Logging;
-using Google.Protobuf;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using PiggyMetrics.Common;
@@ -40,7 +39,7 @@ namespace PiggyMetrics.HttpApi
             }
             else{
                 CallResult result = new CallResult(){
-                    Status = -1,
+                    Status = 404,
                     Message = "service not found!"
                 };
 
@@ -52,7 +51,6 @@ namespace PiggyMetrics.HttpApi
 
         private RouterData FindRouter(string path, string method,HttpRequest request)
         {
-            Logger.Debug("option time:{0:yyyy-MM-dd HH:mm:ss}",_option.CreateTime);
             for(var i=0; i<_option.Routers.Count ;i++){
                 var router = _option.Routers[i];
                 if(router.Method.Equals(method,StringComparison.OrdinalIgnoreCase)){
@@ -118,7 +116,6 @@ namespace PiggyMetrics.HttpApi
     public class RouterData{
         public int ServiceId{get;set;}
         public int MessageId {get;set;}
-
         public Dictionary<string,string> Data{get;set;}
     }
 }

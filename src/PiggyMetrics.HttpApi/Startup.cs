@@ -1,12 +1,11 @@
 ﻿
 using System;
-using Google.Protobuf;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using PiggyMetrics.Common;
 using PiggyMetrics.Common.Consul.Service;
 using PiggyMetrics.Common.Extension;
@@ -60,21 +59,28 @@ namespace PiggyMetrics.HttpApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStaticFiles();
 
-            //app.UseMvc();
-            app.Run(async (context)=>{
-                IForwardService forwardService  = app.ApplicationServices.GetRequiredService<IForwardService>();
-                Console.WriteLine("receive request:Method={0},Path={1}",context.Request.Method,context.Request.Path);
-                var result = await forwardService.ForwardAysnc(context.Request);
-                if(result.Status ==0){
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(result.Content);
-                }
-                else{
-                    context.Response.StatusCode = 500;
-                    await context.Response.WriteAsync(result.Message??"服务端异常");
-                }
-            });
+            app.Run(Proccess);
+        }
+
+        public async Task Proccess(HttpContext context)
+        {
+            context.Response.ContentType = "text/plain";
+            var result = await context.RequestServices.GetRequiredService<IForwardService>().ForwardAysnc(context.Request);
+            if(result.Status ==0){
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(result.Content);
+            }
+            else if(result.Status == 404 )
+            {
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync(result.Message??"Service not found!");
+            }
+            else{
+                context.Response.StatusCode = 500;
+                await context.Response.WriteAsync(result.Message??"Server Internal Error!");
+            }
         }
 
     }
