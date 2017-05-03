@@ -11,9 +11,9 @@ using Google.Protobuf;
 namespace PiggyMetrics.Common {
 
 //start for class AbstractAccountService
-public abstract class AccountServiceBase : IServiceActor<AmpMessage> 
+public abstract class AccountServiceBase : ServiceActorBase 
 {
-public string Id => "1001$0";
+public override string Id => "1001$0";
 //调用委托
 private async Task ReceiveFindByNameAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
@@ -53,15 +53,17 @@ await context.SendAsync(response);
 
 //抽象方法
 public abstract Task<VoidRsp> SaveAsync(Account request);
-public Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
+switch(req.MessageId){
 //方法AccountService.FindByName
-if(req.MessageId == 1){return this.ReceiveFindByNameAsync(context, req);}
+case 1: return this.ReceiveFindByNameAsync(context, req);
 //方法AccountService.Create
-if(req.MessageId == 2){return this.ReceiveCreateAsync(context, req);}
+case 2: return this.ReceiveCreateAsync(context, req);
 //方法AccountService.Save
-if(req.MessageId == 3){return this.ReceiveSaveAsync(context, req);}
-return Task.CompletedTask;
+case 3: return this.ReceiveSaveAsync(context, req);
+default: return base.ReceiveNoFonundAsync(context, req);
+}
 }
 }
 //end for class AbstractAccountService

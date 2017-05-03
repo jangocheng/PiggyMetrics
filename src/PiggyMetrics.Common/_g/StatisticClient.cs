@@ -22,11 +22,11 @@ public async Task<VoidRsp> UpdateStatisticsAsync(Account request,int timeOut=300
 AmpMessage message = AmpMessage.CreateRequestMessage(1003, 1);
 message.Data = request.ToByteArray();
 var response = await base.CallInvoker.AsyncCall(message,timeOut);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return VoidRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return VoidRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
@@ -35,22 +35,22 @@ public VoidRsp UpdateStatistics(Account request)
 AmpMessage message = AmpMessage.CreateRequestMessage(1003, 1);
 message.Data = request.ToByteArray();
 var response =  base.CallInvoker.BlockingCall(message);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return VoidRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return VoidRsp.Parser.ParseFrom(response.Data);
 }
 public async Task<StatRsp> FindByAccountAsync(FindAccountReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1003, 2);
 message.Data = request.ToByteArray();
 var response = await base.CallInvoker.AsyncCall(message,timeOut);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return StatRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return StatRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
@@ -59,11 +59,11 @@ public StatRsp FindByAccount(FindAccountReq request)
 AmpMessage message = AmpMessage.CreateRequestMessage(1003, 2);
 message.Data = request.ToByteArray();
 var response =  base.CallInvoker.BlockingCall(message);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return StatRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return StatRsp.Parser.ParseFrom(response.Data);
 }
 }
 //end for class StatisticServiceClient
@@ -79,11 +79,11 @@ public async Task<RateRsp> GetRatesAsync(VoidReq request,int timeOut=3000)
 AmpMessage message = AmpMessage.CreateRequestMessage(1004, 1);
 message.Data = request.ToByteArray();
 var response = await base.CallInvoker.AsyncCall(message,timeOut);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return RateRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return RateRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
@@ -92,22 +92,22 @@ public RateRsp GetRates(VoidReq request)
 AmpMessage message = AmpMessage.CreateRequestMessage(1004, 1);
 message.Data = request.ToByteArray();
 var response =  base.CallInvoker.BlockingCall(message);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return RateRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return RateRsp.Parser.ParseFrom(response.Data);
 }
 public async Task<ConvertRsp> ConvertAsync(ConvertReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1004, 2);
 message.Data = request.ToByteArray();
 var response = await base.CallInvoker.AsyncCall(message,timeOut);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return ConvertRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return ConvertRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
@@ -116,11 +116,11 @@ public ConvertRsp Convert(ConvertReq request)
 AmpMessage message = AmpMessage.CreateRequestMessage(1004, 2);
 message.Data = request.ToByteArray();
 var response =  base.CallInvoker.BlockingCall(message);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return ConvertRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return ConvertRsp.Parser.ParseFrom(response.Data);
 }
 }
 //end for class ExchangeServiceClient

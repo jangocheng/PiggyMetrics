@@ -11,9 +11,9 @@ using Google.Protobuf;
 namespace PiggyMetrics.Common {
 
 //start for class AbstractAuthService
-public abstract class AuthServiceBase : IServiceActor<AmpMessage> 
+public abstract class AuthServiceBase : ServiceActorBase 
 {
-public string Id => "1002$0";
+public override string Id => "1002$0";
 //调用委托
 private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
@@ -40,13 +40,15 @@ await context.SendAsync(response);
 
 //抽象方法
 public abstract Task<AuthRsp> AuthAsync(User request);
-public Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
+switch(req.MessageId){
 //方法AuthService.Create
-if(req.MessageId == 1){return this.ReceiveCreateAsync(context, req);}
+case 1: return this.ReceiveCreateAsync(context, req);
 //方法AuthService.Auth
-if(req.MessageId == 2){return this.ReceiveAuthAsync(context, req);}
-return Task.CompletedTask;
+case 2: return this.ReceiveAuthAsync(context, req);
+default: return base.ReceiveNoFonundAsync(context, req);
+}
 }
 }
 //end for class AbstractAuthService

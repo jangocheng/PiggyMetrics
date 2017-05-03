@@ -44,7 +44,7 @@ namespace PiggyMetrics.Common.Consul.Service
             if(_lastIndex>0){
                 _queryOptions.WaitIndex = _lastIndex +1;
             }
-            var reslut = await this._client.Health.Service(_serviceCategory,"",true,_queryOptions);
+            var reslut = await this._client.Health.Service(Constants.SERVICE_NAME,_serviceCategory,true,_queryOptions);
 
             if (reslut.StatusCode == System.Net.HttpStatusCode.OK )
             {

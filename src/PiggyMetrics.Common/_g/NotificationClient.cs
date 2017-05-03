@@ -22,11 +22,11 @@ public async Task<VoidRsp> UpdateStatisticsAsync(Account request,int timeOut=300
 AmpMessage message = AmpMessage.CreateRequestMessage(1005, 1);
 message.Data = request.ToByteArray();
 var response = await base.CallInvoker.AsyncCall(message,timeOut);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return VoidRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return VoidRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
@@ -35,11 +35,11 @@ public VoidRsp UpdateStatistics(Account request)
 AmpMessage message = AmpMessage.CreateRequestMessage(1005, 1);
 message.Data = request.ToByteArray();
 var response =  base.CallInvoker.BlockingCall(message);
-if (response != null && response.Data !=null)
+if (response == null)
 {
-return VoidRsp.Parser.ParseFrom(response.Data);
+throw new RpcException("error,response is null !");
 }
-throw new RpcException("请求出错，请检查!");
+return VoidRsp.Parser.ParseFrom(response.Data);
 }
 }
 //end for class NotificationServiceClient

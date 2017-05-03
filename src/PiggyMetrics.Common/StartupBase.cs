@@ -14,6 +14,7 @@ namespace PiggyMetrics.Common
 {
     public abstract class StartupBase:IStartup
     {
+
         protected StartupBase()
         {
 
@@ -89,7 +90,11 @@ namespace PiggyMetrics.Common
             ConnectionFactoryHelper.Configure(app.ServiceProvider.GetRequiredService<IConnectionFactory>());
 
 
-            app.UseConsulRegistration(_localConfiguration.AppName, _localConfiguration.Address, _localConfiguration.Port);
+            app.UseConsulRegistration(Constants.SERVICE_NAME,_localConfiguration.AppName, _localConfiguration.Address, _localConfiguration.Port);
+
+            if(!string.IsNullOrEmpty(_localConfiguration.RequireService)){
+                app.UseConsuleDiscovery();
+            }
         }
     }
 }

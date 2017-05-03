@@ -25,7 +25,8 @@ namespace PiggyMetrics.Common.Consul.Service
                 ID = service.Id ,
                 Name = service.ServiceName,
                 Address =service.Address,
-                Port = service.Port
+                Port = service.Port,
+                Tags = service.Tags
             };
 
             await this._client.Agent.ServiceRegister(reg);

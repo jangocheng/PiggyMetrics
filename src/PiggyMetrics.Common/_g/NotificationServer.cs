@@ -11,9 +11,9 @@ using Google.Protobuf;
 namespace PiggyMetrics.Common {
 
 //start for class AbstractNotificationService
-public abstract class NotificationServiceBase : IServiceActor<AmpMessage> 
+public abstract class NotificationServiceBase : ServiceActorBase 
 {
-public string Id => "1005$0";
+public override string Id => "1005$0";
 //调用委托
 private async Task ReceiveUpdateStatisticsAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
@@ -27,11 +27,13 @@ await context.SendAsync(response);
 
 //抽象方法
 public abstract Task<VoidRsp> UpdateStatisticsAsync(Account request);
-public Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
+switch(req.MessageId){
 //方法NotificationService.UpdateStatistics
-if(req.MessageId == 1){return this.ReceiveUpdateStatisticsAsync(context, req);}
-return Task.CompletedTask;
+case 1: return this.ReceiveUpdateStatisticsAsync(context, req);
+default: return base.ReceiveNoFonundAsync(context, req);
+}
 }
 }
 //end for class AbstractNotificationService

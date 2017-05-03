@@ -18,7 +18,10 @@ namespace PiggyMetrics.AuthService.Impl
         public override async Task<VoidRsp> CreateAsync(User user)
         {
             VoidRsp rsp = new VoidRsp();
-            try{
+            rsp.Status = 0;
+            rsp.Message = "test";
+            try
+            {
                 Logger.Debug("receive CreateAsync,data="+Google.Protobuf.JsonFormatter.Default.Format(user));
 
                 User existing = await this._repo.FindByNameAsync(user.Account);
@@ -31,6 +34,7 @@ namespace PiggyMetrics.AuthService.Impl
                 user.Password = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
                 Logger.Debug("saving db");
                 await this._repo.SaveUserAsync(user);
+                Logger.Debug("saving db success");
             }
             catch(Exception ex){
                 rsp.Status = -1;

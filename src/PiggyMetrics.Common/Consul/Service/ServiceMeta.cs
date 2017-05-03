@@ -14,5 +14,7 @@ namespace PiggyMetrics.Common.Consul.Service
         public string Address { get; set; }
         public int Port { get; set; }
         public string Host => string.Format("{0}:{1}", Address, Port);
+
+        public string[] Tags {get;set;}
     }
 }

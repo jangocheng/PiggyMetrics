@@ -6,14 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
+    <PackageReference Include="CommandLineParser" Version="2.1.1-beta" />
   </ItemGroup>
 
- <ItemGroup>
-    <PackageReference Include="DotBPE" Version="0.1.46-alpha" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="Vulcan.DataAccess" Version="0.1.8-alpha" />
+  <ItemGroup>
+    <ProjectReference Include="..\PiggyMetrics.Common\PiggyMetrics.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
