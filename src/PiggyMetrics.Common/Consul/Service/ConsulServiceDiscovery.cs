@@ -48,11 +48,11 @@ namespace PiggyMetrics.Common.Consul.Service
 
             if (reslut.StatusCode == System.Net.HttpStatusCode.OK )
             {
-                if (reslut.Response != null && reslut.Response.Length > 0)
+                if (reslut.LastIndex > this._lastIndex)
                 {
-                    if (reslut.LastIndex > this._lastIndex)
+                    _lastIndex = reslut.LastIndex;
+                    if (reslut.Response != null && reslut.Response.Length > 0)
                     {
-                        _lastIndex = reslut.LastIndex;
                         foreach (ServiceEntry entry in reslut.Response)
                         {
                             string[] splitId =  entry.Service.ID.Split('$');

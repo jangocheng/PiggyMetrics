@@ -24,7 +24,7 @@ namespace PiggyMetrics.Common
             IMessage reqTemp= ProtobufObjectFactory.GetRequestTemplate(serviceId,messageId);
             if(reqTemp ==null){
                 result.Status = -1;
-                result.Message = "请求消息未定义";
+                result.Message = "request message undefined";
                 return result;
             }
 
@@ -49,7 +49,7 @@ namespace PiggyMetrics.Common
             }
             catch(Exception ex){
                 result.Status = -1;
-                result.Message = "编码错误:"+ex.Message+"\n"+ex.StackTrace;
+                result.Message = "code error:"+ex.Message+"\n"+ex.StackTrace;
                 return result;
             }
 
@@ -59,7 +59,7 @@ namespace PiggyMetrics.Common
                    var rspTemp = ProtobufObjectFactory.GetResponseTemplate(serviceId,messageId);
                     if(rspTemp ==null){
                         result.Status = -1;
-                        result.Message = "响应消息未定义";
+                        result.Message = "response message undefined";
                         return result;
                     }
                    rspTemp.MergeFrom(rsp.Data);
@@ -68,11 +68,11 @@ namespace PiggyMetrics.Common
             }
             catch(RpcCommunicationException rpcEx){
                 result.Status = -2;
-                result.Message = "调用超时"+rpcEx.Message+"\n"+rpcEx.StackTrace;
+                result.Message = "timeout"+rpcEx.Message+"\n"+rpcEx.StackTrace;
             }
             catch(Exception ex){
                 result.Status = -1;
-                result.Message = "调用出现异常:"+ex.Message;
+                result.Message = "call error:"+ex.Message;
             }
             return result;
 

@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace PiggyMetrics.Common
 {
     public class RouterOption
     {
+        public DateTime CreateTime{get;set;} = DateTime.Now;
         public List<Router> Routers{get;set;}
     }
 

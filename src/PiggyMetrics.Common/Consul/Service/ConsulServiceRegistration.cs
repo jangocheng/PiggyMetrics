@@ -28,6 +28,10 @@ namespace PiggyMetrics.Common.Consul.Service
                 Port = service.Port,
                 Tags = service.Tags
             };
+            reg.Check = new AgentServiceCheck();
+            reg.Check.DeregisterCriticalServiceAfter =  TimeSpan.FromSeconds(50) ;
+            reg.Check.TCP = $"{service.Address}:{service.Port}";
+            reg.Check.Interval = TimeSpan.FromSeconds(10);
 
             await this._client.Agent.ServiceRegister(reg);
         }

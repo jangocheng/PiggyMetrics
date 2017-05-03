@@ -6,11 +6,13 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using PiggyMetrics.Common.Consul;
+using DotBPE.Rpc.Logging;
 
 namespace PiggyMetrics.Common
 {
     public class ConsulConfigurationProvider:ConfigurationProvider
     {
+        static ILogger Logger = DotBPE.Rpc.Environment.Logger.ForType<ConsulConfigurationProvider>();
         private ConsulConfigurationOptions _Options;
         private readonly ConsulClient _Client;
 
@@ -40,8 +42,8 @@ namespace PiggyMetrics.Common
         private void CheckChanged(object state){
             while(!_StopCheck){ //
                 //Thread.Sleep(this._Options.CheckInterval);
-                LoadData(true,false).Wait();
-                Console.WriteLine("check data completed");
+                LoadData(true,true).Wait();
+                Logger.Debug("check data completed");
             }
         }
         public override void Load()
@@ -103,7 +105,10 @@ namespace PiggyMetrics.Common
             {
                 Data = parser.Parse(stream);
             }
-
+            if(this._LastIndex>0){
+                Logger.Debug("raise base onreload");
+                base.OnReload();
+            }
             //Console.WriteLine(JsonConvert.SerializeObject(Data));
         }
 

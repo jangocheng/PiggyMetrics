@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
+using DotBPE.Rpc.Logging;
 using Google.Protobuf;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -13,17 +14,21 @@ namespace PiggyMetrics.HttpApi
 {
     public class ForwardService : IForwardService
     {
+        static ILogger Logger = DotBPE.Rpc.Environment.Logger.ForType<ForwardService>();
         private readonly AmpCommonClient _client;
         private readonly RouterOption _option;
 
-        public ForwardService(IRpcClient<AmpMessage> rpcCleint,IOptions<RouterOption> routerOption){
-            Assert.IsNull(routerOption.Value,"RouterOption not found");
-            _option = routerOption.Value;
+        public ForwardService(IRpcClient<AmpMessage> rpcCleint,IOptionsSnapshot<RouterOption> optionsAccessor){
+            Assert.IsNull(optionsAccessor.Value,"RouterOption not found");
+
+            _option = optionsAccessor.Value;
+
             _client = new AmpCommonClient(rpcCleint);
         }
 
         public Task<CallResult> ForwardAysnc(HttpRequest request)
         {
+
             string path = request.Path;
             string method = request.Method;
 
@@ -47,6 +52,7 @@ namespace PiggyMetrics.HttpApi
 
         private RouterData FindRouter(string path, string method,HttpRequest request)
         {
+            Logger.Debug("option time:{0:yyyy-MM-dd HH:mm:ss}",_option.CreateTime);
             for(var i=0; i<_option.Routers.Count ;i++){
                 var router = _option.Routers[i];
                 if(router.Method.Equals(method,StringComparison.OrdinalIgnoreCase)){

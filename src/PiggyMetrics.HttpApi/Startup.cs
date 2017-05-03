@@ -26,7 +26,7 @@ namespace PiggyMetrics.HttpApi
             var consulOptions = new ConsulConfigurationOptions
             {
                 Key = _localConfiguration.AppName,
-
+                ReloadOnChange = true,
                 ConsulAddress = new Uri(_localConfiguration.ConsulServer)
             };
 
@@ -34,6 +34,7 @@ namespace PiggyMetrics.HttpApi
                 .AddConsul(consulOptions);
 
             Configuration = builder.Build();
+
         }
         private readonly LocalConfig _localConfiguration;
         public IConfigurationRoot Configuration { get; }
@@ -43,7 +44,7 @@ namespace PiggyMetrics.HttpApi
         {
             services.AddOptions();
             services.Configure<RouterOption>(Configuration.GetSection("RouterOption"));
-           services.AddSingleton<IForwardService,ForwardService>();
+            services.AddScoped<IForwardService,ForwardService>();
             // 添加服务发现
             services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
             {
@@ -59,9 +60,10 @@ namespace PiggyMetrics.HttpApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            IForwardService forwardService  = app.ApplicationServices.GetRequiredService<IForwardService>();
+
             //app.UseMvc();
             app.Run(async (context)=>{
+                IForwardService forwardService  = app.ApplicationServices.GetRequiredService<IForwardService>();
                 Console.WriteLine("receive request:Method={0},Path={1}",context.Request.Method,context.Request.Path);
                 var result = await forwardService.ForwardAysnc(context.Request);
                 if(result.Status ==0){
@@ -72,7 +74,6 @@ namespace PiggyMetrics.HttpApi
                     context.Response.StatusCode = 500;
                     await context.Response.WriteAsync(result.Message??"服务端异常");
                 }
-
             });
         }
 
