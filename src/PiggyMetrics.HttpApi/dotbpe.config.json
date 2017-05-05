@@ -2,6 +2,6 @@
     "consul":{
         "server":"http://127.0.0.1:8500"
     },
-    "requireService":"1001,1003,1004",
+    "requireService":"1001,1003,1002",
     "appName":"PiggyMetrics"
 }

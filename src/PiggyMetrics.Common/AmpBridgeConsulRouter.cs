@@ -21,7 +21,7 @@ namespace PiggyMetrics.Common
         private readonly ServiceDiscoveryOption _options;
         private bool _stop= false;
         private Dictionary<string, List<EndPoint>> _routerDict =null;
-        private List<EndPoint> _remoteList = new List<EndPoint>();
+        private HashSet<string> _remoteList = new HashSet<string>();
         private static readonly Dictionary<string, int> ChooseRandom = new Dictionary<string, int>();
         private static readonly object LockObject = new object();
         private ITransportFactory<AmpMessage> _transportFactory;
@@ -57,25 +57,39 @@ namespace PiggyMetrics.Common
             }
             var newRouter = new Dictionary<string, List<EndPoint>>();
             var newList = new List<EndPoint>();
+            var allList = new HashSet<string>();
             foreach (var service in list)
             {
                 string key = service.ServiceId + "$0";
                 Logger.Debug("Load Service Id= {0},Address = {1}", service.ServiceId, service.Host);
 
                 var address = ParseUtils.ParseEndPointFromString(service.Host);
-                newList.Add(address);
-                SyncTransport(address);
+
+                if(!_remoteList.Contains(service.Host))
+                {
+                    newList.Add(address);
+                    SyncTransport(address);
+                }
+                allList.Add(service.Host);
                 AddRouter(key, address, newRouter);
             }
-            ComparerRemoteList(newList);
+            ComparerRemoteList(allList);
             _routerDict = newRouter;
         }
 
-        private void ComparerRemoteList(List<EndPoint> newList)
+        private void ComparerRemoteList(HashSet<string> newList)
         {
+            List<EndPoint> removeList = new List<EndPoint>();
             if (_remoteList.Count > 0)
-            {
-                var removeList = _remoteList.FindAll(x => !newList.Contains(x));
+            {             
+                foreach(var address in _remoteList)
+                {
+                    if (!newList.Contains(address))
+                    {
+                        removeList.Add(ParseUtils.ParseEndPointFromString(address));
+                    }
+                }
+             
                 foreach (var endpoint in removeList)
                 {
                     _transportFactory.CloseTransportAsync(endpoint);
@@ -86,10 +100,9 @@ namespace PiggyMetrics.Common
 
         private void SyncTransport(EndPoint endPoint)
         {
-            if (!_remoteList.Contains(endPoint))
-            {
-                _transportFactory.CreateTransport(endPoint);
-            }
+            Logger.Debug("CreateTransport:{0} ", endPoint);
+            _transportFactory.CreateTransport(endPoint);
+            
         }
 
         private void AddRouter(string key, EndPoint address, Dictionary<string, List<EndPoint>> router)

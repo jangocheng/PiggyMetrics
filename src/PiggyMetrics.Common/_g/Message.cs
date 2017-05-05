@@ -23,31 +23,31 @@ namespace PiggyMetrics.Common {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1tZXNzYWdlLnByb3RvEgZkb3RicGUiCQoHVm9pZFJlcSIqCgdWb2lkUnNw",
-            "Eg4KBnN0YXR1cxgBIAEoBRIPCgdtZXNzYWdlGAIgASgJIh4KDkZpbmRBY2Nv",
-            "dW50UmVxEgwKBG5hbWUYASABKAkiTAoKQWNjb3VudFJzcBIOCgZzdGF0dXMY",
-            "ASABKAUSDwoHbWVzc2FnZRgCIAEoCRIdCgRkYXRhGAMgASgLMg8uZG90YnBl",
-            "LkFjY291bnQiKQoEVXNlchIPCgdhY2NvdW50GAEgASgJEhAKCHBhc3N3b3Jk",
-            "GAIgASgJIkgKCFVzZXJJbmZvEg8KB2FjY291bnQYASABKAkSEwoLY3JlYXRl",
-            "X3RpbWUYAiABKAkSFgoObGFzdF9zZWVuX3RpbWUYAyABKAkijQEKB0FjY291",
-            "bnQSIwoJdXNlcl9pbmZvGAEgASgLMhAuZG90YnBlLlVzZXJJbmZvEh0KB2lu",
-            "Y29tZXMYAiADKAsyDC5kb3RicGUuSXRlbRIeCghleHBlbnNlcxgDIAMoCzIM",
-            "LmRvdGJwZS5JdGVtEh4KBnNhdmluZxgEIAEoCzIOLmRvdGJwZS5TYXZpbmci",
-            "gAEKBEl0ZW0SDQoFdGl0bGUYASABKAkSDgoGYW1vdW50GAIgASgBEiIKCGN1",
-            "cnJlbmN5GAMgASgOMhAuZG90YnBlLkN1cnJlbmN5EicKC3RpbWVfcGVyaW9k",
-            "GAQgASgOMhIuZG90YnBlLlRpbWVQZXJpb2QSDAoEaWNvbhgFIAEoCSJ3CgZT",
-            "YXZpbmcSDgoGYW1vdW50GAEgASgBEiIKCGN1cnJlbmN5GAIgASgOMhAuZG90",
-            "YnBlLkN1cnJlbmN5EhAKCGludGVyZXN0GAMgASgBEg8KB2RlcG9zaXQYBCAB",
-            "KAgSFgoOY2FwaXRhbGl6YXRpb24YBSABKAgqTQoKVGltZVBlcmlvZBIKCgZU",
-            "UE5PTkUQABIICgRZRUFSEAESCwoHUVVBUlRFUhACEgkKBU1PTlRIEAMSBwoD",
-            "REFZEAQSCAoESE9VUhAFKjEKCEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VT",
-            "RBABEgcKA1JNQhACEgcKA0VVUhADQhhIAaoCE1BpZ2d5TWV0cmljcy5Db21t",
-            "b25iBnByb3RvMw=="));
+            "Eg4KBnN0YXR1cxgBIAEoBRIPCgdtZXNzYWdlGAIgASgJIiEKDkZpbmRBY2Nv",
+            "dW50UmVxEg8KB2N1cnJlbnQYASABKAkiTAoKQWNjb3VudFJzcBIOCgZzdGF0",
+            "dXMYASABKAUSDwoHbWVzc2FnZRgCIAEoCRIdCgRkYXRhGAMgASgLMg8uZG90",
+            "YnBlLkFjY291bnQiKQoEVXNlchIPCgdhY2NvdW50GAEgASgJEhAKCHBhc3N3",
+            "b3JkGAIgASgJIkgKCFVzZXJJbmZvEg8KB2FjY291bnQYASABKAkSEwoLY3Jl",
+            "YXRlX3RpbWUYAiABKAkSFgoObGFzdF9zZWVuX3RpbWUYAyABKAkijQEKB0Fj",
+            "Y291bnQSIwoJdXNlcl9pbmZvGAEgASgLMhAuZG90YnBlLlVzZXJJbmZvEh0K",
+            "B2luY29tZXMYAiADKAsyDC5kb3RicGUuSXRlbRIeCghleHBlbnNlcxgDIAMo",
+            "CzIMLmRvdGJwZS5JdGVtEh4KBnNhdmluZxgEIAEoCzIOLmRvdGJwZS5TYXZp",
+            "bmcigAEKBEl0ZW0SDQoFdGl0bGUYASABKAkSDgoGYW1vdW50GAIgASgBEiIK",
+            "CGN1cnJlbmN5GAMgASgOMhAuZG90YnBlLkN1cnJlbmN5EicKC3RpbWVfcGVy",
+            "aW9kGAQgASgOMhIuZG90YnBlLlRpbWVQZXJpb2QSDAoEaWNvbhgFIAEoCSJ3",
+            "CgZTYXZpbmcSDgoGYW1vdW50GAEgASgBEiIKCGN1cnJlbmN5GAIgASgOMhAu",
+            "ZG90YnBlLkN1cnJlbmN5EhAKCGludGVyZXN0GAMgASgBEg8KB2RlcG9zaXQY",
+            "BCABKAgSFgoOY2FwaXRhbGl6YXRpb24YBSABKAgqTQoKVGltZVBlcmlvZBIK",
+            "CgZUUE5PTkUQABIICgRZRUFSEAESCwoHUVVBUlRFUhACEgkKBU1PTlRIEAMS",
+            "BwoDREFZEAQSCAoESE9VUhAFKjEKCEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcK",
+            "A1VTRBABEgcKA0NOWRACEgcKA0VVUhADQhhIAaoCE1BpZ2d5TWV0cmljcy5D",
+            "b21tb25iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.TimePeriod), typeof(global::PiggyMetrics.Common.Currency), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidReq), global::PiggyMetrics.Common.VoidReq.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidRsp), global::PiggyMetrics.Common.VoidRsp.Parser, new[]{ "Status", "Message" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.FindAccountReq), global::PiggyMetrics.Common.FindAccountReq.Parser, new[]{ "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.FindAccountReq), global::PiggyMetrics.Common.FindAccountReq.Parser, new[]{ "Current" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.AccountRsp), global::PiggyMetrics.Common.AccountRsp.Parser, new[]{ "Status", "Message", "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.User), global::PiggyMetrics.Common.User.Parser, new[]{ "Account", "Password" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.UserInfo), global::PiggyMetrics.Common.UserInfo.Parser, new[]{ "Account", "CreateTime", "LastSeenTime" }, null, null, null),
@@ -72,7 +72,7 @@ namespace PiggyMetrics.Common {
   public enum Currency {
     [pbr::OriginalName("CYNONE")] Cynone = 0,
     [pbr::OriginalName("USD")] Usd = 1,
-    [pbr::OriginalName("RMB")] Rmb = 2,
+    [pbr::OriginalName("CNY")] Cny = 2,
     [pbr::OriginalName("EUR")] Eur = 3,
   }
 
@@ -337,7 +337,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public FindAccountReq(FindAccountReq other) : this() {
-      name_ = other.name_;
+      current_ = other.current_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -345,14 +345,14 @@ namespace PiggyMetrics.Common {
       return new FindAccountReq(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "current" field.</summary>
+    public const int CurrentFieldNumber = 1;
+    private string current_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    public string Current {
+      get { return current_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        current_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -369,14 +369,14 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
+      if (Current != other.Current) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Current.Length != 0) hash ^= Current.GetHashCode();
       return hash;
     }
 
@@ -387,17 +387,17 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Name.Length != 0) {
+      if (Current.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Name);
+        output.WriteString(Current);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Current.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Current);
       }
       return size;
     }
@@ -407,8 +407,8 @@ namespace PiggyMetrics.Common {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Current.Length != 0) {
+        Current = other.Current;
       }
     }
 
@@ -421,7 +421,7 @@ namespace PiggyMetrics.Common {
             input.SkipLastField();
             break;
           case 10: {
-            Name = input.ReadString();
+            Current = input.ReadString();
             break;
           }
         }

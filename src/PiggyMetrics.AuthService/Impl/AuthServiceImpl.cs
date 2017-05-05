@@ -51,7 +51,13 @@ namespace PiggyMetrics.AuthService.Impl
             try
             {
                 User existing = await this._repo.FindByNameAsync(user.Account);
-                Assert.IsNull(existing, "user not found：" + user.Account);
+                
+                if(existing == null)
+                {
+                    rsp.Status = -1;
+                    rsp.Message = "account not found!";
+                    return rsp;
+                }
 
                 string  enpass = CryptographyManager.Md5Encrypt(user.Account + "$" + user.Password);
 
@@ -59,10 +65,11 @@ namespace PiggyMetrics.AuthService.Impl
                 {
                     await this._repo.UpdateLastSenTimeAsync(user.Account,DateTime.Now);
                     rsp.Status = 0;
+                    rsp.Account = user.Account;
                 }
                 else
                 {
-                    rsp.Status = 1;
+                    rsp.Status = -1;
                     rsp.Message = "wrong account/password";
                 }
             }
@@ -70,6 +77,7 @@ namespace PiggyMetrics.AuthService.Impl
             {
                 rsp.Status = -1;
                 rsp.Message = ex.Message;
+                Logger.Error("auth error:" + ex.Message + ex.StackTrace);
             }
 
             return rsp;

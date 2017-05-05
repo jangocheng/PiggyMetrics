@@ -6,6 +6,6 @@ namespace PiggyMetrics.HttpApi
 {
     public interface IForwardService
     {
-        Task<CallResult> ForwardAysnc(HttpRequest request);
+        Task<CallResult> ForwardAysnc(HttpContext context);
     }
 }

@@ -23,15 +23,16 @@ namespace PiggyMetrics.Common {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNzZXJ2aWNlcy9hdXRoLnByb3RvEgZkb3RicGUaE2RvdGJwZV9vcHRpb24u",
-            "cHJvdG8aDW1lc3NhZ2UucHJvdG8iKgoHQXV0aFJzcBIOCgZzdGF0dXMYASAB",
-            "KAUSDwoHbWVzc2FnZRgCIAEoCTJwCgtBdXRoU2VydmljZRItCgZDcmVhdGUS",
-            "DC5kb3RicGUuVXNlchoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgBEisKBEF1dGgS",
-            "DC5kb3RicGUuVXNlchoPLmRvdGJwZS5BdXRoUnNwIgTQ8xgCGgXI8xjqB0Ic",
-            "SAGqAhNQaWdneU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3RvMw=="));
+            "cHJvdG8aDW1lc3NhZ2UucHJvdG8iOwoHQXV0aFJzcBIOCgZzdGF0dXMYASAB",
+            "KAUSDwoHbWVzc2FnZRgCIAEoCRIPCgdhY2NvdW50GAMgASgJMnAKC0F1dGhT",
+            "ZXJ2aWNlEi0KBkNyZWF0ZRIMLmRvdGJwZS5Vc2VyGg8uZG90YnBlLlZvaWRS",
+            "c3AiBNDzGAESKwoEQXV0aBIMLmRvdGJwZS5Vc2VyGg8uZG90YnBlLkF1dGhS",
+            "c3AiBNDzGAIaBcjzGOoHQhxIAaoCE1BpZ2d5TWV0cmljcy5Db21tb27w8xgB",
+            "UABQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.AuthRsp), global::PiggyMetrics.Common.AuthRsp.Parser, new[]{ "Status", "Message" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.AuthRsp), global::PiggyMetrics.Common.AuthRsp.Parser, new[]{ "Status", "Message", "Account" }, null, null, null)
           }));
     }
     #endregion
@@ -64,6 +65,7 @@ namespace PiggyMetrics.Common {
     public AuthRsp(AuthRsp other) : this() {
       status_ = other.status_;
       message_ = other.message_;
+      account_ = other.account_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -93,6 +95,17 @@ namespace PiggyMetrics.Common {
       }
     }
 
+    /// <summary>Field number for the "account" field.</summary>
+    public const int AccountFieldNumber = 3;
+    private string account_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Account {
+      get { return account_; }
+      set {
+        account_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as AuthRsp);
@@ -108,6 +121,7 @@ namespace PiggyMetrics.Common {
       }
       if (Status != other.Status) return false;
       if (Message != other.Message) return false;
+      if (Account != other.Account) return false;
       return true;
     }
 
@@ -116,6 +130,7 @@ namespace PiggyMetrics.Common {
       int hash = 1;
       if (Status != 0) hash ^= Status.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (Account.Length != 0) hash ^= Account.GetHashCode();
       return hash;
     }
 
@@ -134,6 +149,10 @@ namespace PiggyMetrics.Common {
         output.WriteRawTag(18);
         output.WriteString(Message);
       }
+      if (Account.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Account);
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -144,6 +163,9 @@ namespace PiggyMetrics.Common {
       }
       if (Message.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (Account.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Account);
       }
       return size;
     }
@@ -158,6 +180,9 @@ namespace PiggyMetrics.Common {
       }
       if (other.Message.Length != 0) {
         Message = other.Message;
+      }
+      if (other.Account.Length != 0) {
+        Account = other.Account;
       }
     }
 
@@ -175,6 +200,10 @@ namespace PiggyMetrics.Common {
           }
           case 18: {
             Message = input.ReadString();
+            break;
+          }
+          case 26: {
+            Account = input.ReadString();
             break;
           }
         }

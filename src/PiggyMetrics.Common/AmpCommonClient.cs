@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotBPE.Protocol.Amp;
@@ -17,7 +17,7 @@ namespace PiggyMetrics.Common
 
         }
 
-        public async Task<CallResult> SendAsync(ushort serviceId,ushort messageId ,Dictionary<string,string> routerData,int timeOut = 3000)
+        public async Task<CallResult> SendAsync(ushort serviceId,ushort messageId ,string bodyContent,Dictionary<string,string> routerData,int timeOut = 3000)
         {
             CallResult result = new CallResult();
             AmpMessage request = AmpMessage.CreateRequestMessage(serviceId,messageId);
@@ -32,18 +32,28 @@ namespace PiggyMetrics.Common
             try
             {
                 var descriptor = reqTemp.Descriptor;
-                foreach (var field in descriptor.Fields.InDeclarationOrder())
+                if (!string.IsNullOrEmpty(bodyContent))
                 {
-                    if( routerData.ContainsKey(field.Name) )
-                    {
-                            field.Accessor.SetValue(reqTemp,routerData[field.Name]);
-                    }
-                    else if(routerData.ContainsKey(field.JsonName))
-                    {
-                            field.Accessor.SetValue(reqTemp,routerData[field.JsonName]);
-                    }
-
+                    reqTemp = descriptor.Parser.ParseJson(bodyContent);
                 }
+
+                if (routerData.Count > 0)
+                {
+                    foreach (var field in descriptor.Fields.InDeclarationOrder())
+                    {
+                        if (routerData.ContainsKey(field.Name))
+                        {
+                            field.Accessor.SetValue(reqTemp, routerData[field.Name]);
+                        }
+                        else if (routerData.ContainsKey(field.JsonName))
+                        {
+                            field.Accessor.SetValue(reqTemp, routerData[field.JsonName]);
+                        }
+
+                    }
+                }
+               
+            
                 request.Data = reqTemp.ToByteArray();
 
             }

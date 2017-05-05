@@ -76,8 +76,8 @@ namespace PiggyMetrics.AccountService.Impl
             {
 
                 Account account  = new Account();
-                account.UserInfo = await this._accountRep.FindByNameAsync(request.Name);
-                Assert.IsNotNull(account.UserInfo,"账号不存在");
+                account.UserInfo = await this._accountRep.FindByNameAsync(request.Current);
+                Assert.IsNull(account.UserInfo,"account not found");
 
                 List<Item> incomes = await this._accountRep.FindIncomesAsync(account.UserInfo.Account);
                 List<Item> expenses = await this._accountRep.FindExpensesAsync(account.UserInfo.Account);

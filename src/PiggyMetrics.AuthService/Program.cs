@@ -8,7 +8,7 @@ namespace PiggyMetrics.AuthService
     {
         static void Main(string[] args)
         {
-            InternalLoggerFactory.DefaultFactory.AddProvider(new ConsoleLoggerProvider((s, level) => true, false));
+           
             var host = InteropServer.StartAsync<DotBpeStartup>().Result;
 
             Console.WriteLine("Press any key to quit!");

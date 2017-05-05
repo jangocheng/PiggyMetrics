@@ -24,18 +24,6 @@ service StatisticService{
 
 
 
-service ExchangeService{
-    option (service_id)= 1004 ;//设定服务ID
-
-    rpc GetRates (VoidReq) returns (RateRsp){
-        option (message_id)= 1 ;
-    };
-
-    rpc Convert (ConvertReq) returns (ConvertRsp){
-        option (message_id)= 2 ;
-    };
-}
-
 
 message StatRsp{
     int32 status =1;
@@ -43,29 +31,12 @@ message StatRsp{
     repeated DataPoint data_point = 3;
 }
 
-message ConvertReq{
-    Currency currency_from = 1;
-    Currency currency_to =2;
-    double amount =3 ;
-}
-message ConvertRsp{
-    int32 status =1;
-    string message = 2;
-    double amount =3 ;
-}
+
 message ItemMetric{
     string title = 1;
     double amount = 2;
 }
-message RateRsp{
-    int32 status =1;
-    string message = 2;
-    repeated Rate rates = 3;
-}
-message Rate{
-    Currency currency =1;
-    double  rate= 2;
-}
+
 message DataPoint{
     string account =1;
     string date = 2;

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,13 +52,22 @@ namespace PiggyMetrics.HttpApi
             //添加客户端的协议
             services.AddAmpConsulClient();
 
-
+            services.AddAuthentication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
+            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                AuthenticationScheme = _localConfiguration.AppName,
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });
+
+            //认证中间件，判断是否登录和登录处理
+            app.UseAuthenticate(new AuthenticateOption(){ LoginPath="/auth/login"});
 
             app.Run(Proccess);
         }
@@ -67,7 +75,7 @@ namespace PiggyMetrics.HttpApi
         public async Task Proccess(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            var result = await context.RequestServices.GetRequiredService<IForwardService>().ForwardAysnc(context.Request);
+            var result = await context.RequestServices.GetRequiredService<IForwardService>().ForwardAysnc(context);
             if(result.Status ==0){
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(result.Content);

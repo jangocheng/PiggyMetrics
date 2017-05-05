@@ -1,49 +1,56 @@
-var global = {
+﻿var global = {
     mobileClient: false,
     savePermit: true,
     usd: 0,
-    eur: 0
+    eur: 0,
+    login:false
 };
 
-/**
- * Oauth2
- */
+function doLogout(){
 
-function requestOauthToken(username, password) {
+	$.ajax({
+		url: 'auth/logout',
+		datatype: 'json',
+		type: 'get',
+		async: false,
+		success: function (data) {
+		},
+		error: function () {
+
+		}
+	});
+}
+
+function doLogin(username, password) {
 
 	var success = false;
 
 	$.ajax({
-		url: 'uaa/oauth/token',
+		url: 'auth/login',
 		datatype: 'json',
-		type: 'post',
-		headers: {'Authorization': 'Basic YnJvd3Nlcjo='},
-		async: false,
-		data: {
-			scope: 'ui',
-			username: username,
+        type: 'post',
+        contentType: "application/json",
+        async: false,
+        data: JSON.stringify({
+            account: username,
 			password: password,
-			grant_type: 'password'
-		},
+
+		}),
 		success: function (data) {
-			localStorage.setItem('token', data.access_token);
-			success = true;
+            if(data.status ==0){
+			    success = true;
+                global.login = true;
+            }
+
 		},
 		error: function () {
-			removeOauthTokenFromStorage();
+
 		}
 	});
 
 	return success;
 }
 
-function getOauthTokenFromStorage() {
-	return localStorage.getItem('token');
-}
-
-function removeOauthTokenFromStorage() {
-    return localStorage.removeItem('token');
-}
 
 /**
  * Current account
@@ -51,21 +58,20 @@ function removeOauthTokenFromStorage() {
 
 function getCurrentAccount() {
 
-	var token = getOauthTokenFromStorage();
 	var account = null;
 
-	if (token) {
+	if (global.login) {
 		$.ajax({
-			url: 'accounts/current',
+			url: 'accounts/',
 			datatype: 'json',
 			type: 'get',
-			headers: {'Authorization': 'Bearer ' + token},
 			async: false,
-			success: function (data) {
-				account = data;
+			success: function (ret) {
+                if (ret.status == 0 ){
+                    account = ret.data;
+                }
 			},
 			error: function () {
-				removeOauthTokenFromStorage();
 			}
 		});
 	}
@@ -80,7 +86,7 @@ $(window).load(function(){
         global.mobileClient = true;
 	}
 
-    $.getJSON("http://api.fixer.io/latest?base=RUB", function( data ) {
+    $.getJSON("http://api.fixer.io/latest?base=CNY", function( data ) {
         global.eur = 1 / data.rates.EUR;
         global.usd = 1 / data.rates.USD;
     });

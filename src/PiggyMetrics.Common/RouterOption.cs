@@ -12,5 +12,7 @@ namespace PiggyMetrics.Common
         public string Method {get;set;}
         public int ServiceId{get;set;}
         public int MessageId{get;set;}
+
+        public bool NeedAuth{get;set;}
     }
 }

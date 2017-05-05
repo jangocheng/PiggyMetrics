@@ -29,14 +29,6 @@ if(serviceId == 1003 && messageId == 1){ return new Account() ;
 if(serviceId == 1003 && messageId == 2){ return new FindAccountReq() ;
 }
 
-if(serviceId == 1004 && messageId == 1){ return new VoidReq() ;
-}
-if(serviceId == 1004 && messageId == 2){ return new ConvertReq() ;
-}
-
-if(serviceId == 1005 && messageId == 1){ return new Account() ;
-}
-
 return null;
 }
 public static IMessage GetResponseTemplate(int serviceId,int messageId)
@@ -56,14 +48,6 @@ if(serviceId == 1001 && messageId == 3){ return new VoidRsp() ;
 if(serviceId == 1003 && messageId == 1){ return new VoidRsp() ;
 }
 if(serviceId == 1003 && messageId == 2){ return new StatRsp() ;
-}
-
-if(serviceId == 1004 && messageId == 1){ return new RateRsp() ;
-}
-if(serviceId == 1004 && messageId == 2){ return new ConvertRsp() ;
-}
-
-if(serviceId == 1005 && messageId == 1){ return new VoidRsp() ;
 }
 
 return null;

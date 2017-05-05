@@ -12,7 +12,7 @@ message VoidRsp{
     string message = 2;
 }
 message FindAccountReq {
-    string name=1;
+    string current=1;
 }
 message AccountRsp{
     int32 status =1;
@@ -65,6 +65,6 @@ enum TimePeriod{
 enum Currency {
     CYNONE = 0;
     USD = 1;
-    RMB = 2;
+    CNY = 2;
     EUR = 3;
 }

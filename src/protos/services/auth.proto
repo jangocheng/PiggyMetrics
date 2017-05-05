@@ -27,5 +27,6 @@ service AuthService{
 message AuthRsp{
     int32 status = 1;
     string message = 2;
+    string account=3;
 }
 

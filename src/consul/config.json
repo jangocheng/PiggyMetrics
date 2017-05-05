@@ -6,49 +6,47 @@
     },
     "RouterOption": {
         "Routers": [{
-                "Path": "accounts/{account}",
+                "Path": "accounts/",
                 "Method": "get",
                 "ServiceId": 1001,
-                "MessageId": 1
+                "MessageId": 1,
+                "NeedAuth":true
             },
             {
                 "Path": "accounts/",
                 "Method": "post",
                 "ServiceId": 1001,
-                "MessageId": 2
+                "MessageId": 2,
+                "NeedAuth":false
             },
             {
-                "Path": "accounts/current",
+                "Path": "accounts/",
                 "Method": "put",
                 "ServiceId": 1001,
-                "MessageId": 3
+                "MessageId": 3,
+                "NeedAuth":true
             },
-
             {
-                "Path": "statistics/{account}",
+                "Path": "statistics/",
                 "Method": "get",
                 "ServiceId": 1003,
-                "MessageId": 2
+                "MessageId": 2,
+                "NeedAuth":true
             },
             {
-                "Path": "statistics/{account}",
+                "Path": "statistics/",
                 "Method": "put",
                 "ServiceId": 1003,
-                "MessageId": 1
-            },
-
-            {
-                "Path": "notifications/settings/{account}",
-                "Method": "get",
-                "ServiceId": 1004,
-                "MessageId": 1
+                "MessageId": 1,
+                "NeedAuth":true
             },
             {
-                "Path": "notifications/settings/{account}",
-                "Method": "put",
-                "ServiceId": 1004,
-                "MessageId": 2
-            },
+                "Path": "auth/login",
+                "Method": "post",
+                "ServiceId": 1002,
+                "MessageId": 2,
+                "NeedAuth":false
+            }
         ]
     }
 

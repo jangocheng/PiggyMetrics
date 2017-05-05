@@ -1,4 +1,4 @@
-var user = {},
+﻿var user = {},
     savings = {},
     incomes = {},
     expenses = {};
@@ -868,11 +868,10 @@ function launchStatistic() {
 function jsonDataSave() {
     if (global.savePermit) {
         $.ajax({
-            url: 'accounts/current',
+            url: 'accounts/',
             datatype: 'json',
             type: "put",
-            contentType: "application/json",
-            headers: {'Authorization': 'Bearer ' + getOauthTokenFromStorage()},
+            contentType: "application/json",      
             data: JSON.stringify({
                 note: user.notes,
                 incomes: $.map(incomes, function(value) {return [value]}),

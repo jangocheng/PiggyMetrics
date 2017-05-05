@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PiggyMetrics.StatisticService.Impl;
 using PiggyMetrics.StatisticService.Repository;
 using PiggyMetrics.Common;
+using PiggyMetrics.StatisticService.Interface;
 
 namespace PiggyMetrics.StatisticService
 {
@@ -17,7 +18,8 @@ namespace PiggyMetrics.StatisticService
 
         protected override void AddBizServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IExchangeRateService,ExchangeRateService>();
+            services.AddSingleton<Repository.StatisticRepository>();
         }
     }
 }
