@@ -26,22 +26,21 @@ namespace PiggyMetrics.Common {
             "Eg4KBnN0YXR1cxgBIAEoBRIPCgdtZXNzYWdlGAIgASgJIiEKDkZpbmRBY2Nv",
             "dW50UmVxEg8KB2N1cnJlbnQYASABKAkiTAoKQWNjb3VudFJzcBIOCgZzdGF0",
             "dXMYASABKAUSDwoHbWVzc2FnZRgCIAEoCRIdCgRkYXRhGAMgASgLMg8uZG90",
-            "YnBlLkFjY291bnQiKQoEVXNlchIPCgdhY2NvdW50GAEgASgJEhAKCHBhc3N3",
-            "b3JkGAIgASgJIkgKCFVzZXJJbmZvEg8KB2FjY291bnQYASABKAkSEwoLY3Jl",
-            "YXRlX3RpbWUYAiABKAkSFgoObGFzdF9zZWVuX3RpbWUYAyABKAkijQEKB0Fj",
-            "Y291bnQSIwoJdXNlcl9pbmZvGAEgASgLMhAuZG90YnBlLlVzZXJJbmZvEh0K",
-            "B2luY29tZXMYAiADKAsyDC5kb3RicGUuSXRlbRIeCghleHBlbnNlcxgDIAMo",
-            "CzIMLmRvdGJwZS5JdGVtEh4KBnNhdmluZxgEIAEoCzIOLmRvdGJwZS5TYXZp",
-            "bmcigAEKBEl0ZW0SDQoFdGl0bGUYASABKAkSDgoGYW1vdW50GAIgASgBEiIK",
-            "CGN1cnJlbmN5GAMgASgOMhAuZG90YnBlLkN1cnJlbmN5EicKC3RpbWVfcGVy",
-            "aW9kGAQgASgOMhIuZG90YnBlLlRpbWVQZXJpb2QSDAoEaWNvbhgFIAEoCSJ3",
-            "CgZTYXZpbmcSDgoGYW1vdW50GAEgASgBEiIKCGN1cnJlbmN5GAIgASgOMhAu",
-            "ZG90YnBlLkN1cnJlbmN5EhAKCGludGVyZXN0GAMgASgBEg8KB2RlcG9zaXQY",
-            "BCABKAgSFgoOY2FwaXRhbGl6YXRpb24YBSABKAgqTQoKVGltZVBlcmlvZBIK",
-            "CgZUUE5PTkUQABIICgRZRUFSEAESCwoHUVVBUlRFUhACEgkKBU1PTlRIEAMS",
-            "BwoDREFZEAQSCAoESE9VUhAFKjEKCEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcK",
-            "A1VTRBABEgcKA0NOWRACEgcKA0VVUhADQhhIAaoCE1BpZ2d5TWV0cmljcy5D",
-            "b21tb25iBnByb3RvMw=="));
+            "YnBlLkFjY291bnQiLAoHVXNlclJlcRIPCgdhY2NvdW50GAEgASgJEhAKCHBh",
+            "c3N3b3JkGAIgASgJIrEBCgdBY2NvdW50EgwKBG5hbWUYASABKAkSEwoLY3Jl",
+            "YXRlX3RpbWUYAiABKAkSFgoObGFzdF9zZWVuX3RpbWUYAyABKAkSDAoEbm90",
+            "ZRgEIAEoCRIdCgdpbmNvbWVzGAUgAygLMgwuZG90YnBlLkl0ZW0SHgoIZXhw",
+            "ZW5zZXMYBiADKAsyDC5kb3RicGUuSXRlbRIeCgZzYXZpbmcYByABKAsyDi5k",
+            "b3RicGUuU2F2aW5nIo4BCgRJdGVtEg0KBXRpdGxlGAEgASgJEg4KBmFtb3Vu",
+            "dBgCIAEoARIiCghjdXJyZW5jeRgDIAEoDjIQLmRvdGJwZS5DdXJyZW5jeRIi",
+            "CgZwZXJpb2QYBCABKA4yEi5kb3RicGUuVGltZVBlcmlvZBIMCgRpY29uGAUg",
+            "ASgJEhEKCWNvbnZlcnRlZBgGIAEoASJ3CgZTYXZpbmcSDgoGYW1vdW50GAEg",
+            "ASgBEiIKCGN1cnJlbmN5GAIgASgOMhAuZG90YnBlLkN1cnJlbmN5EhAKCGlu",
+            "dGVyZXN0GAMgASgBEg8KB2RlcG9zaXQYBCABKAgSFgoOY2FwaXRhbGl6YXRp",
+            "b24YBSABKAgqTQoKVGltZVBlcmlvZBIKCgZUUE5PTkUQABIICgRZRUFSEAES",
+            "CwoHUVVBUlRFUhACEgkKBU1PTlRIEAMSBwoDREFZEAQSCAoESE9VUhAFKjEK",
+            "CEN1cnJlbmN5EgoKBkNZTk9ORRAAEgcKA1VTRBABEgcKA1JVQhACEgcKA0VV",
+            "UhADQhhIAaoCE1BpZ2d5TWV0cmljcy5Db21tb25iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.TimePeriod), typeof(global::PiggyMetrics.Common.Currency), }, new pbr::GeneratedClrTypeInfo[] {
@@ -49,10 +48,9 @@ namespace PiggyMetrics.Common {
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.VoidRsp), global::PiggyMetrics.Common.VoidRsp.Parser, new[]{ "Status", "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.FindAccountReq), global::PiggyMetrics.Common.FindAccountReq.Parser, new[]{ "Current" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.AccountRsp), global::PiggyMetrics.Common.AccountRsp.Parser, new[]{ "Status", "Message", "Data" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.User), global::PiggyMetrics.Common.User.Parser, new[]{ "Account", "Password" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.UserInfo), global::PiggyMetrics.Common.UserInfo.Parser, new[]{ "Account", "CreateTime", "LastSeenTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Account), global::PiggyMetrics.Common.Account.Parser, new[]{ "UserInfo", "Incomes", "Expenses", "Saving" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Item), global::PiggyMetrics.Common.Item.Parser, new[]{ "Title", "Amount", "Currency", "TimePeriod", "Icon" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.UserReq), global::PiggyMetrics.Common.UserReq.Parser, new[]{ "Account", "Password" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Account), global::PiggyMetrics.Common.Account.Parser, new[]{ "Name", "CreateTime", "LastSeenTime", "Note", "Incomes", "Expenses", "Saving" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Item), global::PiggyMetrics.Common.Item.Parser, new[]{ "Title", "Amount", "Currency", "Period", "Icon", "Converted" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::PiggyMetrics.Common.Saving), global::PiggyMetrics.Common.Saving.Parser, new[]{ "Amount", "Currency", "Interest", "Deposit", "Capitalization" }, null, null, null)
           }));
     }
@@ -72,7 +70,7 @@ namespace PiggyMetrics.Common {
   public enum Currency {
     [pbr::OriginalName("CYNONE")] Cynone = 0,
     [pbr::OriginalName("USD")] Usd = 1,
-    [pbr::OriginalName("CNY")] Cny = 2,
+    [pbr::OriginalName("RUB")] Rub = 2,
     [pbr::OriginalName("EUR")] Eur = 3,
   }
 
@@ -609,10 +607,10 @@ namespace PiggyMetrics.Common {
 
   }
 
-  public sealed partial class User : pb::IMessage<User> {
-    private static readonly pb::MessageParser<User> _parser = new pb::MessageParser<User>(() => new User());
+  public sealed partial class UserReq : pb::IMessage<UserReq> {
+    private static readonly pb::MessageParser<UserReq> _parser = new pb::MessageParser<UserReq>(() => new UserReq());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<User> Parser { get { return _parser; } }
+    public static pb::MessageParser<UserReq> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -625,21 +623,21 @@ namespace PiggyMetrics.Common {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public User() {
+    public UserReq() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public User(User other) : this() {
+    public UserReq(UserReq other) : this() {
       account_ = other.account_;
       password_ = other.password_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public User Clone() {
-      return new User(this);
+    public UserReq Clone() {
+      return new UserReq(this);
     }
 
     /// <summary>Field number for the "account" field.</summary>
@@ -666,11 +664,11 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as User);
+      return Equals(other as UserReq);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(User other) {
+    public bool Equals(UserReq other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -720,7 +718,7 @@ namespace PiggyMetrics.Common {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(User other) {
+    public void MergeFrom(UserReq other) {
       if (other == null) {
         return;
       }
@@ -754,10 +752,10 @@ namespace PiggyMetrics.Common {
 
   }
 
-  public sealed partial class UserInfo : pb::IMessage<UserInfo> {
-    private static readonly pb::MessageParser<UserInfo> _parser = new pb::MessageParser<UserInfo>(() => new UserInfo());
+  public sealed partial class Account : pb::IMessage<Account> {
+    private static readonly pb::MessageParser<Account> _parser = new pb::MessageParser<Account>(() => new Account());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UserInfo> Parser { get { return _parser; } }
+    public static pb::MessageParser<Account> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -770,32 +768,36 @@ namespace PiggyMetrics.Common {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserInfo() {
+    public Account() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserInfo(UserInfo other) : this() {
-      account_ = other.account_;
+    public Account(Account other) : this() {
+      name_ = other.name_;
       createTime_ = other.createTime_;
       lastSeenTime_ = other.lastSeenTime_;
+      note_ = other.note_;
+      incomes_ = other.incomes_.Clone();
+      expenses_ = other.expenses_.Clone();
+      Saving = other.saving_ != null ? other.Saving.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UserInfo Clone() {
-      return new UserInfo(this);
+    public Account Clone() {
+      return new Account(this);
     }
 
-    /// <summary>Field number for the "account" field.</summary>
-    public const int AccountFieldNumber = 1;
-    private string account_ = "";
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Account {
-      get { return account_; }
+    public string Name {
+      get { return name_; }
       set {
-        account_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -821,162 +823,21 @@ namespace PiggyMetrics.Common {
       }
     }
 
+    /// <summary>Field number for the "note" field.</summary>
+    public const int NoteFieldNumber = 4;
+    private string note_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as UserInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UserInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Account != other.Account) return false;
-      if (CreateTime != other.CreateTime) return false;
-      if (LastSeenTime != other.LastSeenTime) return false;
-      return true;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Account.Length != 0) hash ^= Account.GetHashCode();
-      if (CreateTime.Length != 0) hash ^= CreateTime.GetHashCode();
-      if (LastSeenTime.Length != 0) hash ^= LastSeenTime.GetHashCode();
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Account.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Account);
-      }
-      if (CreateTime.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(CreateTime);
-      }
-      if (LastSeenTime.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(LastSeenTime);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Account.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Account);
-      }
-      if (CreateTime.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(CreateTime);
-      }
-      if (LastSeenTime.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(LastSeenTime);
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UserInfo other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Account.Length != 0) {
-        Account = other.Account;
-      }
-      if (other.CreateTime.Length != 0) {
-        CreateTime = other.CreateTime;
-      }
-      if (other.LastSeenTime.Length != 0) {
-        LastSeenTime = other.LastSeenTime;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            input.SkipLastField();
-            break;
-          case 10: {
-            Account = input.ReadString();
-            break;
-          }
-          case 18: {
-            CreateTime = input.ReadString();
-            break;
-          }
-          case 26: {
-            LastSeenTime = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class Account : pb::IMessage<Account> {
-    private static readonly pb::MessageParser<Account> _parser = new pb::MessageParser<Account>(() => new Account());
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Account> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[6]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Account() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Account(Account other) : this() {
-      UserInfo = other.userInfo_ != null ? other.UserInfo.Clone() : null;
-      incomes_ = other.incomes_.Clone();
-      expenses_ = other.expenses_.Clone();
-      Saving = other.saving_ != null ? other.Saving.Clone() : null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Account Clone() {
-      return new Account(this);
-    }
-
-    /// <summary>Field number for the "user_info" field.</summary>
-    public const int UserInfoFieldNumber = 1;
-    private global::PiggyMetrics.Common.UserInfo userInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::PiggyMetrics.Common.UserInfo UserInfo {
-      get { return userInfo_; }
+    public string Note {
+      get { return note_; }
       set {
-        userInfo_ = value;
+        note_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "incomes" field.</summary>
-    public const int IncomesFieldNumber = 2;
+    public const int IncomesFieldNumber = 5;
     private static readonly pb::FieldCodec<global::PiggyMetrics.Common.Item> _repeated_incomes_codec
-        = pb::FieldCodec.ForMessage(18, global::PiggyMetrics.Common.Item.Parser);
+        = pb::FieldCodec.ForMessage(42, global::PiggyMetrics.Common.Item.Parser);
     private readonly pbc::RepeatedField<global::PiggyMetrics.Common.Item> incomes_ = new pbc::RepeatedField<global::PiggyMetrics.Common.Item>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::PiggyMetrics.Common.Item> Incomes {
@@ -984,9 +845,9 @@ namespace PiggyMetrics.Common {
     }
 
     /// <summary>Field number for the "expenses" field.</summary>
-    public const int ExpensesFieldNumber = 3;
+    public const int ExpensesFieldNumber = 6;
     private static readonly pb::FieldCodec<global::PiggyMetrics.Common.Item> _repeated_expenses_codec
-        = pb::FieldCodec.ForMessage(26, global::PiggyMetrics.Common.Item.Parser);
+        = pb::FieldCodec.ForMessage(50, global::PiggyMetrics.Common.Item.Parser);
     private readonly pbc::RepeatedField<global::PiggyMetrics.Common.Item> expenses_ = new pbc::RepeatedField<global::PiggyMetrics.Common.Item>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::PiggyMetrics.Common.Item> Expenses {
@@ -994,7 +855,7 @@ namespace PiggyMetrics.Common {
     }
 
     /// <summary>Field number for the "saving" field.</summary>
-    public const int SavingFieldNumber = 4;
+    public const int SavingFieldNumber = 7;
     private global::PiggyMetrics.Common.Saving saving_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::PiggyMetrics.Common.Saving Saving {
@@ -1017,7 +878,10 @@ namespace PiggyMetrics.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(UserInfo, other.UserInfo)) return false;
+      if (Name != other.Name) return false;
+      if (CreateTime != other.CreateTime) return false;
+      if (LastSeenTime != other.LastSeenTime) return false;
+      if (Note != other.Note) return false;
       if(!incomes_.Equals(other.incomes_)) return false;
       if(!expenses_.Equals(other.expenses_)) return false;
       if (!object.Equals(Saving, other.Saving)) return false;
@@ -1027,7 +891,10 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (userInfo_ != null) hash ^= UserInfo.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (CreateTime.Length != 0) hash ^= CreateTime.GetHashCode();
+      if (LastSeenTime.Length != 0) hash ^= LastSeenTime.GetHashCode();
+      if (Note.Length != 0) hash ^= Note.GetHashCode();
       hash ^= incomes_.GetHashCode();
       hash ^= expenses_.GetHashCode();
       if (saving_ != null) hash ^= Saving.GetHashCode();
@@ -1041,14 +908,26 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (userInfo_ != null) {
+      if (Name.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteMessage(UserInfo);
+        output.WriteString(Name);
+      }
+      if (CreateTime.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(CreateTime);
+      }
+      if (LastSeenTime.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LastSeenTime);
+      }
+      if (Note.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Note);
       }
       incomes_.WriteTo(output, _repeated_incomes_codec);
       expenses_.WriteTo(output, _repeated_expenses_codec);
       if (saving_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(58);
         output.WriteMessage(Saving);
       }
     }
@@ -1056,8 +935,17 @@ namespace PiggyMetrics.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (userInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UserInfo);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (CreateTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CreateTime);
+      }
+      if (LastSeenTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LastSeenTime);
+      }
+      if (Note.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Note);
       }
       size += incomes_.CalculateSize(_repeated_incomes_codec);
       size += expenses_.CalculateSize(_repeated_expenses_codec);
@@ -1072,11 +960,17 @@ namespace PiggyMetrics.Common {
       if (other == null) {
         return;
       }
-      if (other.userInfo_ != null) {
-        if (userInfo_ == null) {
-          userInfo_ = new global::PiggyMetrics.Common.UserInfo();
-        }
-        UserInfo.MergeFrom(other.UserInfo);
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.CreateTime.Length != 0) {
+        CreateTime = other.CreateTime;
+      }
+      if (other.LastSeenTime.Length != 0) {
+        LastSeenTime = other.LastSeenTime;
+      }
+      if (other.Note.Length != 0) {
+        Note = other.Note;
       }
       incomes_.Add(other.incomes_);
       expenses_.Add(other.expenses_);
@@ -1097,21 +991,30 @@ namespace PiggyMetrics.Common {
             input.SkipLastField();
             break;
           case 10: {
-            if (userInfo_ == null) {
-              userInfo_ = new global::PiggyMetrics.Common.UserInfo();
-            }
-            input.ReadMessage(userInfo_);
+            Name = input.ReadString();
             break;
           }
           case 18: {
-            incomes_.AddEntriesFrom(input, _repeated_incomes_codec);
+            CreateTime = input.ReadString();
             break;
           }
           case 26: {
-            expenses_.AddEntriesFrom(input, _repeated_expenses_codec);
+            LastSeenTime = input.ReadString();
             break;
           }
           case 34: {
+            Note = input.ReadString();
+            break;
+          }
+          case 42: {
+            incomes_.AddEntriesFrom(input, _repeated_incomes_codec);
+            break;
+          }
+          case 50: {
+            expenses_.AddEntriesFrom(input, _repeated_expenses_codec);
+            break;
+          }
+          case 58: {
             if (saving_ == null) {
               saving_ = new global::PiggyMetrics.Common.Saving();
             }
@@ -1131,7 +1034,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[7]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1151,8 +1054,9 @@ namespace PiggyMetrics.Common {
       title_ = other.title_;
       amount_ = other.amount_;
       currency_ = other.currency_;
-      timePeriod_ = other.timePeriod_;
+      period_ = other.period_;
       icon_ = other.icon_;
+      converted_ = other.converted_;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1193,14 +1097,14 @@ namespace PiggyMetrics.Common {
       }
     }
 
-    /// <summary>Field number for the "time_period" field.</summary>
-    public const int TimePeriodFieldNumber = 4;
-    private global::PiggyMetrics.Common.TimePeriod timePeriod_ = 0;
+    /// <summary>Field number for the "period" field.</summary>
+    public const int PeriodFieldNumber = 4;
+    private global::PiggyMetrics.Common.TimePeriod period_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::PiggyMetrics.Common.TimePeriod TimePeriod {
-      get { return timePeriod_; }
+    public global::PiggyMetrics.Common.TimePeriod Period {
+      get { return period_; }
       set {
-        timePeriod_ = value;
+        period_ = value;
       }
     }
 
@@ -1212,6 +1116,17 @@ namespace PiggyMetrics.Common {
       get { return icon_; }
       set {
         icon_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "converted" field.</summary>
+    public const int ConvertedFieldNumber = 6;
+    private double converted_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Converted {
+      get { return converted_; }
+      set {
+        converted_ = value;
       }
     }
 
@@ -1231,8 +1146,9 @@ namespace PiggyMetrics.Common {
       if (Title != other.Title) return false;
       if (Amount != other.Amount) return false;
       if (Currency != other.Currency) return false;
-      if (TimePeriod != other.TimePeriod) return false;
+      if (Period != other.Period) return false;
       if (Icon != other.Icon) return false;
+      if (Converted != other.Converted) return false;
       return true;
     }
 
@@ -1242,8 +1158,9 @@ namespace PiggyMetrics.Common {
       if (Title.Length != 0) hash ^= Title.GetHashCode();
       if (Amount != 0D) hash ^= Amount.GetHashCode();
       if (Currency != 0) hash ^= Currency.GetHashCode();
-      if (TimePeriod != 0) hash ^= TimePeriod.GetHashCode();
+      if (Period != 0) hash ^= Period.GetHashCode();
       if (Icon.Length != 0) hash ^= Icon.GetHashCode();
+      if (Converted != 0D) hash ^= Converted.GetHashCode();
       return hash;
     }
 
@@ -1266,13 +1183,17 @@ namespace PiggyMetrics.Common {
         output.WriteRawTag(24);
         output.WriteEnum((int) Currency);
       }
-      if (TimePeriod != 0) {
+      if (Period != 0) {
         output.WriteRawTag(32);
-        output.WriteEnum((int) TimePeriod);
+        output.WriteEnum((int) Period);
       }
       if (Icon.Length != 0) {
         output.WriteRawTag(42);
         output.WriteString(Icon);
+      }
+      if (Converted != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(Converted);
       }
     }
 
@@ -1288,11 +1209,14 @@ namespace PiggyMetrics.Common {
       if (Currency != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Currency);
       }
-      if (TimePeriod != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TimePeriod);
+      if (Period != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Period);
       }
       if (Icon.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Icon);
+      }
+      if (Converted != 0D) {
+        size += 1 + 8;
       }
       return size;
     }
@@ -1311,11 +1235,14 @@ namespace PiggyMetrics.Common {
       if (other.Currency != 0) {
         Currency = other.Currency;
       }
-      if (other.TimePeriod != 0) {
-        TimePeriod = other.TimePeriod;
+      if (other.Period != 0) {
+        Period = other.Period;
       }
       if (other.Icon.Length != 0) {
         Icon = other.Icon;
+      }
+      if (other.Converted != 0D) {
+        Converted = other.Converted;
       }
     }
 
@@ -1340,11 +1267,15 @@ namespace PiggyMetrics.Common {
             break;
           }
           case 32: {
-            timePeriod_ = (global::PiggyMetrics.Common.TimePeriod) input.ReadEnum();
+            period_ = (global::PiggyMetrics.Common.TimePeriod) input.ReadEnum();
             break;
           }
           case 42: {
             Icon = input.ReadString();
+            break;
+          }
+          case 49: {
+            Converted = input.ReadDouble();
             break;
           }
         }
@@ -1360,7 +1291,7 @@ namespace PiggyMetrics.Common {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[8]; }
+      get { return global::PiggyMetrics.Common.MessageReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

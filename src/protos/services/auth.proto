@@ -15,11 +15,11 @@ service AuthService{
     option (service_id)= 1002 ;//设定服务ID
 
 
-    rpc Create (User) returns (VoidRsp){
+    rpc Create (UserReq) returns (VoidRsp){
         option (message_id)= 1 ;
     };
 
-    rpc Auth(User) returns (AuthRsp){
+    rpc Auth(UserReq) returns (AuthRsp){
         option (message_id)= 2 ;
     }
 }

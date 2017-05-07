@@ -16,15 +16,15 @@ namespace PiggyMetrics.AccountService.Impl
             this._accountRep = accountRep;
         }
 
-        public override async Task<AccountRsp> CreateAsync(User user)
+        public override async Task<AccountRsp> CreateAsync(UserReq user)
         {
             AccountRsp rsp = new AccountRsp();
             try
             {
                 Logger.Debug("receive CreateAsync,data="+Google.Protobuf.JsonFormatter.Default.Format(user));
-                UserInfo existing = await this._accountRep.FindByNameAsync(user.Account);
+                Account existing = await this._accountRep.FindByNameAsync(user.Account);
 
-                Assert.IsNull(user,"用户已经存在了");
+                Assert.IsNotNull(existing,"用户已经存在了");
 
                 Logger.Debug("start call AuthService");
                 //调用远端
@@ -47,13 +47,13 @@ namespace PiggyMetrics.AccountService.Impl
                     Account = user.Account
                 };
                 Account account = new Account();
-                account.UserInfo = new UserInfo();
-                account.UserInfo.Account = user.Account;
-                account.UserInfo.CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                account.UserInfo.LastSeenTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                account.Name = user.Account;
+                account.CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                account.LastSeenTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 Logger.Debug("start save to db");
-                await this._accountRep.SaveUserAsync(account.UserInfo);
+                await this._accountRep.SaveUserAsync(account);
                 await this._accountRep.SaveAccountSavingAsync(saving);
 
                 Logger.Info("new account has been created:{0} " , user.Account);
@@ -75,16 +75,15 @@ namespace PiggyMetrics.AccountService.Impl
             try
             {
 
-                Account account  = new Account();
-                account.UserInfo = await this._accountRep.FindByNameAsync(request.Current);
-                Assert.IsNull(account.UserInfo,"account not found");
+                Account account  = await this._accountRep.FindByNameAsync(request.Current);
+                Assert.IsNull(account,"account not found");
 
-                List<Item> incomes = await this._accountRep.FindIncomesAsync(account.UserInfo.Account);
-                List<Item> expenses = await this._accountRep.FindExpensesAsync(account.UserInfo.Account);
+                List<Item> incomes = await this._accountRep.FindIncomesAsync(account.Name);
+                List<Item> expenses = await this._accountRep.FindExpensesAsync(account.Name);
 
-                account.Saving = await this._accountRep.FindSavingAsync(account.UserInfo.Account);
+                account.Saving = await this._accountRep.FindSavingAsync(account.Name);
 
-                account.Incomes.AddRange(incomes);
+                account.Incomes.Add(incomes);
                 account.Expenses.Add(expenses);
 
                 rsp.Data =account;
@@ -97,22 +96,47 @@ namespace PiggyMetrics.AccountService.Impl
             return rsp;
         }
 
-        public override async Task<VoidRsp> SaveAsync(Account account)
+        public override async Task<VoidRsp> SaveAsync(Account req)
         {
-            await this._accountRep.UpdateUserInfoAsync(account.UserInfo);
+            VoidRsp rsp = new VoidRsp();
+            //数据校验
+            try
+            {
+                using(var scope = _accountRep.GetTransScope())
+                {
+                    await this._accountRep.UpdateUserInfoAsync(req);
 
-            account.Saving.Account = account.UserInfo.Account;
-            await this._accountRep.UpdateAccountSavingAsync(account.Saving);
+                    req.Saving.Account = req.Current;
 
-            await this._accountRep.DeleteIncomesAsync(account.UserInfo.Account);
-            await this._accountRep.DeleteExpensesAsync(account.UserInfo.Account);
+                    await this._accountRep.UpdateAccountSavingAsync(req.Saving);
 
-            await this._accountRep.AddIncomesAsync(account.Incomes);
-            await this._accountRep.AddExpensesAsync(account.Expenses);
 
-            //调用远端服务
-            var statClient = ClientProxy.GetClient<StatisticServiceClient>();
-            await statClient.UpdateStatisticsAsync(account);
+                    await this._accountRep.DeleteIncomesAsync(req.Name);
+                    await this._accountRep.DeleteExpensesAsync(req.Name);
+                    await this._accountRep.AddIncomesAsync(req.Name,req.Incomes);
+                    await this._accountRep.AddExpensesAsync(req.Name,req.Expenses);
+
+                    //调用远端服务
+                    var statClient = ClientProxy.GetClient<StatisticServiceClient>();
+                    var statRsp = await statClient.UpdateStatisticsAsync(req);
+                    if(statRsp.Status !=0){
+                        rsp.Status = statRsp.Status;
+                        rsp.Message = statRsp.Message;
+                        return rsp;
+                    }
+                    scope.Complete();
+                }
+
+
+
+                Logger.Debug("add account stat success");
+            }
+            catch(Exception ex){
+                rsp.Status  = -1;
+                rsp.Message = ex.Message+ex.StackTrace;
+
+                Logger.Error(ex,"save error:"+ex.Message+ex.StackTrace);
+            }
 
             return new VoidRsp();
 

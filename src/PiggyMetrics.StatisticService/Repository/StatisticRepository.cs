@@ -23,7 +23,7 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal void SaveDataPointIncomesAsync(int dpId, RepeatedField<ItemMetric> incomes)
         {
-            string sql = "INSERT INTO `data_point_income` (`point_idx`,`title`,`amount`) VALUES (@PointId,@Title,@Amount)";
+            string sql = "INSERT INTO `data_point_income` (`point_id`,`title`,`amount`) VALUES (@PointId,@Title,@Amount)";
             for(var i =0; i < incomes.Count; i++)
             {
                 base.Excute(sql, new { PointId = dpId, Title = incomes[i].Title, Amount = incomes[i].Amount });
@@ -32,8 +32,8 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal Task<List<ItemMetric>> FindAllExpenseByAccountAsync(string account)
         {
-            string sql = @"SELECT `point_idx` as PointId,`title` as Title,`amount`  as  Amount FROM `data_point_expense` a
-                inner join data_point b on a.`point_idx` = b.point_id
+            string sql = @"SELECT `point_id` as PointId,`title` as Title,`amount`  as  Amount FROM `data_point_expense` a
+                inner join data_point b on a.`point_id` = b.point_id
                 where b.account=@Account";
 
             return base.QueryAsync<ItemMetric>(sql,new {Account=account});
@@ -41,8 +41,8 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal Task<List<DataPointStat>> FindAllStatByAccountAsync(string account)
         {
-            string sql = @"SELECT `point_idx` as PointId,`stat_metric` as StatMetric,`amount`  as  Amount FROM `data_point_stat` a
-                            inner join data_point b on a.`point_idx` = b.point_id
+            string sql = @"SELECT `point_id` as PointId,`stat_metric` as StatMetric,`amount`  as  Amount FROM `data_point_stat` a
+                            inner join data_point b on a.`point_id` = b.point_id
                             where b.account=@Account";
 
             return base.QueryAsync<DataPointStat>(sql,new {Account=account});
@@ -50,8 +50,8 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal Task<List<ItemMetric>> FindAllIncomeByAccountAsync(string account)
         {
-            string sql = @"SELECT `point_idx` as PointId,`title` as Title,`amount`  as  Amount FROM `data_point_income` a
-                            inner join data_point b on a.`point_idx` = b.point_id
+            string sql = @"SELECT `point_id` as PointId,`title` as Title,`amount`  as  Amount FROM `data_point_income` a
+                            inner join data_point b on a.`point_id` = b.point_id
                             where b.account=@Account";
 
             return base.QueryAsync<ItemMetric>(sql,new {Account=account});
@@ -66,7 +66,7 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal void SaveDataPointExpensesAsync(int dpId, RepeatedField<ItemMetric> expenses)
         {
-            string sql = "INSERT INTO `data_point_expense` (`point_idx`,`title`,`amount`) VALUES (@PointId,@Title,@Amount)";
+            string sql = "INSERT INTO `data_point_expense` (`point_id`,`title`,`amount`) VALUES (@PointId,@Title,@Amount)";
             for (var i = 0; i < expenses.Count; i++)
             {
                 base.Excute(sql, new { PointId = dpId, Title = expenses[i].Title, Amount = expenses[i].Amount });
@@ -85,10 +85,10 @@ namespace PiggyMetrics.StatisticService.Repository
 
         internal void SaveDataPointStatAsync(int dpId, RepeatedField<DataPointStat> stat)
         {
-            string sql = "INSERT INTO `data_point_stat` (`point_idx`,`stat_metric`,`amount`) VALUES (@PointId,@StatMetric,@Amount)";
+            string sql = "INSERT INTO `data_point_stat` (`point_id`,`stat_metric`,`amount`) VALUES (@PointId,@StatMetric,@Amount)";
             for (var i = 0; i < stat.Count; i++)
             {
-                base.Excute(sql, new { PointId = dpId, Title = stat[i].StatMetric.GetHashCode(), Amount = stat[i].Amount });
+                base.Excute(sql, new { PointId = dpId, StatMetric = stat[i].StatMetric.GetHashCode(), Amount = stat[i].Amount });
             }
         }
     }

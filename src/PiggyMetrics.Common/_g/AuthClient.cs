@@ -17,7 +17,7 @@ public sealed class AuthServiceClient : AmpInvokeClient
 public AuthServiceClient(IRpcClient<AmpMessage> client) : base(client)
 {
 }
-public async Task<VoidRsp> CreateAsync(User request,int timeOut=3000)
+public async Task<VoidRsp> CreateAsync(UserReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1002, 1);
 message.Data = request.ToByteArray();
@@ -26,11 +26,15 @@ if (response == null)
 {
 throw new RpcException("error,response is null !");
 }
+if (response.Data == null)
+{
+return new VoidRsp();
+}
 return VoidRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
-public VoidRsp Create(User request)
+public VoidRsp Create(UserReq request)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1002, 1);
 message.Data = request.ToByteArray();
@@ -39,9 +43,13 @@ if (response == null)
 {
 throw new RpcException("error,response is null !");
 }
+if (response.Data == null)
+{
+return new VoidRsp();
+}
 return VoidRsp.Parser.ParseFrom(response.Data);
 }
-public async Task<AuthRsp> AuthAsync(User request,int timeOut=3000)
+public async Task<AuthRsp> AuthAsync(UserReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1002, 2);
 message.Data = request.ToByteArray();
@@ -49,12 +57,16 @@ var response = await base.CallInvoker.AsyncCall(message,timeOut);
 if (response == null)
 {
 throw new RpcException("error,response is null !");
+}
+if (response.Data == null)
+{
+return new AuthRsp();
 }
 return AuthRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
-public AuthRsp Auth(User request)
+public AuthRsp Auth(UserReq request)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1002, 2);
 message.Data = request.ToByteArray();
@@ -62,6 +74,10 @@ var response =  base.CallInvoker.BlockingCall(message);
 if (response == null)
 {
 throw new RpcException("error,response is null !");
+}
+if (response.Data == null)
+{
+return new AuthRsp();
 }
 return AuthRsp.Parser.ParseFrom(response.Data);
 }

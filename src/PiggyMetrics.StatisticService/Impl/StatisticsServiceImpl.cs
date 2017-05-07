@@ -60,7 +60,7 @@ namespace PiggyMetrics.StatisticService.Impl
             {
                 DataPoint dp = new DataPoint()
                 {
-                    Account = request.UserInfo.Account,
+                    Account = request.Name,
                     Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 };
                 double incomeAmout = 0;
@@ -136,7 +136,7 @@ namespace PiggyMetrics.StatisticService.Impl
         }
         private double ConvertToRMB(Currency from, double value)
         {
-            return _rateService.Convert(from, Currency.Cny, value);
+            return _rateService.Convert(from, Currency.Usd, value);
         }
     }
 }

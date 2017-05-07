@@ -12,14 +12,14 @@ namespace PiggyMetrics.Common {
 public class ProtobufObjectFactory {
 public static IMessage GetRequestTemplate(int serviceId,int messageId)
 {
-if(serviceId == 1002 && messageId == 1){ return new User() ;
+if(serviceId == 1002 && messageId == 1){ return new UserReq() ;
 }
-if(serviceId == 1002 && messageId == 2){ return new User() ;
+if(serviceId == 1002 && messageId == 2){ return new UserReq() ;
 }
 
 if(serviceId == 1001 && messageId == 1){ return new FindAccountReq() ;
 }
-if(serviceId == 1001 && messageId == 2){ return new User() ;
+if(serviceId == 1001 && messageId == 2){ return new UserReq() ;
 }
 if(serviceId == 1001 && messageId == 3){ return new Account() ;
 }

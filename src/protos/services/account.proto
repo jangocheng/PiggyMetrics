@@ -19,7 +19,7 @@ service AccountService{
         option (message_id)= 1 ;//设定消息ID
     };
 
-    rpc Create (User) returns (AccountRsp){
+    rpc Create (UserReq) returns (AccountRsp){
         option (message_id)= 2 ;
     };
 

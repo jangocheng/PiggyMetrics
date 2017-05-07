@@ -13,13 +13,13 @@ namespace PiggyMetrics.StatisticService.Lib
 
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync("http://api.fixer.io/latest?base=CNY").Result;
+                var result = client.GetAsync("http://api.fixer.io/latest?base=RUB").Result;
                 if(result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    string response = result.Content.ReadAsStringAsync().Result;                
-                   
+                    string response = result.Content.ReadAsStringAsync().Result;
+
                     var data = JSON.Deserialize<RateContainer>(response);
-                    return data;                    
+                    return data;
                 }
             }
             return null;

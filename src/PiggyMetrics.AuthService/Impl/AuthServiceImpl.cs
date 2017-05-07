@@ -15,7 +15,7 @@ namespace PiggyMetrics.AuthService.Impl
         {
             this._repo = repo;
         }
-        public override async Task<VoidRsp> CreateAsync(User user)
+        public override async Task<VoidRsp> CreateAsync(UserReq user)
         {
             VoidRsp rsp = new VoidRsp();
             rsp.Status = 0;
@@ -24,7 +24,7 @@ namespace PiggyMetrics.AuthService.Impl
             {
                 Logger.Debug("receive CreateAsync,data="+Google.Protobuf.JsonFormatter.Default.Format(user));
 
-                User existing = await this._repo.FindByNameAsync(user.Account);
+                UserReq existing = await this._repo.FindByNameAsync(user.Account);
                 if (existing !=null)
                 {
                     Logger.Debug("user already exists:{0}", user.Account);
@@ -44,14 +44,14 @@ namespace PiggyMetrics.AuthService.Impl
             return rsp;
         }
 
-        public override async Task<AuthRsp> AuthAsync(User user)
+        public override async Task<AuthRsp> AuthAsync(UserReq user)
         {
              var rsp = new AuthRsp();
 
             try
             {
-                User existing = await this._repo.FindByNameAsync(user.Account);
-                
+                UserReq existing = await this._repo.FindByNameAsync(user.Account);
+
                 if(existing == null)
                 {
                     rsp.Status = -1;

@@ -65,7 +65,9 @@ namespace PiggyMetrics.HttpApi
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
-
+            if(!string.IsNullOrEmpty(_localConfiguration.RequireService)){
+                app.UseConsuleDiscovery();
+            }
             //认证中间件，判断是否登录和登录处理
             app.UseAuthenticate(new AuthenticateOption(){ LoginPath="/auth/login"});
 

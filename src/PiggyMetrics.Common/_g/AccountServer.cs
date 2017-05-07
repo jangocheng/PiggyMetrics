@@ -30,7 +30,7 @@ public abstract Task<AccountRsp> FindByNameAsync(FindAccountReq request);
 //调用委托
 private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
-var request = User.Parser.ParseFrom(req.Data);
+var request = UserReq.Parser.ParseFrom(req.Data);
 var data = await CreateAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
@@ -39,7 +39,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<AccountRsp> CreateAsync(User request);
+public abstract Task<AccountRsp> CreateAsync(UserReq request);
 //调用委托
 private async Task ReceiveSaveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {

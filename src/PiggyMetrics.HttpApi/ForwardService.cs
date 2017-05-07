@@ -65,10 +65,10 @@ namespace PiggyMetrics.HttpApi
                 };
                 return Task.FromResult(result);
             }
-           
+
             return this._client.SendAsync((ushort)rd.ServiceId,(ushort)rd.MessageId,rd.Body,rd.Data);
-            
-           
+
+
         }
 
 
@@ -90,18 +90,18 @@ namespace PiggyMetrics.HttpApi
                        }
                        CollectQuery(context.Request.Query,rd.Data);
                        string contentType = "";
-                       if (method.ToLower() =="post")
+                       if (method.ToLower() =="post" || method.ToLower()=="put")
                        {
                             contentType = context.Request.ContentType.ToLower().Split(';')[0];
                        }
-                      
+
                        if (contentType == "application/x-www-form-urlencoded"
-                            || contentType == "multipart/form-data"                          
+                            || contentType == "multipart/form-data"
                             )
                        {
                             CollectForm(context.Request.Form, rd.Data);
                        }
-                       
+
                        if(contentType == "application/json")
                         {
                             rd.Body = CollectBody(context.Request.Body);

@@ -26,6 +26,10 @@ if (response == null)
 {
 throw new RpcException("error,response is null !");
 }
+if (response.Data == null)
+{
+return new AccountRsp();
+}
 return AccountRsp.Parser.ParseFrom(response.Data);
 }
 
@@ -39,9 +43,13 @@ if (response == null)
 {
 throw new RpcException("error,response is null !");
 }
+if (response.Data == null)
+{
+return new AccountRsp();
+}
 return AccountRsp.Parser.ParseFrom(response.Data);
 }
-public async Task<AccountRsp> CreateAsync(User request,int timeOut=3000)
+public async Task<AccountRsp> CreateAsync(UserReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1001, 2);
 message.Data = request.ToByteArray();
@@ -50,11 +58,15 @@ if (response == null)
 {
 throw new RpcException("error,response is null !");
 }
+if (response.Data == null)
+{
+return new AccountRsp();
+}
 return AccountRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
-public AccountRsp Create(User request)
+public AccountRsp Create(UserReq request)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1001, 2);
 message.Data = request.ToByteArray();
@@ -62,6 +74,10 @@ var response =  base.CallInvoker.BlockingCall(message);
 if (response == null)
 {
 throw new RpcException("error,response is null !");
+}
+if (response.Data == null)
+{
+return new AccountRsp();
 }
 return AccountRsp.Parser.ParseFrom(response.Data);
 }
@@ -73,6 +89,10 @@ var response = await base.CallInvoker.AsyncCall(message,timeOut);
 if (response == null)
 {
 throw new RpcException("error,response is null !");
+}
+if (response.Data == null)
+{
+return new VoidRsp();
 }
 return VoidRsp.Parser.ParseFrom(response.Data);
 }
@@ -86,6 +106,10 @@ var response =  base.CallInvoker.BlockingCall(message);
 if (response == null)
 {
 throw new RpcException("error,response is null !");
+}
+if (response.Data == null)
+{
+return new VoidRsp();
 }
 return VoidRsp.Parser.ParseFrom(response.Data);
 }

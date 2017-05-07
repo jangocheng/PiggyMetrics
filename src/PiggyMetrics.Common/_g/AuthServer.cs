@@ -17,7 +17,7 @@ public override string Id => "1002$0";
 //调用委托
 private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
-var request = User.Parser.ParseFrom(req.Data);
+var request = UserReq.Parser.ParseFrom(req.Data);
 var data = await CreateAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
@@ -26,11 +26,11 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<VoidRsp> CreateAsync(User request);
+public abstract Task<VoidRsp> CreateAsync(UserReq request);
 //调用委托
 private async Task ReceiveAuthAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
-var request = User.Parser.ParseFrom(req.Data);
+var request = UserReq.Parser.ParseFrom(req.Data);
 var data = await AuthAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
@@ -39,7 +39,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<AuthRsp> AuthAsync(User request);
+public abstract Task<AuthRsp> AuthAsync(UserReq request);
 public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
 switch(req.MessageId){

@@ -21,29 +21,29 @@ message AccountRsp{
 }
 
 
-message User{
+message UserReq{
     string account = 1;
     string password = 2;
 }
-message UserInfo{
-    string account =1;
+
+message Account {
+    string name =1;
     string create_time =2;
     string last_seen_time =3;
-}
-message Account {
-    UserInfo user_info = 1;
-    repeated Item incomes= 2;
-    repeated Item expenses= 3;
-    Saving saving = 4;
-}
+    string note = 4;
 
+    repeated Item incomes= 5;
+    repeated Item expenses= 6;
+    Saving saving = 7;
+}
 
 message Item{
     string title = 1;
     double amount = 2;
     Currency currency = 3;
-    TimePeriod time_period =4;
+    TimePeriod period =4;
     string icon = 5;
+    double converted = 6;
 }
 
 message Saving{
@@ -65,6 +65,6 @@ enum TimePeriod{
 enum Currency {
     CYNONE = 0;
     USD = 1;
-    CNY = 2;
+    RUB = 2;
     EUR = 3;
 }

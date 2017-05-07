@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using PiggyMetrics.Common;
@@ -13,14 +11,14 @@ namespace PiggyMetrics.AuthService.Repository
         {
         }
 
-     
-        public Task<User> FindByNameAsync(string account)
+
+        public Task<UserReq> FindByNameAsync(string account)
         {
             string sql = "select account as Account,password as Password from user_auth where account=@Account";
-            return base.GetAsync<User>(sql, new {Account = account});
+            return base.GetAsync<UserReq>(sql, new {Account = account});
         }
 
-        public Task SaveUserAsync(User user)
+        public Task SaveUserAsync(UserReq user)
         {
             string sql =
                 "INSERT INTO user_auth (`account`,`password`,`create_time`,`last_sen_time`) VALUES (@Account,@Password,@CreateTime,@LastSenTime)";
@@ -33,7 +31,7 @@ namespace PiggyMetrics.AuthService.Repository
                     CreateTime = DateTime.Now,
                     LastSenTime = DateTime.Now
                 });
-           
+
         }
 
         public Task UpdateLastSenTimeAsync(string account,DateTime now)

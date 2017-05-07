@@ -1,5 +1,4 @@
-﻿using System;
-using DotBPE.Protocol.Amp;
+﻿using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
 using Microsoft.Extensions.DependencyInjection;
 using PiggyMetrics.AuthService.Impl;

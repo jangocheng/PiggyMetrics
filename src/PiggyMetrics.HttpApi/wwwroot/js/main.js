@@ -4,7 +4,7 @@
     expenses = {};
 
 function initAccount(account) {
-    user = new User(account.name, account.lastSeen, account.saving.currency, account.note);
+    user = new User(account.name, account.lastSeenTime, account.saving.currency, account.note);
     savings = new Savings (account.saving.amount, account.saving.deposit, account.saving.capitalization, account.saving.interest);
 
     if (account.incomes) {
@@ -20,9 +20,19 @@ function initAccount(account) {
     }
 }
 
+function str_date(datestr){
+    var reg = /^(\d{1,4})(-|\/|.)(\d{1,2})\2(\d{1,2})(\040+(\d{1,2}):(\d{1,2}):(\d{1,2}))?$/;
+    var arr = datestr.match(reg);
+    if (arr == null) {
+        return NaN;
+    }
+    else {
+        return new Date(arr[1], parseInt(arr[3], 10) - 1, arr[4], arr[6] || 0, arr[7] || 0, arr[8] || 0);
+    }
+}
 function User(username, lastSeen, currency, note) {
 
-    var seen = new Date(lastSeen);
+    var seen = str_date(lastSeen);
 
     this.login = username;
     this.lastSeen = (seen.getMonth() + 1) + "/" + seen.getDate()  + "/" + seen.getFullYear();;
@@ -571,7 +581,7 @@ function checkModalFields (itemValue, itemTitle) {
     }
 }
 
-// MODAL: Start icons table 
+// MODAL: Start icons table
 $(".initicons").click(function() {
     $(".modaltable").removeClass("modalreverse");
     if ($(".initicons").data("incomes-expenses") == "incomes") {
@@ -871,11 +881,11 @@ function jsonDataSave() {
             url: 'accounts/',
             datatype: 'json',
             type: "put",
-            contentType: "application/json",      
+            contentType: "application/json",
             data: JSON.stringify({
                 note: user.notes,
-                incomes: $.map(incomes, function(value) {return [value]}),
-                expenses: $.map(expenses, function(value) {return [value]}),
+                incomes: $.map(incomes, function(value) {delete value.income_id;return [value]}),
+                expenses: $.map(expenses, function(value) {delete value.expense_id;return [value]}),
                 saving: {
                     amount: Math.ceil(savings.freeMoney),
                     capitalization: savings.capitalization,

@@ -11,28 +11,28 @@ namespace PiggyMetrics.AccountService.Repository
 
         }
 
-        internal Task SaveUserAsync(UserInfo user)
+        internal Task SaveUserAsync(Account account)
         {
-            string sql ="INSERT INTO `user_info` (`account`,`last_seen_time`,`create_time`)	VALUES	(@Account,@LastSeenTime,@CreateTime)";
-            return base.ExcuteAsync(sql,user);
+            string sql ="INSERT INTO `user_info` (`account`,`last_seen_time`,`create_time`,`note`)	VALUES	(@Name,@LastSeenTime,@CreateTime,@Note)";
+            return base.ExcuteAsync(sql,account);
         }
 
-        internal  Task<UserInfo> FindByNameAsync(string account)
+        internal  Task<Account> FindByNameAsync(string account)
         {
-            string sql ="SELECT `account` as Account,`last_seen_time` as LastSeenTime,`create_time` as CreateTime FROM `user_info` where account=@Account ";
+            string sql ="SELECT `account` as Name,DATE_FORMAT(`last_seen_time`,'%Y-%m-%d %H:%i:%s') as LastSeenTime,DATE_FORMAT(`create_time`,'%Y-%m-%d %H:%i:%s') as CreateTime,`note` as Note FROM `user_info` where account=@Account ";
 
-            return base.GetAsync<UserInfo>(sql,new {Account = account});
+            return base.GetAsync<Account>(sql,new {Account = account});
         }
 
         internal Task<List<Item>> FindIncomesAsync(string account)
         {
-            string sql ="SELECT `title` as Title,`amount` as Amount,`currency` as Currency,`time_period` as TimePeriod,`icon` as Icon FROM `user_income` where account=@Account";
+            string sql ="SELECT `title` as Title,`amount` as Amount,`currency` as Currency,`period` as Period,`icon` as Icon FROM `user_income` where account=@Account";
             return base.QueryAsync<Item>(sql,new {Account = account});
         }
 
         internal Task<List<Item>> FindExpensesAsync(string account)
         {
-            string sql ="SELECT `title` as Title,`amount` as Amount,`currency` as Currency,`time_period` as TimePeriod,`icon` as Icon FROM `user_expense` where account=@Account";
+            string sql ="SELECT `title` as Title,`amount` as Amount,`currency` as Currency,`period` as Period,`icon` as Icon FROM `user_expense` where account=@Account";
             return base.QueryAsync<Item>(sql,new {Account = account});
         }
 
@@ -53,10 +53,10 @@ namespace PiggyMetrics.AccountService.Repository
             return base.ExcuteAsync(sql,saving);
         }
 
-        internal Task UpdateUserInfoAsync(UserInfo userInfo)
+        internal Task UpdateUserInfoAsync(Account account)
         {
-            string sql ="UPDATE `user_info` SET `last_seen_time`=@LastSeenTime WHERE account=@Account";
-            return base.ExcuteAsync(sql,userInfo);
+            string sql ="UPDATE `user_info` SET `last_seen_time`=@LastSeenTime,`note`=@Note WHERE account=@Name";
+            return base.ExcuteAsync(sql,account);
         }
 
         internal Task DeleteIncomesAsync(string account)
@@ -81,28 +81,31 @@ namespace PiggyMetrics.AccountService.Repository
             return base.ExcuteAsync(sql,saving);
         }
 
-        internal async Task AddIncomesAsync(IList<Item> incomes)
+        internal async Task AddIncomesAsync(string account,IList<Item> incomes)
         {
            string sql =@"INSERT INTO `user_income`
-            (`account`,`title`,`amount`,`currency`,`time_period`,`icon`)
+            (`account`,`title`,`amount`,`currency`,`period`,`icon`)
         VALUES
-            (@account,@Title,,@Amount,@Currency,@TimePeriod,@Icon, VARCHAR(50)";
+            (@Account,@Title,@Amount,@Currency,@Period,@Icon)";
+
 
             foreach(var item in incomes){
+               item.Account =account;
                await base.ExcuteAsync(sql,item);
             }
 
         }
 
-        internal async Task AddExpensesAsync(IList<Item> expenses)
+        internal async Task AddExpensesAsync(string account,IList<Item> expenses)
         {
             string sql =@"INSERT INTO `user_expense`
-            (`account`,`title`,`amount`,`currency`,`time_period`,`icon`)
+            (`account`,`title`,`amount`,`currency`,`period`,`icon`)
         VALUES
-            (@account,@Title,,@Amount,@Currency,@TimePeriod,@Icon, VARCHAR(50)";
+            (@Account,@Title,@Amount,@Currency,@Period,@Icon)";
 
             foreach(var item in expenses){
-               await base.ExcuteAsync(sql,item);
+                item.Account =account;
+                await base.ExcuteAsync(sql,item);
             }
         }
     }

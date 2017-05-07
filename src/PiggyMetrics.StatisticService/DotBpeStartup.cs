@@ -12,14 +12,14 @@ namespace PiggyMetrics.StatisticService
     {
         protected override void AddServiceActors(ActorsCollection<AmpMessage> actors)
         {
-            actors.Add<Impl.StatisticServiceImpl>();
+            actors.Add<StatisticServiceImpl>();
 
         }
 
         protected override void AddBizServices(IServiceCollection services)
         {
             services.AddSingleton<IExchangeRateService,ExchangeRateService>();
-            services.AddSingleton<Repository.StatisticRepository>();
+            services.AddSingleton<StatisticRepository>();
         }
     }
 }

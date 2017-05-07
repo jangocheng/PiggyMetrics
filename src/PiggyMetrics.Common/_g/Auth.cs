@@ -24,11 +24,11 @@ namespace PiggyMetrics.Common {
           string.Concat(
             "ChNzZXJ2aWNlcy9hdXRoLnByb3RvEgZkb3RicGUaE2RvdGJwZV9vcHRpb24u",
             "cHJvdG8aDW1lc3NhZ2UucHJvdG8iOwoHQXV0aFJzcBIOCgZzdGF0dXMYASAB",
-            "KAUSDwoHbWVzc2FnZRgCIAEoCRIPCgdhY2NvdW50GAMgASgJMnAKC0F1dGhT",
-            "ZXJ2aWNlEi0KBkNyZWF0ZRIMLmRvdGJwZS5Vc2VyGg8uZG90YnBlLlZvaWRS",
-            "c3AiBNDzGAESKwoEQXV0aBIMLmRvdGJwZS5Vc2VyGg8uZG90YnBlLkF1dGhS",
-            "c3AiBNDzGAIaBcjzGOoHQhxIAaoCE1BpZ2d5TWV0cmljcy5Db21tb27w8xgB",
-            "UABQAWIGcHJvdG8z"));
+            "KAUSDwoHbWVzc2FnZRgCIAEoCRIPCgdhY2NvdW50GAMgASgJMnYKC0F1dGhT",
+            "ZXJ2aWNlEjAKBkNyZWF0ZRIPLmRvdGJwZS5Vc2VyUmVxGg8uZG90YnBlLlZv",
+            "aWRSc3AiBNDzGAESLgoEQXV0aBIPLmRvdGJwZS5Vc2VyUmVxGg8uZG90YnBl",
+            "LkF1dGhSc3AiBNDzGAIaBcjzGOoHQhxIAaoCE1BpZ2d5TWV0cmljcy5Db21t",
+            "b27w8xgBUABQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

@@ -1,0 +1,21 @@
+version: '2'
+services:
+    mysql:
+        image: mysql:5.7.16
+        container_name: mysql_for_docker
+        ports:
+        - "3306:3306"
+        environment:
+        - MYSQL_ROOT_PASSWORD=Welcome@123
+        - TZ=Asia/Shanghai
+        command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
+        restart: unless-stopped
+    consul:
+        image: progrium/consul:latest
+        container_name: consul_node_server
+        ports:
+        - "8400:8400"
+        - "8500:8500"
+        - "8600::53/udp"
+        command: -server -bootstrap
+        restart: unless-stopped

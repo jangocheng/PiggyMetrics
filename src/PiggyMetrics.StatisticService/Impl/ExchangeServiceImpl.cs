@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using PiggyMetrics.Common;
 using PiggyMetrics.StatisticService.Interface;
 using PiggyMetrics.StatisticService.Lib;
@@ -12,13 +11,13 @@ namespace PiggyMetrics.StatisticService.Impl
         private readonly Dictionary<Currency, double> defaultRate = new Dictionary<Currency, double>
         {
             { Currency.Cynone,1 },
-            { Currency.Cny,1 },
+            { Currency.Rub,1 },
             { Currency.Eur,10 },
             { Currency.Usd,6.7 }
         };
         private Dictionary<Currency, double> currentRate;
         private string rateDate;
-       
+
         public double Convert(Currency from, Currency to, double value)
         {
             var rates = GetRates();
@@ -36,7 +35,7 @@ namespace PiggyMetrics.StatisticService.Impl
                 if(container != null)
                 {
                     currentRate = new Dictionary<Currency, double>();
-                    currentRate.Add(Currency.Cny, 1);
+                    currentRate.Add(Currency.Rub, 1);
                     currentRate.Add(Currency.Cynone, 1);
                     rateDate = DateTime.Today.ToString("yyyy-MM-dd");
                     foreach(var kv in container.rates)

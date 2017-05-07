@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using CommandLine;
 using DotBPE.Protocol.Amp;
@@ -20,7 +19,7 @@ namespace PiggyMetrics.ConsoleClient
 
             [Option("testcase", Default = "echo")]
             public string TestCase { get; set; }
-       
+
             [Option("mpc", Default = 5)]
             public int MultiplexCount { get; set; }
 
@@ -32,7 +31,7 @@ namespace PiggyMetrics.ConsoleClient
         {
             this._options = options;
         }
-      
+
         public static void Run(string[] args)
         {
             var parserResult = Parser.Default.ParseArguments<ClientOption>(args)
@@ -44,8 +43,8 @@ namespace PiggyMetrics.ConsoleClient
             .WithParsed(options =>
             {
                 var interopClient = new InteropClient(options);
-                Logger.Debug("Start to Run!");             
-                interopClient.Run().Wait();             
+                Logger.Debug("Start to Run!");
+                interopClient.Run().Wait();
                 Console.WriteLine("press any key to quit!");
                 Console.ReadKey();
             });
@@ -71,19 +70,19 @@ namespace PiggyMetrics.ConsoleClient
             }
             return Task.CompletedTask;
         }
-       
+
         private async Task RunAuthCreateTestCaseAsync(IRpcClient<AmpMessage> client)
         {
             string random = Guid.NewGuid().ToString("D");
-            var msg = new User()
+            var msg = new UserReq()
             {
                 Account = random.Substring(10),
                 Password = random
             };
-         
+
             AuthServiceClient proxy = new AuthServiceClient(client);
-            var rsp = await proxy.CreateAsync(msg, 6000000);       
-            
+            var rsp = await proxy.CreateAsync(msg, 6000000);
+
             if(rsp == null)
             {
                 Logger.Error("response message is null！");
