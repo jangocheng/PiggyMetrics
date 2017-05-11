@@ -52,8 +52,8 @@ namespace PiggyMetrics.Common
 
                     }
                 }
-               
-            
+
+
                 request.Data = reqTemp.ToByteArray();
 
             }
@@ -65,15 +65,19 @@ namespace PiggyMetrics.Common
 
             try{
                 var rsp = await base.CallInvoker.AsyncCall(request,timeOut);
-                if(rsp !=null && rsp.Data !=null){
+                if(rsp !=null){
                    var rspTemp = ProtobufObjectFactory.GetResponseTemplate(serviceId,messageId);
                     if(rspTemp ==null){
                         result.Status = -1;
                         result.Message = "response message undefined";
                         return result;
                     }
-                   rspTemp.MergeFrom(rsp.Data);
-                   result.Content = AmpJsonFormatter.Format(rspTemp);
+
+                    if(rsp.Data !=null)
+                    {
+                        rspTemp.MergeFrom(rsp.Data);
+                    }
+                    result.Content = AmpJsonFormatter.Format(rspTemp);
                 }
             }
             catch(RpcCommunicationException rpcEx){

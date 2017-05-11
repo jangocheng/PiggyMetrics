@@ -30,8 +30,13 @@ $('#signup').submit(function(e) {
                 initAccount(getCurrentAccount());
 
                 $('#registrationforms, .fliptext, #createaccount').fadeOut(300);
-                $('#mailform').fadeIn(500);
-                setTimeout(function(){ $("#backmailform").focus() }, 10);
+
+                // 取消邮件注册通知的部分
+                //$('#mailform').fadeIn(500);
+                //setTimeout(function(){ $("#backmailform").focus() }, 10);
+
+                $("#lastlogo").show();
+                setTimeout(initGreetingPage, 300);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 if (xhr.status == 400) {

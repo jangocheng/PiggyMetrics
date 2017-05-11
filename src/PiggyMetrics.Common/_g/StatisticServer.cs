@@ -17,7 +17,7 @@ public override string Id => "1003$0";
 //调用委托
 private async Task ReceiveUpdateStatisticsAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
-var request = Account.Parser.ParseFrom(req.Data);
+var request = AccountReq.Parser.ParseFrom(req.Data);
 var data = await UpdateStatisticsAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
@@ -26,7 +26,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<VoidRsp> UpdateStatisticsAsync(Account request);
+public abstract Task<VoidRsp> UpdateStatisticsAsync(AccountReq request);
 //调用委托
 private async Task ReceiveFindByAccountAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {

@@ -53,9 +53,10 @@ namespace PiggyMetrics.AccountService.Repository
             return base.ExcuteAsync(sql,saving);
         }
 
-        internal Task UpdateUserInfoAsync(Account account)
+        internal Task UpdateUserInfoAsync(AccountReq account)
         {
-            string sql ="UPDATE `user_info` SET `last_seen_time`=@LastSeenTime,`note`=@Note WHERE account=@Name";
+            string sql ="UPDATE `user_info` SET `last_seen_time`=now(),`note`=@Note WHERE account=@Name";
+
             return base.ExcuteAsync(sql,account);
         }
 

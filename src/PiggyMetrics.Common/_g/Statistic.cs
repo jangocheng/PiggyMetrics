@@ -32,12 +32,12 @@ namespace PiggyMetrics.Common {
             "cmljEiMKBHN0YXQYBSADKAsyFS5kb3RicGUuRGF0YVBvaW50U3RhdCJICg1E",
             "YXRhUG9pbnRTdGF0EicKC3N0YXRfbWV0cmljGAEgASgOMhIuZG90YnBlLlN0",
             "YXRNZXRyaWMSDgoGYW1vdW50GAIgASgBKj0KClN0YXRNZXRyaWMSCgoGU01O",
-            "T05FEAASCgoGSU5DT01FEAESCwoHRVhQRU5TRRACEgoKBlNBVklORxADMpUB",
-            "ChBTdGF0aXN0aWNTZXJ2aWNlEjoKEFVwZGF0ZVN0YXRpc3RpY3MSDy5kb3Ri",
-            "cGUuQWNjb3VudBoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgBEj4KDUZpbmRCeUFj",
-            "Y291bnQSFi5kb3RicGUuRmluZEFjY291bnRSZXEaDy5kb3RicGUuU3RhdFJz",
-            "cCIE0PMYAhoFyPMY6wdCHEgBqgITUGlnZ3lNZXRyaWNzLkNvbW1vbvDzGAFQ",
-            "AFABYgZwcm90bzM="));
+            "T05FEAASCgoGSU5DT01FEAESCwoHRVhQRU5TRRACEgoKBlNBVklORxADMpgB",
+            "ChBTdGF0aXN0aWNTZXJ2aWNlEj0KEFVwZGF0ZVN0YXRpc3RpY3MSEi5kb3Ri",
+            "cGUuQWNjb3VudFJlcRoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgBEj4KDUZpbmRC",
+            "eUFjY291bnQSFi5kb3RicGUuRmluZEFjY291bnRSZXEaDy5kb3RicGUuU3Rh",
+            "dFJzcCIE0PMYAhoFyPMY6wdCHEgBqgITUGlnZ3lNZXRyaWNzLkNvbW1vbvDz",
+            "GAFQAFABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::PiggyMetrics.Common.StatMetric), }, new pbr::GeneratedClrTypeInfo[] {

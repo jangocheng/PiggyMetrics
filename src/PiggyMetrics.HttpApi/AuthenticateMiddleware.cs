@@ -37,7 +37,7 @@ namespace PiggyMetrics.HttpApi
             {
                 context.Response.ContentType = "application/json";
                 LoginResult result = new LoginResult();
-              
+
 
                 var forward=  context.RequestServices.GetRequiredService<IForwardService>();
                 var callresult = await forward.ForwardAysnc(context);
@@ -54,7 +54,7 @@ namespace PiggyMetrics.HttpApi
                     await context.Response.WriteAsync(result.ToString());
                     return ;
                 }
-               
+
                 if (rsp.Status !=0){
                     result.Status = -1;
                     result.Message = rsp.Message;
@@ -90,8 +90,6 @@ namespace PiggyMetrics.HttpApi
                     result.Status  = -1;
                     result.Message = "Need Authenticate";
                     context.Response.StatusCode = 501;
-
-
                 }
                 else{
                     result.Status  = 0;

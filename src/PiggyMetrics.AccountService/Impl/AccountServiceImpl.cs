@@ -96,7 +96,7 @@ namespace PiggyMetrics.AccountService.Impl
             return rsp;
         }
 
-        public override async Task<VoidRsp> SaveAsync(Account req)
+        public override async Task<VoidRsp> SaveAsync(AccountReq req)
         {
             VoidRsp rsp = new VoidRsp();
             //数据校验
@@ -106,7 +106,7 @@ namespace PiggyMetrics.AccountService.Impl
                 {
                     await this._accountRep.UpdateUserInfoAsync(req);
 
-                    req.Saving.Account = req.Current;
+                    req.Saving.Account = req.Name;
 
                     await this._accountRep.UpdateAccountSavingAsync(req.Saving);
 
@@ -115,7 +115,7 @@ namespace PiggyMetrics.AccountService.Impl
                     await this._accountRep.DeleteExpensesAsync(req.Name);
                     await this._accountRep.AddIncomesAsync(req.Name,req.Incomes);
                     await this._accountRep.AddExpensesAsync(req.Name,req.Expenses);
-
+                    Logger.Debug("SaveAsync Receieve Data:{0}",req.ToString());
                     //调用远端服务
                     var statClient = ClientProxy.GetClient<StatisticServiceClient>();
                     var statRsp = await statClient.UpdateStatisticsAsync(req);

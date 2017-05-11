@@ -23,12 +23,12 @@ namespace PiggyMetrics.Common {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZzZXJ2aWNlcy9hY2NvdW50LnByb3RvEgZkb3RicGUaE2RvdGJwZV9vcHRp",
-            "b24ucHJvdG8aDW1lc3NhZ2UucHJvdG8yvAEKDkFjY291bnRTZXJ2aWNlEj4K",
+            "b24ucHJvdG8aDW1lc3NhZ2UucHJvdG8yvwEKDkFjY291bnRTZXJ2aWNlEj4K",
             "CkZpbmRCeU5hbWUSFi5kb3RicGUuRmluZEFjY291bnRSZXEaEi5kb3RicGUu",
             "QWNjb3VudFJzcCIE0PMYARIzCgZDcmVhdGUSDy5kb3RicGUuVXNlclJlcRoS",
-            "LmRvdGJwZS5BY2NvdW50UnNwIgTQ8xgCEi4KBFNhdmUSDy5kb3RicGUuQWNj",
-            "b3VudBoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgDGgXI8xjpB0IcSAGqAhNQaWdn",
-            "eU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3RvMw=="));
+            "LmRvdGJwZS5BY2NvdW50UnNwIgTQ8xgCEjEKBFNhdmUSEi5kb3RicGUuQWNj",
+            "b3VudFJlcRoPLmRvdGJwZS5Wb2lkUnNwIgTQ8xgDGgXI8xjpB0IcSAGqAhNQ",
+            "aWdneU1ldHJpY3MuQ29tbW9u8PMYAVAAUAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::DotBPE.ProtoBuf.DotbpeOptionReflection.Descriptor, global::PiggyMetrics.Common.MessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null));

@@ -23,7 +23,7 @@ service AccountService{
         option (message_id)= 2 ;
     };
 
-    rpc Save (Account) returns (VoidRsp){
+    rpc Save (AccountReq) returns (VoidRsp){
         option (message_id)= 3 ;
     };
 }

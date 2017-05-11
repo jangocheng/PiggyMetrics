@@ -13,7 +13,7 @@ option (generic_objectfactory) = true;
 service StatisticService{
     option (service_id)= 1003 ;//设定服务ID
 
-    rpc UpdateStatistics (Account) returns (VoidRsp){
+    rpc UpdateStatistics (AccountReq) returns (VoidRsp){
         option (message_id)= 1 ;
     };
 

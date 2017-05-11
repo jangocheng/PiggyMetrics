@@ -43,7 +43,7 @@ public abstract Task<AccountRsp> CreateAsync(UserReq request);
 //调用委托
 private async Task ReceiveSaveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
-var request = Account.Parser.ParseFrom(req.Data);
+var request = AccountReq.Parser.ParseFrom(req.Data);
 var data = await SaveAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
@@ -52,7 +52,7 @@ await context.SendAsync(response);
 }
 
 //抽象方法
-public abstract Task<VoidRsp> SaveAsync(Account request);
+public abstract Task<VoidRsp> SaveAsync(AccountReq request);
 public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
 {
 switch(req.MessageId){

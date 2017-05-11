@@ -25,9 +25,18 @@ message UserReq{
     string account = 1;
     string password = 2;
 }
-
 message Account {
     string name =1;
+    string create_time =2;
+    string last_seen_time =3;
+    string note = 4;
+
+    repeated Item incomes= 5;
+    repeated Item expenses= 6;
+    Saving saving = 7;
+}
+message AccountReq {
+    string current =1;
     string create_time =2;
     string last_seen_time =3;
     string note = 4;

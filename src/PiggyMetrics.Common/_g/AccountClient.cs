@@ -81,7 +81,7 @@ return new AccountRsp();
 }
 return AccountRsp.Parser.ParseFrom(response.Data);
 }
-public async Task<VoidRsp> SaveAsync(Account request,int timeOut=3000)
+public async Task<VoidRsp> SaveAsync(AccountReq request,int timeOut=3000)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1001, 3);
 message.Data = request.ToByteArray();
@@ -98,7 +98,7 @@ return VoidRsp.Parser.ParseFrom(response.Data);
 }
 
 //同步方法
-public VoidRsp Save(Account request)
+public VoidRsp Save(AccountReq request)
 {
 AmpMessage message = AmpMessage.CreateRequestMessage(1001, 3);
 message.Data = request.ToByteArray();

@@ -1,47 +1,35 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Schema PiggyMetrics
--- -----------------------------------------------------
--- PiggyMetrics  ˝æ›ø‚
-
--- -----------------------------------------------------
--- Schema PiggyMetrics
---
--- PiggyMetrics  ˝æ›ø‚
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `PiggyMetrics` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `PiggyMetrics` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `PiggyMetrics` ;
 
 -- -----------------------------------------------------
 -- Table `PiggyMetrics`.`user_auth`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`user_auth` (
-  `account` VARCHAR(50) NOT NULL COMMENT '”√ªß’À∫≈',
-  `password` VARCHAR(50) NOT NULL COMMENT '√‹¬Î',
-  `create_time` DATETIME NOT NULL COMMENT '¥¥Ω® ±º‰',
-  `last_sen_time` DATETIME NOT NULL COMMENT '◊Ó∫Û“ª¥Œ≤Èø¥ ±º‰',
+  `account` VARCHAR(50) NOT NULL COMMENT 'Áî®Êà∑Ë¥¶Âè∑',
+  `password` VARCHAR(50) NOT NULL COMMENT 'ÂØÜÁ†Å',
+  `create_time` DATETIME NOT NULL COMMENT 'ÂàõÂª∫Êó∂Èó¥',
+  `last_sen_time` DATETIME NOT NULL COMMENT 'ÊúÄÂêé‰∏ÄÊ¨°Êü•ÁúãÊó∂Èó¥',
   PRIMARY KEY (`account`),
   UNIQUE INDEX `account_UNIQUE` (`account` ASC))
 ENGINE = MyISAM
-COMMENT = '”√ªßª˘±æ–≈œ¢±Ì';
+COMMENT = 'Áî®Êà∑Âü∫Êú¨‰ø°ÊÅØË°®';
 
 
 -- -----------------------------------------------------
 -- Table `PiggyMetrics`.`user_income`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`user_income` (
-  `idx` INT NOT NULL AUTO_INCREMENT COMMENT '÷˜º¸◊‘‘ˆ',
-  `account` VARCHAR(50) NOT NULL COMMENT '’À∫≈',
-  `title` VARCHAR(50) NOT NULL COMMENT '±ÍÃ‚',
-  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'Ω∂Ó',
-  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'ªı±“¿‡–Õ 1=USD 2= RBM 3=EUR',
-  `time_period` TINYINT NOT NULL DEFAULT 3 COMMENT '÷‹∆⁄  1=YEAR,2= QUARTER,3= MONTH,4= DAY,5= HOUR',
-  `icon` VARCHAR(50) NOT NULL COMMENT 'Õº±Í',
+  `idx` INT NOT NULL AUTO_INCREMENT COMMENT '‰∏ªÈîÆËá™Â¢û',
+  `account` VARCHAR(50) NOT NULL COMMENT 'Ë¥¶Âè∑',
+  `title` VARCHAR(50) NOT NULL COMMENT 'Ê†áÈ¢ò',
+  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'ÈáëÈ¢ù',
+  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'Ë¥ßÂ∏ÅÁ±ªÂûã 1=USD 2= RBM 3=EUR',
+  `period` TINYINT NOT NULL DEFAULT 3 COMMENT 'Âë®Êúü  1=YEAR,2= QUARTER,3= MONTH,4= DAY,5= HOUR',
+  `icon` VARCHAR(50) NOT NULL COMMENT 'ÂõæÊ†á',
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
 
@@ -50,13 +38,13 @@ ENGINE = MyISAM;
 -- Table `PiggyMetrics`.`user_expense`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`user_expense` (
-  `idx` INT NOT NULL AUTO_INCREMENT COMMENT '÷˜º¸◊‘‘ˆ',
-  `account` VARCHAR(50) NOT NULL COMMENT '’À∫≈',
-  `title` VARCHAR(50) NOT NULL COMMENT '±ÍÃ‚',
-  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'Ω∂Ó',
-  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'ªı±“¿‡–Õ 1=USD 2= RBM 3=EUR',
-  `time_period` TINYINT NOT NULL DEFAULT 3 COMMENT '÷‹∆⁄  1=YEAR,2= QUARTER,3= MONTH,4= DAY,5= HOUR',
-  `icon` VARCHAR(50) NOT NULL COMMENT 'Õº±Í',
+  `idx` INT NOT NULL AUTO_INCREMENT COMMENT '‰∏ªÈîÆËá™Â¢û',
+  `account` VARCHAR(50) NOT NULL COMMENT 'Ë¥¶Âè∑',
+  `title` VARCHAR(50) NOT NULL COMMENT 'Ê†áÈ¢ò',
+  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'ÈáëÈ¢ù',
+  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'Ë¥ßÂ∏ÅÁ±ªÂûã 1=USD 2= RBM 3=EUR',
+  `period` TINYINT NOT NULL DEFAULT 3 COMMENT 'Âë®Êúü  1=YEAR,2= QUARTER,3= MONTH,4= DAY,5= HOUR',
+  `icon` VARCHAR(50) NOT NULL COMMENT 'ÂõæÊ†á',
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
 
@@ -67,10 +55,10 @@ ENGINE = MyISAM;
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`user_saving` (
   `account` VARCHAR(50) NOT NULL,
   `amount` DECIMAL(16,2) NOT NULL DEFAULT 0,
-  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'ªı±“¿‡–Õ 1=USD 2= RBM 3=EUR',
-  `interest` DECIMAL(8,2) NOT NULL DEFAULT 0 COMMENT '¿˚œ¢',
-  `deposit` TINYINT NOT NULL DEFAULT 0 COMMENT ' «∑Ò¥ÊøÓ',
-  `capitalization` TINYINT NOT NULL DEFAULT 0 COMMENT ' «∑Ò‘¬‘ˆ≥§',
+  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'Ë¥ßÂ∏ÅÁ±ªÂûã 1=USD 2= RBM 3=EUR',
+  `interest` DECIMAL(8,2) NOT NULL DEFAULT 0 COMMENT 'Âà©ÊÅØ',
+  `deposit` TINYINT NOT NULL DEFAULT 0 COMMENT 'ÊòØÂê¶Â≠òÊ¨æ',
+  `capitalization` TINYINT NOT NULL DEFAULT 0 COMMENT 'ÊòØÂê¶ÊúàÂ¢ûÈïø',
   PRIMARY KEY (`account`))
 ENGINE = MyISAM;
 
@@ -82,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`user_info` (
   `account` VARCHAR(50) NOT NULL,
   `last_seen_time` DATETIME NOT NULL,
   `create_time` DATETIME NOT NULL,
+  `note` VARCHAR(500) NULL,
   PRIMARY KEY (`account`))
 ENGINE = MyISAM;
 
@@ -90,9 +79,9 @@ ENGINE = MyISAM;
 -- Table `PiggyMetrics`.`data_point`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`data_point` (
-  `point_id` INT NOT NULL AUTO_INCREMENT COMMENT '÷˜º¸◊‘‘ˆŒﬁ”√',
-  `account` VARCHAR(50) NOT NULL COMMENT '’À∫≈',
-  `point_date` DATETIME NOT NULL COMMENT 'º«¬º»’∆⁄',
+  `point_id` INT NOT NULL AUTO_INCREMENT COMMENT '‰∏ªÈîÆËá™Â¢ûÊó†Áî®',
+  `account` VARCHAR(50) NOT NULL COMMENT 'Ë¥¶Âè∑',
+  `point_date` DATETIME NOT NULL COMMENT 'ËÆ∞ÂΩïÊó•Êúü',
   PRIMARY KEY (`point_id`))
 ENGINE = MyISAM;
 
@@ -102,9 +91,9 @@ ENGINE = MyISAM;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`data_point_income` (
   `idx` INT NOT NULL AUTO_INCREMENT,
-  `point_idx` INT NOT NULL,
-  `title` VARCHAR(50) NOT NULL COMMENT '±ÍÃ‚',
-  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'Ω∂Ó',
+  `point_id` INT NOT NULL,
+  `title` VARCHAR(50) NOT NULL COMMENT 'Ê†áÈ¢ò',
+  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'ÈáëÈ¢ù',
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
 
@@ -115,8 +104,8 @@ ENGINE = MyISAM;
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`data_point_expense` (
   `idx` INT NOT NULL AUTO_INCREMENT,
   `point_id` INT NOT NULL,
-  `title` VARCHAR(50) NOT NULL COMMENT '±ÍÃ‚',
-  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'Ω∂Ó',
+  `title` VARCHAR(50) NOT NULL COMMENT 'Ê†áÈ¢ò',
+  `amount` DECIMAL(16,2) NOT NULL DEFAULT 0 COMMENT 'ÈáëÈ¢ù',
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
 
@@ -127,7 +116,7 @@ ENGINE = MyISAM;
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`data_point_stat` (
   `idx` INT NOT NULL AUTO_INCREMENT,
   `point_id` INT NOT NULL,
-  `stat_metric` TINYINT NOT NULL DEFAULT 1 COMMENT 'Õ≥º∆¿‡–Õ  1= income 2 expense 3 saving',
+  `stat_metric` TINYINT NOT NULL DEFAULT 1 COMMENT 'ÁªüËÆ°Á±ªÂûã  1= income 2 expense 3 saving',
   `amount` DECIMAL(16,2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
@@ -139,8 +128,8 @@ ENGINE = MyISAM;
 CREATE TABLE IF NOT EXISTS `PiggyMetrics`.`data_point_rate` (
   `idx` INT NOT NULL AUTO_INCREMENT,
   `point_id` INT NOT NULL,
-  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'ªı±“¿‡–Õ 1=USD 2= RBM 3=EUR',
-  `rate` DECIMAL(6,2) NOT NULL DEFAULT 1 COMMENT 'ª„¬ £¨◊™ªª≥…√¿‘™',
+  `currency` TINYINT NOT NULL DEFAULT 1 COMMENT 'Ë¥ßÂ∏ÅÁ±ªÂûã 1=USD 2= RBM 3=EUR',
+  `rate` DECIMAL(6,2) NOT NULL DEFAULT 1 COMMENT 'Ê±áÁéáÔºåËΩ¨Êç¢ÊàêÁæéÂÖÉ',
   PRIMARY KEY (`idx`))
 ENGINE = MyISAM;
 

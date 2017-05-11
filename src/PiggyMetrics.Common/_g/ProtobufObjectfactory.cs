@@ -21,10 +21,10 @@ if(serviceId == 1001 && messageId == 1){ return new FindAccountReq() ;
 }
 if(serviceId == 1001 && messageId == 2){ return new UserReq() ;
 }
-if(serviceId == 1001 && messageId == 3){ return new Account() ;
+if(serviceId == 1001 && messageId == 3){ return new AccountReq() ;
 }
 
-if(serviceId == 1003 && messageId == 1){ return new Account() ;
+if(serviceId == 1003 && messageId == 1){ return new AccountReq() ;
 }
 if(serviceId == 1003 && messageId == 2){ return new FindAccountReq() ;
 }

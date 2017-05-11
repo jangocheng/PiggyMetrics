@@ -11,11 +11,11 @@ services:
         command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
         restart: unless-stopped
     consul:
-        image: progrium/consul:latest
+        image: consul:0.8.2
         container_name: consul_node_server
         ports:
         - "8400:8400"
         - "8500:8500"
-        - "8600::53/udp"
-        command: -server -bootstrap
+        - "8600:8600/udp"
+        command: agent -dev -client 0.0.0.0
         restart: unless-stopped

@@ -52,7 +52,7 @@ namespace PiggyMetrics.StatisticService.Impl
             return rsp;
         }
 
-        public override async Task<VoidRsp> UpdateStatisticsAsync(Account request)
+        public override async Task<VoidRsp> UpdateStatisticsAsync(AccountReq request)
         {
             var rsp = new VoidRsp();
 

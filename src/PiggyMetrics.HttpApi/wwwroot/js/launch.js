@@ -60,7 +60,7 @@ function getCurrentAccount() {
 
 	var account = null;
 
-	if (global.login) {
+	if (true) {
 		$.ajax({
 			url: 'accounts/',
 			datatype: 'json',
