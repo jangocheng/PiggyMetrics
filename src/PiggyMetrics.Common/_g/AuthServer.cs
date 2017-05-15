@@ -47,7 +47,7 @@ switch(req.MessageId){
 case 1: return this.ReceiveCreateAsync(context, req);
 //方法AuthService.Auth
 case 2: return this.ReceiveAuthAsync(context, req);
-default: return base.ReceiveNoFonundAsync(context, req);
+default: return base.ReceiveNotFoundAsync(context, req);
 }
 }
 }

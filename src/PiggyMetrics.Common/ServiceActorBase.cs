@@ -12,7 +12,7 @@ namespace PiggyMetrics.Common
 
         public abstract Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage message);
 
-        protected  Task ReceiveNoFonundAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+        protected  Task ReceiveNotFoundAsync(IRpcContext<AmpMessage> context, AmpMessage req)
         {
             var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
             response.Sequence = req.Sequence;

@@ -62,7 +62,7 @@ case 1: return this.ReceiveFindByNameAsync(context, req);
 case 2: return this.ReceiveCreateAsync(context, req);
 //方法AccountService.Save
 case 3: return this.ReceiveSaveAsync(context, req);
-default: return base.ReceiveNoFonundAsync(context, req);
+default: return base.ReceiveNotFoundAsync(context, req);
 }
 }
 }

@@ -47,7 +47,7 @@ switch(req.MessageId){
 case 1: return this.ReceiveUpdateStatisticsAsync(context, req);
 //方法StatisticService.FindByAccount
 case 2: return this.ReceiveFindByAccountAsync(context, req);
-default: return base.ReceiveNoFonundAsync(context, req);
+default: return base.ReceiveNotFoundAsync(context, req);
 }
 }
 }
