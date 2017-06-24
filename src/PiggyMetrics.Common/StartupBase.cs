@@ -3,10 +3,13 @@ using DotBPE.Protocol.Amp;
 using DotBPE.Rpc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PiggyMetrics.Common.Consul.Service;
 using PiggyMetrics.Common.Extension;
 using Vulcan.DataAccess;
 using Vulcan.DataAccess.Context;
+using DotBPE.Rpc.ServiceRegistry;
+using DotBPE.Plugin.Consul.ServiceRegistry;
+using DotBPE.Plugin.Consul.Config;
+using DotBPE.Plugin.DataAccess;
 
 namespace PiggyMetrics.Common
 {
@@ -48,7 +51,7 @@ namespace PiggyMetrics.Common
             // 不依赖其他服务
             if(!string.IsNullOrEmpty(_localConfiguration.RequireService)){
                 services.AddAmpServerConsulClient(); //即是服务端又是客服端
-                services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
+                services.AddSingleton<IServiceDiscoveryProvider>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
                 {
                     config.Address = new Uri(_localConfiguration.ConsulServer);
                 }));
@@ -57,7 +60,7 @@ namespace PiggyMetrics.Common
 
             services.AddServiceActors<AmpMessage>(AddServiceActors);
 
-            services.AddSingleton<IServiceRegistration>(new ConsulServiceRegistration(_localConfiguration.AppName, (config) =>
+            services.AddSingleton<IServiceRegistrationProvider>(new ConsulServiceRegistration(_localConfiguration.AppName, (config) =>
             {
                 config.Address = new Uri(_localConfiguration.ConsulServer);
             }));
@@ -69,7 +72,7 @@ namespace PiggyMetrics.Common
             AddBizServices(services);
 
             services.AddSingleton<IContextAccessor<AmpMessage>, DefaultContextAccessor<AmpMessage>>();
-            services.AddSingleton<IRuntimeContextStorage, DotBPECallContextStorage>();
+            services.AddSingleton<IRuntimeContextStorage, DotBPECallContextStorage<AmpMessage>>();
             services.AddSingleton<IConnectionFactory, MySqlConnectionFactory>();
             //还要设置数据库链接 不然没法启动
 

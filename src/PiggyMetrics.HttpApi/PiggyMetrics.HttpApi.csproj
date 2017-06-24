@@ -22,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotBPE.Plugin.Consul" Version="0.1.61-alpha" />
+    <PackageReference Include="DotBPE.Plugin.WebApi" Version="0.1.61-alpha" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />

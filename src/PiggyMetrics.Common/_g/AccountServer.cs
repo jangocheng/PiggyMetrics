@@ -15,54 +15,72 @@ public abstract class AccountServiceBase : ServiceActorBase
 {
 public override string Id => "1001$0";
 //调用委托
-private async Task ReceiveFindByNameAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessFindByNameAsync(AmpMessage req)
 {
-var request = FindAccountReq.Parser.ParseFrom(req.Data);
+FindAccountReq request = null;
+if(req.Data == null ){
+   request = new FindAccountReq();
+}
+else {
+request = FindAccountReq.Parser.ParseFrom(req.Data);
+}
 var data = await FindByNameAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<AccountRsp> FindByNameAsync(FindAccountReq request);
 //调用委托
-private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessCreateAsync(AmpMessage req)
 {
-var request = UserReq.Parser.ParseFrom(req.Data);
+UserReq request = null;
+if(req.Data == null ){
+   request = new UserReq();
+}
+else {
+request = UserReq.Parser.ParseFrom(req.Data);
+}
 var data = await CreateAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<AccountRsp> CreateAsync(UserReq request);
 //调用委托
-private async Task ReceiveSaveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessSaveAsync(AmpMessage req)
 {
-var request = AccountReq.Parser.ParseFrom(req.Data);
+AccountReq request = null;
+if(req.Data == null ){
+   request = new AccountReq();
+}
+else {
+request = AccountReq.Parser.ParseFrom(req.Data);
+}
 var data = await SaveAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<VoidRsp> SaveAsync(AccountReq request);
-public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task<AmpMessage> ProcessAsync(AmpMessage req)
 {
 switch(req.MessageId){
 //方法AccountService.FindByName
-case 1: return this.ReceiveFindByNameAsync(context, req);
+case 1: return this.ProcessFindByNameAsync(req);
 //方法AccountService.Create
-case 2: return this.ReceiveCreateAsync(context, req);
+case 2: return this.ProcessCreateAsync(req);
 //方法AccountService.Save
-case 3: return this.ReceiveSaveAsync(context, req);
-default: return base.ReceiveNotFoundAsync(context, req);
+case 3: return this.ProcessSaveAsync(req);
+default: return base.ProcessNotFoundAsync(req);
 }
 }
 }

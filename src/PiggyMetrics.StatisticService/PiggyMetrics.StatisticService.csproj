@@ -11,9 +11,9 @@
   </ItemGroup>
 
  <ItemGroup>
-    <PackageReference Include="DotBPE" Version="0.1.46-alpha" />
+    <PackageReference Include="DotBPE" Version="0.1.60-alpha" />
+    <PackageReference Include="DotBPE.Plugin.Vulcan" Version="0.1.61-alpha" />
     <PackageReference Include="Jil" Version="2.15.0" />
-    <PackageReference Include="Vulcan.DataAccess" Version="0.1.8-alpha" />
   </ItemGroup>
 
   <ItemGroup>

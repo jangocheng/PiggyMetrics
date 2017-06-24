@@ -15,39 +15,51 @@ public abstract class StatisticServiceBase : ServiceActorBase
 {
 public override string Id => "1003$0";
 //调用委托
-private async Task ReceiveUpdateStatisticsAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessUpdateStatisticsAsync(AmpMessage req)
 {
-var request = AccountReq.Parser.ParseFrom(req.Data);
+AccountReq request = null;
+if(req.Data == null ){
+   request = new AccountReq();
+}
+else {
+request = AccountReq.Parser.ParseFrom(req.Data);
+}
 var data = await UpdateStatisticsAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<VoidRsp> UpdateStatisticsAsync(AccountReq request);
 //调用委托
-private async Task ReceiveFindByAccountAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessFindByAccountAsync(AmpMessage req)
 {
-var request = FindAccountReq.Parser.ParseFrom(req.Data);
+FindAccountReq request = null;
+if(req.Data == null ){
+   request = new FindAccountReq();
+}
+else {
+request = FindAccountReq.Parser.ParseFrom(req.Data);
+}
 var data = await FindByAccountAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<StatRsp> FindByAccountAsync(FindAccountReq request);
-public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task<AmpMessage> ProcessAsync(AmpMessage req)
 {
 switch(req.MessageId){
 //方法StatisticService.UpdateStatistics
-case 1: return this.ReceiveUpdateStatisticsAsync(context, req);
+case 1: return this.ProcessUpdateStatisticsAsync(req);
 //方法StatisticService.FindByAccount
-case 2: return this.ReceiveFindByAccountAsync(context, req);
-default: return base.ReceiveNotFoundAsync(context, req);
+case 2: return this.ProcessFindByAccountAsync(req);
+default: return base.ProcessNotFoundAsync(req);
 }
 }
 }

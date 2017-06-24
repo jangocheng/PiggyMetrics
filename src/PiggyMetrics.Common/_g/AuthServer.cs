@@ -15,39 +15,51 @@ public abstract class AuthServiceBase : ServiceActorBase
 {
 public override string Id => "1002$0";
 //调用委托
-private async Task ReceiveCreateAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessCreateAsync(AmpMessage req)
 {
-var request = UserReq.Parser.ParseFrom(req.Data);
+UserReq request = null;
+if(req.Data == null ){
+   request = new UserReq();
+}
+else {
+request = UserReq.Parser.ParseFrom(req.Data);
+}
 var data = await CreateAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<VoidRsp> CreateAsync(UserReq request);
 //调用委托
-private async Task ReceiveAuthAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+private async Task<AmpMessage> ProcessAuthAsync(AmpMessage req)
 {
-var request = UserReq.Parser.ParseFrom(req.Data);
+UserReq request = null;
+if(req.Data == null ){
+   request = new UserReq();
+}
+else {
+request = UserReq.Parser.ParseFrom(req.Data);
+}
 var data = await AuthAsync(request);
 var response = AmpMessage.CreateResponseMessage(req.ServiceId, req.MessageId);
 response.Sequence = req.Sequence;
 response.Data = data.ToByteArray();
-await context.SendAsync(response);
+return response;
 }
 
 //抽象方法
 public abstract Task<AuthRsp> AuthAsync(UserReq request);
-public override Task ReceiveAsync(IRpcContext<AmpMessage> context, AmpMessage req)
+public override Task<AmpMessage> ProcessAsync(AmpMessage req)
 {
 switch(req.MessageId){
 //方法AuthService.Create
-case 1: return this.ReceiveCreateAsync(context, req);
+case 1: return this.ProcessCreateAsync(req);
 //方法AuthService.Auth
-case 2: return this.ReceiveAuthAsync(context, req);
-default: return base.ReceiveNotFoundAsync(context, req);
+case 2: return this.ProcessAuthAsync(req);
+default: return base.ProcessNotFoundAsync(req);
 }
 }
 }

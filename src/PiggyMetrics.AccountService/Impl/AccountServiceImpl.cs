@@ -5,6 +5,7 @@ using DotBPE.Rpc.Client;
 using DotBPE.Rpc.Logging;
 using PiggyMetrics.AccountService.Repository;
 using PiggyMetrics.Common;
+using DotBPE.Rpc.Utils;
 
 namespace PiggyMetrics.AccountService.Impl
 {

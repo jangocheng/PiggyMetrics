@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using DotBPE.Rpc.Logging;
 using PiggyMetrics.AuthService.Repository;
 using PiggyMetrics.Common;
-
+using DotBPE.Rpc.Utils;
 
 namespace PiggyMetrics.AuthService.Impl
 {

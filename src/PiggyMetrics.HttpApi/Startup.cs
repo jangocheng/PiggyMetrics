@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PiggyMetrics.Common;
-using PiggyMetrics.Common.Consul.Service;
 using PiggyMetrics.Common.Extension;
+using DotBPE.Plugin.WebApi;
+using DotBPE.Plugin.Consul.Config;
+using DotBPE.Plugin.Consul.ServiceRegistry;
+using DotBPE.Rpc.ServiceRegistry;
 
 namespace PiggyMetrics.HttpApi
 {
@@ -41,10 +44,10 @@ namespace PiggyMetrics.HttpApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.Configure<RouterOption>(Configuration.GetSection("RouterOption"));
+            services.Configure<WebApiRouterOption>(Configuration.GetSection("RouterOption"));
             services.AddScoped<IForwardService,ForwardService>();
             // 添加服务发现
-            services.AddSingleton<IServiceDiscovery>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
+            services.AddSingleton<IServiceDiscoveryProvider>(new ConsulServiceDiscovery(_localConfiguration.AppName,_localConfiguration.RequireService, (config) =>
             {
                 config.Address = new Uri(_localConfiguration.ConsulServer);
             }));
@@ -65,33 +68,17 @@ namespace PiggyMetrics.HttpApi
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
             });
-            if(!string.IsNullOrEmpty(_localConfiguration.RequireService)){
+
+            if (!string.IsNullOrEmpty(_localConfiguration.RequireService))
+            {
                 app.UseConsuleDiscovery();
             }
             //认证中间件，判断是否登录和登录处理
             app.UseAuthenticate(new AuthenticateOption(){ LoginPath="/auth/login"});
 
-            app.Run(Proccess);
+            app.UseForwardProxy();
         }
-
-        public async Task Proccess(HttpContext context)
-        {
-            context.Response.ContentType = "text/plain";
-            var result = await context.RequestServices.GetRequiredService<IForwardService>().ForwardAysnc(context);
-            if(result.Status ==0){
-                context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(result.Content);
-            }
-            else if(result.Status == 404 )
-            {
-                context.Response.StatusCode = 404;
-                await context.Response.WriteAsync(result.Message??"Service not found!");
-            }
-            else{
-                context.Response.StatusCode = 500;
-                await context.Response.WriteAsync(result.Message??"Server Internal Error!");
-            }
-        }
+        
 
     }
 }
