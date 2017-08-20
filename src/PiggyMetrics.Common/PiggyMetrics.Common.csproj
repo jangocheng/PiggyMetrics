@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,11 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotBPE" Version="0.1.60-alpha" />
-    <PackageReference Include="DotBPE.Plugin.Consul" Version="0.1.61-alpha" />
-    <PackageReference Include="DotBPE.Plugin.Nlog" Version="0.1.61-alpha" />
-    <PackageReference Include="DotBPE.Plugin.Vulcan" Version="0.1.61-alpha" />
-    <PackageReference Include="MySql.Data" Version="7.0.7-m61" />
+    <PackageReference Include="DotBPE.Protocol.Amp" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Rpc" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Rpc.Netty" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Plugin.Consul" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Plugin.Nlog" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Plugin.Vulcan" Version="1.0.64-alpha" />
+    <PackageReference Include="MySql.Data" Version="8.0.8-dmr" />
     <PackageReference Include="Google.Protobuf" Version="3.3.0" />
     <PackageReference Include="Consul" Version="0.7.2.3" />
   </ItemGroup>

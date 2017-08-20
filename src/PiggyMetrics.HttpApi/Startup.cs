@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +11,7 @@ using DotBPE.Plugin.WebApi;
 using DotBPE.Plugin.Consul.Config;
 using DotBPE.Plugin.Consul.ServiceRegistry;
 using DotBPE.Rpc.ServiceRegistry;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace PiggyMetrics.HttpApi
 {
@@ -62,12 +63,12 @@ namespace PiggyMetrics.HttpApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
-            app.UseCookieAuthentication(new CookieAuthenticationOptions()
-            {
-                AuthenticationScheme = _localConfiguration.AppName,
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true
-            });
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            //{
+            //    AuthenticationScheme = _localConfiguration.AppName,
+            //    AutomaticAuthenticate = true,
+            //    AutomaticChallenge = true
+            //});
 
             if (!string.IsNullOrEmpty(_localConfiguration.RequireService))
             {

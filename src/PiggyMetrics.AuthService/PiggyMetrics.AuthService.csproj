@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,9 +10,10 @@
   </ItemGroup>
 
  <ItemGroup>
-    <PackageReference Include="DotBPE" Version="0.1.60-alpha" />
-    <PackageReference Include="DotBPE.Plugin.Vulcan" Version="0.1.61-alpha" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="DotBPE.Plugin.Vulcan" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Protocol.Amp" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Rpc" Version="1.0.64-alpha" />
+    <PackageReference Include="DotBPE.Rpc.Netty" Version="1.0.64-alpha" />
   </ItemGroup>
 
   <ItemGroup>
